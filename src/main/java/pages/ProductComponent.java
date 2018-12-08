@@ -31,7 +31,7 @@ public class ProductComponent {
     }
 
     public String getNameText() {
-        return getName().getText();
+        return getName().getText().trim();
     }
 
     //price
@@ -43,6 +43,9 @@ public class ProductComponent {
         return getPrice().getText();
     }
 
+    public void clickToProduct(){
+        getName().click();
+    }
 
     @Override
     public String toString() {
