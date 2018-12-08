@@ -13,13 +13,13 @@ public abstract class TestRunner {
 
     @BeforeClass
     public void setUp() {
-        String property = System.getProperty("user.dir") + "/driver/chromedriver";
+        String property = System.getProperty("user.dir") + "/driver/chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", property);
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.get("http://studio5f.online/en/");
+
 
     }
 
@@ -28,10 +28,10 @@ public abstract class TestRunner {
         driver.close();
     }
 
-//    @BeforeMethod
-//    public void beforeMethod() {
-//        driver.get("http://localhost/PRESTASHOP/en/index.php");
-//    }
+    @BeforeMethod
+    public void beforeMethod() {
+        driver.get("http://studio5f.online/en/");
+    }
 
     protected HomePage loadAplication(){
         return new HomePage(driver);

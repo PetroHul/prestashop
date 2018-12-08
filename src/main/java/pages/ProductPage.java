@@ -1,15 +1,26 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ProductPage {
 
+    private WebDriver driver;
+    private WebElement productName;
+    private WebElement productPrice;
     private WebElement addToCartButton;
 
-//    this.addToCartButton = productLayout.findElement(By.cssSelector(".btn.btn-primary.add-to-cart"));
+    public ProductPage(WebDriver driver) {
+        this.driver = driver;
+        initProductComponent();
+    }
 
-
+    private void initProductComponent() {
+        this.productName = driver.findElement(By.cssSelector("h1[itemprop = 'name']"));
+        this.productPrice = driver.findElement(By.cssSelector(".product-prices"));
+        this.addToCartButton = driver.findElement(By.cssSelector(".btn.btn-primary.add-to-cart"));
+    }
 
 
 //    addToCartButton
