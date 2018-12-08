@@ -4,10 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class AHeadComponent  {
+public class AHeadComponent {
     protected WebDriver driver;
-    protected final String SEARCH_VALUE= "mug";
-  
+    protected final String SEARCH_VALUE = "mug";
+
     private WebElement contactUsButton;
     private WebElement localization;
     private WebElement currency;
@@ -18,19 +18,19 @@ public class AHeadComponent  {
     private WebElement searchProductButton;
 
 
-
-    protected AHeadComponent(WebDriver driver){
+    protected AHeadComponent(WebDriver driver) {
         this.driver = driver;
 
-        contactUsButton=driver.findElement(By.cssSelector("#contact-link > a"));
-        localization=driver.findElement(By.cssSelector("#_desktop_language_selector > div > div > button > span"));
-        currency=driver.findElement(By.cssSelector("#_desktop_currency_selector > div > button > span"));
-        signInButton=driver.findElement(By.cssSelector("#_desktop_user_info > div > a"));
-        cartButton=driver.findElement(By.cssSelector("#_desktop_cart > div > div > i"));
-        logo=driver.findElement(By.cssSelector("#_desktop_logo > h1 > a > img"));
-        searchProductField=driver.findElement(By.name("s"));
-        searchProductButton=driver.findElement(By.cssSelector("button[type='submit']"));
+        contactUsButton = driver.findElement(By.cssSelector("#contact-link > a"));
+        localization = driver.findElement(By.cssSelector("#_desktop_language_selector > div > div > button > span"));
+        currency = driver.findElement(By.cssSelector("#_desktop_currency_selector > div > button > span"));
+        signInButton = driver.findElement(By.cssSelector("#_desktop_user_info > div > a"));
+        cartButton = driver.findElement(By.cssSelector(".blockcart.cart-preview"));
+        logo = driver.findElement(By.cssSelector(".logo.img-responsive"));
+        searchProductField = driver.findElement(By.name("s"));
+        searchProductButton = driver.findElement(By.cssSelector("button[type='submit']"));
     }
+
 
     // PageObject Atomic Operation
 
@@ -51,6 +51,7 @@ public class AHeadComponent  {
     public WebElement getLocalization() {
         return localization;
     }
+
     public String getLocalizationText() {
         return getLocalization().getText().substring(0, 1);
     }
@@ -121,12 +122,12 @@ public class AHeadComponent  {
     public String getSearchProductFieldText() {
         return getSearchProductField().getAttribute(SEARCH_VALUE);
     }
-  
-      public void setSearchProductField(String text){
+
+    public void setSearchProductField(String text) {
         getSearchProductField().sendKeys(text);
     }
 
-      public void clearSearchProductField(){
+    public void clearSearchProductField() {
         getSearchProductField().clear();
     }
 
