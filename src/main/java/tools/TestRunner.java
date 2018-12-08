@@ -13,7 +13,7 @@ public abstract class TestRunner {
 
     @BeforeClass
     public void setUp() {
-        String property = System.getProperty("user.dir") + "/driver/chromedriver";
+        String property = System.getProperty("user.dir") + "/driver/chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", property);
 
         driver = new ChromeDriver();
