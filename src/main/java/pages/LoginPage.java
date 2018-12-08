@@ -12,23 +12,30 @@ public class LoginPage extends AHeadComponent{
         super(driver);
     }
 
-
+    // emailField
     public WebElement getEmailField() {
         return emailField;
+    }
+    public void clearEmailField() {
+        getEmailField().clear();
     }
 
     public void setEmailField(WebElement emailField) {
         this.emailField = emailField;
     }
 
+    // passwordField
     public WebElement getPasswordField() {
         return passwordField;
+    }
+    public void clearPasswordField() {
+        getPasswordField().clear();
     }
 
     public void setPasswordField(WebElement passwordField) {
         this.passwordField = passwordField;
     }
-
+    // loginButton
     public WebElement getLoginButton() {
         return loginButton;
     }
