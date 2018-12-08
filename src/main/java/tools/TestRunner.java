@@ -13,7 +13,9 @@ public abstract class TestRunner {
 
     @BeforeClass
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");
+        String property = System.getProperty("user.dir") + "/driver/chromedriver";
+        System.setProperty("webdriver.chrome.driver", property);
+
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
