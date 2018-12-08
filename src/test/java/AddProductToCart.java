@@ -21,7 +21,7 @@ public class AddProductToCart extends TestRunner {
 
         Thread.sleep(10000);
         driver.get("http://studio5f.online/en/cart?action=show");
-        SoppingCartPage soppingCartPage=  new SoppingCartPage(driver);
+        ShoppingCartPage soppingCartPage=  new ShoppingCartPage(driver);
 //        soppingCartPage.getProductName();
 
         Assert.assertTrue(soppingCartPage.getProductNameText().equals("Hummingbird printed t-shirt"));

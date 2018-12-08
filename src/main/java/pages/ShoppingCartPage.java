@@ -4,13 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class SoppingCartPage {
+public class ShoppingCartPage {
 
     private WebDriver driver;
     private WebElement productName;
     private WebElement productPrice;
 
-    public SoppingCartPage(WebDriver driver) {
+    public ShoppingCartPage(WebDriver driver) {
         this.driver = driver;
         initProductComponent();
     }
