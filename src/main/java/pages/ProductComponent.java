@@ -1,0 +1,55 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+public class ProductComponent {
+
+
+    private WebElement productLayout;
+    private WebElement name;
+    private WebElement price;
+
+    public ProductComponent(WebElement productLayout) {
+        this.productLayout = productLayout;
+        initProductComponent();
+    }
+
+    private void initProductComponent() {
+        this.name = productLayout.findElement(By.cssSelector(".h3.product-title"));
+        this.price = productLayout.findElement(By.cssSelector("span.price"));
+    }
+
+    //productLayout
+    public WebElement getProductLayout() {
+        return productLayout;
+    }
+
+    //name
+    public WebElement getName() {
+        return name;
+    }
+
+    public String getNameText() {
+        return getName().getText();
+    }
+
+    //price
+    public WebElement getPrice() {
+        return price;
+    }
+
+    public String getPriceText() {
+        return getPrice().getText();
+    }
+
+
+    @Override
+    public String toString() {
+        return "ProductComponent{" +
+                "productLayout=" + productLayout +
+                ", name=" + name +
+                ", price=" + price +
+                '}';
+    }
+}
