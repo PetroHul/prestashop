@@ -57,15 +57,14 @@ public class LoginPage extends AHeadComponent{
         getLoginButton().click();
     }
 
-
     // Business Logic
-    private void fillLoginForm(WebElement email,WebElement password) {
+    public void fillLoginForm(String email, String password) {
         clickEmailField();
         clearEmailField();
-        setEmailField(email);
+        emailField.sendKeys(email);
         clickPasswordField();
         clearPasswordField();
-        setPasswordField(password);
+        passwordField.sendKeys(password);
         clickLoginButton();
     }
 
