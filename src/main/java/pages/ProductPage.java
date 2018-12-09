@@ -4,15 +4,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class ProductPage {
+public class ProductPage extends AHeadComponent {
 
-    private WebDriver driver;
+
     private WebElement productName;
     private WebElement productPrice;
     private WebElement addToCartButton;
 
     public ProductPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         initProductComponent();
     }
 
@@ -23,11 +23,13 @@ public class ProductPage {
     }
 
 
-//    addToCartButton
+    //    addToCartButton
     public WebElement getAddToCartButton() {
         return addToCartButton;
     }
-    public void clickToAddButton(){
+
+    public void clickToAddButton() {
         getAddToCartButton().click();
     }
+
 }
