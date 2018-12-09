@@ -22,6 +22,7 @@ public class LoginPageTest extends TestRunner {
 //        LoginPage loginPage = new LoginPage(); // тут бага
 //        loginPage.clickLoginButton();
 //        loginPage.fillLoginForm(email,password);
+
         String actual = driver.getCurrentUrl();
         String expected = "";
         expected.contains("my-account");

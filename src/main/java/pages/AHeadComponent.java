@@ -27,9 +27,11 @@ public abstract class AHeadComponent {
         contactUsButton = driver.findElement(By.cssSelector("#contact-link > a"));
         localization = driver.findElement(By.cssSelector("#_desktop_language_selector > div > div > button > span"));
         currency = driver.findElement(By.cssSelector("#_desktop_currency_selector > div > button > span"));
-        signInButton = driver.findElement(By.cssSelector("#_desktop_user_info > div > a"));
+
+        signInButton=driver.findElement(By.xpath("By.xpath(\"(.//*[normalize-space(text()) and normalize-space(.)='\uE7FF'])[1]/following::span[1]\")"));
         cartButton = driver.findElement(By.id("_desktop_cart"));
-        logo = driver.findElement(By.cssSelector(".logo"));
+        logo = driver.findElement(By.cssSelector(".logo.img-responsive"));
+
         searchProductField = driver.findElement(By.name("s"));
         searchProductButton = driver.findElement(By.cssSelector("button[type='submit']"));
     }
