@@ -27,7 +27,7 @@ public abstract class AHeadComponent  {
         currency=driver.findElement(By.cssSelector("#_desktop_currency_selector > div > button > span"));
         signInButton=driver.findElement(By.cssSelector("#_desktop_user_info > div > a"));
         cartButton=driver.findElement(By.cssSelector("#_desktop_cart > div > div > i"));
-        logo=driver.findElement(By.cssSelector("#_desktop_logo > h1 > a > img"));
+        logo=driver.findElement(By.cssSelector(".logo"));
         searchProductField=driver.findElement(By.name("s"));
         searchProductButton=driver.findElement(By.cssSelector("button[type='submit']"));
     }
@@ -138,9 +138,9 @@ public abstract class AHeadComponent  {
         return searchProductButton;
     }
 
-    public void clickSearchProductButton() {
+    public SearchResultPage clickSearchProductButton() {
         getSearchProductButton().click();
-
+        return new SearchResultPage(driver);
     }
 
 

@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 
+
 public class SearchResultPage extends AHeadComponent {
 
     public SearchResultPage(WebDriver driver){
@@ -15,11 +16,9 @@ public class SearchResultPage extends AHeadComponent {
         productListComponent = new ProductListComponent(driver);
     }
 
-    private ProductListComponent getProductListComponent(){
+    public ProductListComponent getProductListComponent(){
         return productListComponent;
     }
 
-    public String getProductNameByPartialName(String partialProductName){
-        return getProductListComponent().getProductComponentByPartialName(partialProductName).getNameText();
-    }
+
 }
