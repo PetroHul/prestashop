@@ -4,7 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class AHeadComponent {
+
+public abstract class AHeadComponent  {
+
     protected WebDriver driver;
     protected final String SEARCH_VALUE = "mug";
 
@@ -21,14 +23,15 @@ public class AHeadComponent {
     protected AHeadComponent(WebDriver driver) {
         this.driver = driver;
 
-        contactUsButton = driver.findElement(By.cssSelector("#contact-link > a"));
-        localization = driver.findElement(By.cssSelector("#_desktop_language_selector > div > div > button > span"));
-        currency = driver.findElement(By.cssSelector("#_desktop_currency_selector > div > button > span"));
-        signInButton = driver.findElement(By.cssSelector("#_desktop_user_info > div > a"));
-        cartButton = driver.findElement(By.cssSelector(".blockcart.cart-preview"));
-        logo = driver.findElement(By.cssSelector(".logo.img-responsive"));
-        searchProductField = driver.findElement(By.name("s"));
-        searchProductButton = driver.findElement(By.cssSelector("button[type='submit']"));
+
+        contactUsButton=driver.findElement(By.cssSelector("#contact-link > a"));
+        localization=driver.findElement(By.cssSelector("#_desktop_language_selector > div > div > button > span"));
+        currency=driver.findElement(By.cssSelector("#_desktop_currency_selector > div > button > span"));
+        signInButton=driver.findElement(By.cssSelector("#_desktop_user_info > div > a"));
+        cartButton=driver.findElement(By.cssSelector("#_desktop_cart > div > div > i"));
+        logo=driver.findElement(By.cssSelector(".logo"));
+        searchProductField=driver.findElement(By.name("s"));
+        searchProductButton=driver.findElement(By.cssSelector("button[type='submit']"));
     }
 
 
@@ -119,12 +122,16 @@ public class AHeadComponent {
         return searchProductField;
     }
 
-    public String getSearchProductFieldText() {
-        return getSearchProductField().getAttribute(SEARCH_VALUE);
+    public String getSearchProductFieldText(String text) {
+        return getSearchProductField().getAttribute(text);
+    }
+  
+    public void setSearchProductField(){
+        getSearchProductField().sendKeys(SEARCH_VALUE);
     }
 
-    public void setSearchProductField(String text) {
-        getSearchProductField().sendKeys(text);
+    public void clickSearchProductField(){
+        getSearchProductField().click();
     }
 
     public void clearSearchProductField() {
@@ -136,9 +143,9 @@ public class AHeadComponent {
         return searchProductButton;
     }
 
-    public void clickSearchProductButton() {
+    public SearchResultPage clickSearchProductButton() {
         getSearchProductButton().click();
-
+        return new SearchResultPage(driver);
     }
 
 
