@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class AHeadComponent  {
+public abstract class AHeadComponent  {
     protected WebDriver driver;
     protected final String SEARCH_VALUE= "mug";
   
@@ -118,14 +118,17 @@ public class AHeadComponent  {
         return searchProductField;
     }
 
-    public String getSearchProductFieldText() {
-        return getSearchProductField().getAttribute(SEARCH_VALUE);
+    public String getSearchProductFieldText(String text) {
+        return getSearchProductField().getAttribute(text);
     }
   
-      public void setSearchProductField(String text){
-        getSearchProductField().sendKeys(text);
+    public void setSearchProductField(){
+        getSearchProductField().sendKeys(SEARCH_VALUE);
     }
 
+    public void clickSearchProductField(){
+        getSearchProductField().click();
+    }
       public void clearSearchProductField(){
         getSearchProductField().clear();
     }
