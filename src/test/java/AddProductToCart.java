@@ -1,4 +1,6 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
@@ -10,20 +12,23 @@ import java.util.concurrent.TimeUnit;
 public class AddProductToCart extends TestRunner {
     @Test
     public void test1() throws InterruptedException {
-        //precondition
+        //arrange
         HomePage homePage = loadAplication();
         delayExecution(1000);
-        //steps
+        //actual
         homePage.getProductsListComponent().getProductComponentByPartialName("Hummingbird Printed T-Shirt").clickToProduct();
-
         ProductPage productPage = new ProductPage(driver);
         productPage.clickToAddButton();
+        delayExecution(1000);
 
-        Thread.sleep(10000);
-        driver.get("http://studio5f.online/en/cart?action=show");
-        ShoppingCartPage soppingCartPage=  new ShoppingCartPage(driver);
-//        soppingCartPage.getProductName();
+        ProductMessagePage productMessagePage = new ProductMessagePage(driver);
+        productMessagePage.closeAlertMessage();
 
+        delayExecution(10000);
+
+        productMessagePage.clickShoppingCart();
+        ShoppingCartPage soppingCartPage = new ShoppingCartPage(driver);
+        //assert
         Assert.assertTrue(soppingCartPage.getProductNameText().equals("Hummingbird printed t-shirt"));
     }
 

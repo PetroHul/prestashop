@@ -4,10 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+
 public abstract class AHeadComponent  {
+
     protected WebDriver driver;
-    protected final String SEARCH_VALUE= "mug";
-  
+    protected final String SEARCH_VALUE = "mug";
+
     private WebElement contactUsButton;
     private WebElement localization;
     private WebElement currency;
@@ -18,9 +20,9 @@ public abstract class AHeadComponent  {
     private WebElement searchProductButton;
 
 
-
-    protected AHeadComponent(WebDriver driver){
+    protected AHeadComponent(WebDriver driver) {
         this.driver = driver;
+
 
         contactUsButton=driver.findElement(By.cssSelector("#contact-link > a"));
         localization=driver.findElement(By.cssSelector("#_desktop_language_selector > div > div > button > span"));
@@ -31,6 +33,7 @@ public abstract class AHeadComponent  {
         searchProductField=driver.findElement(By.name("s"));
         searchProductButton=driver.findElement(By.cssSelector("button[type='submit']"));
     }
+
 
     // PageObject Atomic Operation
 
@@ -51,6 +54,7 @@ public abstract class AHeadComponent  {
     public WebElement getLocalization() {
         return localization;
     }
+
     public String getLocalizationText() {
         return getLocalization().getText().substring(0, 1);
     }
@@ -129,7 +133,8 @@ public abstract class AHeadComponent  {
     public void clickSearchProductField(){
         getSearchProductField().click();
     }
-      public void clearSearchProductField(){
+
+    public void clearSearchProductField() {
         getSearchProductField().clear();
     }
 
