@@ -20,7 +20,7 @@ public class LoginPageTest extends TestRunner {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         //LoginPage loginPage = new LoginPage(); // тут бага
-        loginPage.clickLoginButton();
+        LoginPage.clickLoginButton();
         loginPage.fillLoginForm(email,password);
         String actual = driver.getCurrentUrl();
         String expected = "";
