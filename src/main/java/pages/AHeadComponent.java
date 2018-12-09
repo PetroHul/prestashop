@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 
-public abstract class AHeadComponent  {
+public abstract class AHeadComponent {
 
     protected WebDriver driver;
     protected final String SEARCH_VALUE = "mug";
@@ -24,14 +24,14 @@ public abstract class AHeadComponent  {
         this.driver = driver;
 
 
-        contactUsButton=driver.findElement(By.cssSelector("#contact-link > a"));
-        localization=driver.findElement(By.cssSelector("#_desktop_language_selector > div > div > button > span"));
-        currency=driver.findElement(By.cssSelector("#_desktop_currency_selector > div > button > span"));
-        signInButton=driver.findElement(By.cssSelector("#_desktop_user_info > div > a"));
-        cartButton=driver.findElement(By.id("_desktop_cart"));
-        logo=driver.findElement(By.cssSelector(".logo"));
-        searchProductField=driver.findElement(By.name("s"));
-        searchProductButton=driver.findElement(By.cssSelector("button[type='submit']"));
+        contactUsButton = driver.findElement(By.cssSelector("#contact-link > a"));
+        localization = driver.findElement(By.cssSelector("#_desktop_language_selector > div > div > button > span"));
+        currency = driver.findElement(By.cssSelector("#_desktop_currency_selector > div > button > span"));
+        signInButton = driver.findElement(By.cssSelector("#_desktop_user_info > div > a"));
+        cartButton = driver.findElement(By.id("_desktop_cart"));
+        logo = driver.findElement(By.cssSelector(".logo"));
+        searchProductField = driver.findElement(By.name("s"));
+        searchProductButton = driver.findElement(By.cssSelector("button[type='submit']"));
     }
 
 
@@ -125,12 +125,12 @@ public abstract class AHeadComponent  {
     public String getSearchProductFieldText(String text) {
         return getSearchProductField().getAttribute(text);
     }
-  
-    public void setSearchProductField(){
+
+    public void setSearchProductField() {
         getSearchProductField().sendKeys(SEARCH_VALUE);
     }
 
-    public void clickSearchProductField(){
+    public void clickSearchProductField() {
         getSearchProductField().click();
     }
 
