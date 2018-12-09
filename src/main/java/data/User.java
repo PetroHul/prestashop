@@ -1,6 +1,6 @@
 package data;
 
-import org.graalvm.compiler.lir.LIRInstruction;
+//import org.graalvm.compiler.lir.LIRInstruction;
 
 interface ISocialTitle{
     IFirstName setSocialTitle(boolean socailtitle );
