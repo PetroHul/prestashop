@@ -42,7 +42,7 @@ public class ProductListComponent {
 
     }
 
-    public List<String> getProductsNameList(String partialProductName) {
+    public List<String> getProductsNameList() {
         List<String> result = new ArrayList<String>();
         for (ProductComponent current : getProductComponents()) {
             result.add(current.getNameText());
