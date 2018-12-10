@@ -6,8 +6,9 @@ public class LoginPage extends AHeadComponent{
     private WebElement emailField;
     private WebElement passwordField;
     private WebElement loginButton;
+    private WebElement noAccountButton;
 
-    protected WebDriver driver;
+//    protected WebDriver driver;
     public LoginPage(WebDriver driver){
         super(driver);
         initLoginComponent();
@@ -17,6 +18,9 @@ public class LoginPage extends AHeadComponent{
         emailField = driver.findElement(By.cssSelector("input.form-control[name='email']"));
         passwordField = driver.findElement(By.cssSelector("input.form-control[name='password']"));
         loginButton = driver.findElement(By.cssSelector("#submit-login"));
+        noAccountButton=driver.findElement(By.cssSelector("a[href*='login?create_account']"));
+
+
     }
 
     // PageObject Atomic Operation
@@ -57,6 +61,14 @@ public class LoginPage extends AHeadComponent{
         getLoginButton().click();
     }
 
+    //noAccountButton
+    public WebElement getNoAccountButton(){return noAccountButton;}
+    public CreateAnAccountPage clickNoAccountButton(){
+        getNoAccountButton().click();
+        return new CreateAnAccountPage(driver);
+    }
+
+
     // Business Logic
     public void fillLoginForm(String email, String password) {
         clickEmailField();
@@ -66,6 +78,8 @@ public class LoginPage extends AHeadComponent{
         clearPasswordField();
         passwordField.sendKeys(password);
         clickLoginButton();
+        clickNoAccountButton();
+
     }
 
 

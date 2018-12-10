@@ -1,9 +1,7 @@
 package data;
 
-//import org.graalvm.compiler.lir.LIRInstruction;
-
 interface ISocialTitle{
-    IFirstName setSocialTitle(boolean socailtitle );
+    IFirstName setSocialTitle(SocialTitle socialTitle );
 }
 
 interface IFirstName {
@@ -33,9 +31,10 @@ interface IBuildUser {
 }
 
 
-public class User implements ISocialTitle, IFirstName, ILastName, IEMail, IPassword, IBirthdate, IBuildUser, IUser{
+public class User implements ISocialTitle, IFirstName, ILastName, IEMail, IPassword,
+        IBirthdate, IBuildUser, IUser{
 
-    private boolean socialTitle;
+    private SocialTitle socialTitle;
     private String firstName;
     private String lastName;
     private String email;
@@ -65,12 +64,12 @@ public class User implements ISocialTitle, IFirstName, ILastName, IEMail, IPassw
         newsletter=true;
     }
 
-    public boolean isSocialTitle() {
-        return socialTitle;
+    public static ISocialTitle get(){
+        return new User();
     }
 
-    public static ISocialTitle get() {
-        return new User();
+    public SocialTitle getSocialTitle() {
+        return socialTitle;
     }
 
     public String getFirstName() {
@@ -103,7 +102,8 @@ public class User implements ISocialTitle, IFirstName, ILastName, IEMail, IPassw
 
     //Fluent Interface
 
-    public IFirstName setSocialTitle(boolean socialTitle) {
+
+    public IFirstName setSocialTitle(SocialTitle socialTitle) {
         this.socialTitle = socialTitle;
         return this;
     }
