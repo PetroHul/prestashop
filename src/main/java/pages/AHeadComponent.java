@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public abstract class AHeadComponent {
 
@@ -18,6 +21,8 @@ public abstract class AHeadComponent {
     private WebElement logo;
     private WebElement searchProductField;
     private WebElement searchProductButton;
+    private List<WebElement> menuTop;
+    private WebElement accessoriesButton;
 
 
     protected AHeadComponent(WebDriver driver) {
@@ -28,12 +33,16 @@ public abstract class AHeadComponent {
         localization = driver.findElement(By.cssSelector("#_desktop_language_selector > div > div > button > span"));
         currency = driver.findElement(By.cssSelector("#_desktop_currency_selector > div > button > span"));
 
-        signInButton=driver.findElement(By.xpath("//*[@id='_desktop_user_info']/div/a[1]"));
+        signInButton = driver.findElement(By.xpath("//*[@id='_desktop_user_info']/div/a[1]"));
         cartButton = driver.findElement(By.id("_desktop_cart"));
         logo = driver.findElement(By.cssSelector(".logo.img-responsive"));
 
         searchProductField = driver.findElement(By.name("s"));
         searchProductButton = driver.findElement(By.cssSelector("button[type='submit']"));
+
+        menuTop = driver.findElements(By.cssSelector(".top-menu"));
+        accessoriesButton = driver.findElement(By.cssSelector("#category-6"));
+
     }
 
 
@@ -140,6 +149,7 @@ public abstract class AHeadComponent {
         getSearchProductField().clear();
     }
 
+
     //SearcProductButton
     public WebElement getSearchProductButton() {
         return searchProductButton;
@@ -150,5 +160,41 @@ public abstract class AHeadComponent {
         return new SearchResultPage(driver);
     }
 
+    //menuTop
+    public List<WebElement> getMenuTop() {
+        return menuTop;
+    }
 
+    public List<String> getMenuTopTexts() {
+        List<String> result = new ArrayList<String>();
+        for (WebElement current : getMenuTop()) {
+            result.add(current.findElement(By.cssSelector(".top-menu")).getText()); // not good selector
+        }
+        return result;
+    }
+
+    public WebElement getMenuTopByCategoryPartialName(String categoryName) {
+        WebElement result = null;
+        for (WebElement current : getMenuTop()) {
+            if (current.findElement(By.cssSelector(".top-menu")).getText() // not good selector
+                    .toLowerCase().contains(categoryName.toLowerCase())) {
+                result = current;
+                break;
+            }
+        }
+        return result;
+    }
+
+    //topmenu
+
+    public void setMenuTop(List<WebElement> menuTop) {
+        this.menuTop = menuTop;
+    }
+
+
+    public CategoryPage clickAccesssoriesButton() {
+        accessoriesButton.click();
+        return new CategoryPage(driver);
+    }
 }
+
