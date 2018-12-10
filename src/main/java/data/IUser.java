@@ -1,7 +1,7 @@
 package data;
 
 public interface IUser {
-    boolean isSocialTitle();
+    SocialTitle getSocialTitle();
     String getFirstName();
     String getLastName();
     String getEmail();
