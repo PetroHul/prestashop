@@ -20,12 +20,12 @@ public class UserRepository {
 
     public IUser newUser() {
         return User.get()
-                .setSocialTitle(true)
-                .setFirstName("fn1")
-                .setLastName("ln1")
-                .setEMail("em1@ukr.net")
+                .setSocialTitle(SocialTitle.MR)
+                .setFirstName("someone")
+                .setLastName("someoneelse")
+                .setEMail("emailex@ukr.net")
                 .setPassword("password1")
-                .setBirthdate("10/12/1856")
+                .setBirthdate("10/12/1956")
                 .build();
     }
 
