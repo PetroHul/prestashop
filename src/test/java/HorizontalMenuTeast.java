@@ -1,5 +1,6 @@
 
 
+import data.Category;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
@@ -15,7 +16,7 @@ public class HorizontalMenuTeast extends TestRunner {
         HomePage homePage = loadAplication();
         CategoryPage accessoriesPage;
         String actual;
-        String expected = "ACCESSORIES";
+        String expected = Category.ACCESSORIES.toString();
 
         //act
         accessoriesPage = homePage.clickAccesssoriesButton();
