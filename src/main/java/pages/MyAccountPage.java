@@ -3,9 +3,13 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class MyAccountPage extends AHeadComponent {
+    @FindBy(css = "footer.page-footer a[href*='mylogout']")
     private WebElement heading;
+
     private WebElement informationButton;
     private WebElement addressesButton;
     private WebElement orderHistoryAndDetailsButton;
@@ -14,6 +18,7 @@ public class MyAccountPage extends AHeadComponent {
 
     public MyAccountPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
         initMyAcountComponent();
     }
 
