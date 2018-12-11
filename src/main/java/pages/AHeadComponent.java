@@ -34,7 +34,7 @@ public abstract class AHeadComponent {
         currency = driver.findElement(By.cssSelector("#_desktop_currency_selector > div > button > span"));
 
 
-        signInButton = driver.findElement(By.cssSelector(".user-info > a[href='http://studio5f.online/en/my-account']"));      
+        signInButton = driver.findElement(By.cssSelector(".user-info > a[href='http://studio5f.online/en/my-account']"));
         cartButton = driver.findElement(By.id("_desktop_cart"));
 
         logo = driver.findElement(By.cssSelector(".logo.img-responsive"));
@@ -199,7 +199,7 @@ public abstract class AHeadComponent {
     public CategoryPage clickAccesssoriesButton() {
         accessoriesButton.click();
         return new CategoryPage(driver);
-
+    }
     public String getUserName() {
         return driver.findElement(By.cssSelector(".account")).getText().trim();
     }
