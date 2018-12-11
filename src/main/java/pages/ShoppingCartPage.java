@@ -9,15 +9,17 @@ public class ShoppingCartPage {
     private WebDriver driver;
     private WebElement productName;
     private WebElement productPrice;
+    private WebElement deleteButton;
 
     public ShoppingCartPage(WebDriver driver) {
         this.driver = driver;
-        initProductComponent();
+        initProduct();
     }
 
-    private void initProductComponent() {
+    private void initProduct() {
         this.productName = driver.findElement(By.cssSelector(".product-line-info [href]"));
         this.productPrice = driver.findElement(By.cssSelector("span.product-price"));
+//        this.deleteButton = driver.findElement(By.xpath(".remove-from-cart"));
     }
 
     public WebElement getProductName() {
@@ -27,4 +29,7 @@ public class ShoppingCartPage {
         return getProductName().getText();
     }
 
+    public WebElement getDeleteButton() {
+        return deleteButton;
+    }
 }

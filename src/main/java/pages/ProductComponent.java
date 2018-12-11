@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 
 public class ProductComponent {
 
-
     private WebElement productLayout;
     private WebElement name;
     private WebElement price;
@@ -47,12 +46,5 @@ public class ProductComponent {
         getName().click();
     }
 
-    @Override
-    public String toString() {
-        return "ProductComponent{" +
-                "productLayout=" + productLayout +
-                ", name=" + name +
-                ", price=" + price +
-                '}';
-    }
+
 }

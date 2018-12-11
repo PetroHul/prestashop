@@ -1,5 +1,6 @@
 package pages;
 
+import data.IUser;
 import org.openqa.selenium.*;
 
 public class LoginPage extends AHeadComponent{
@@ -60,9 +61,9 @@ public class LoginPage extends AHeadComponent{
 
     //noAccountButton
     public WebElement getNoAccountButton(){return noAccountButton;}
-    public CreateAnAccountPage clickNoAccountButton(){
+    public CreateAccountPage clickNoAccountButton(){
         getNoAccountButton().click();
-        return new CreateAnAccountPage(driver);
+        return new CreateAccountPage(driver);
     }
 
     // Business Logic
@@ -75,6 +76,18 @@ public class LoginPage extends AHeadComponent{
         passwordField.sendKeys(password);
         clickLoginButton();
     }
+
+    public MyAccountPage logInAcount(IUser user) {
+        clickEmailField();
+        clearEmailField();
+        emailField.sendKeys(user.getEmail());
+        clickPasswordField();
+        clearPasswordField();
+        passwordField.sendKeys(user.getPassword());
+        clickLoginButton();
+        return new MyAccountPage(driver);
+    }
+
 }
 
 

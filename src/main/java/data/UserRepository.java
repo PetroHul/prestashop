@@ -23,9 +23,22 @@ public class UserRepository {
                 .setSocialTitle(SocialTitle.MR)
                 .setFirstName("someone")
                 .setLastName("someoneelse")
-                .setEMail("emailex@ukr.net")
+                .setEMail("emaisomrerr@ukr.net")
                 .setPassword("password1")
-                .setBirthdate("10/12/1956")
+                .setBirthdate("10/12/1986")
+                .setRecieveOffers(false)
+                .setNewsLetter(true)
+                .build();
+    }
+
+    public IUser localUser() {
+        return User.get()
+                .setSocialTitle(SocialTitle.MR)
+                .setFirstName("Vasia")
+                .setLastName("Pupkin")
+                .setEMail("local_part@domain.com")
+                .setPassword("qwerty")
+                .setBirthdate("05/25/1995")
                 .build();
     }
 

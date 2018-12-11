@@ -1,4 +1,3 @@
-
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
@@ -34,4 +33,3 @@ public class LoginPageTest extends TestRunner {
         //exept
     }
 }
-
