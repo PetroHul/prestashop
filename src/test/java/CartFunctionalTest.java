@@ -15,7 +15,7 @@ public class CartFunctionalTest extends TestRunner {
 
         delayExecution(10000);
 
-        AccountUser accountUser = new AccountUser(driver);
+        MyAccountPage accountUser = new MyAccountPage(driver);
         accountUser.clickLogo();
         delayExecution(10000);
 

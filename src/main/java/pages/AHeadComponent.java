@@ -23,7 +23,7 @@ public abstract class AHeadComponent {
     private WebElement searchProductButton;
     private List<WebElement> menuTop;
     private WebElement accessoriesButton;
-    private WebElement addressesButton;
+    private WebElement footerAddressesButton;
 
 
     protected AHeadComponent(WebDriver driver) {
@@ -46,8 +46,7 @@ public abstract class AHeadComponent {
         menuTop = driver.findElements(By.cssSelector(".top-menu"));
         accessoriesButton = driver.findElement(By.cssSelector("#category-6"));
 
-        addressesButton = driver.findElement(By.cssSelector("div#block_myaccount_infos a[href*='addresses']"));
-
+        footerAddressesButton = driver.findElement(By.cssSelector("div#block_myaccount_infos a[href*='addresses']"));
     }
 
 
@@ -210,7 +209,9 @@ public abstract class AHeadComponent {
     }
 
     //footer
-    public
+    public AddressesPage clickFooterAddressesButton() {
+        return new AddressesPage(driver);
+    }
 }
 
 
