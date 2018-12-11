@@ -8,7 +8,11 @@ import tools.TestRunner;
 public class AddressBookEntriesTest extends TestRunner {
     @Test
     public void addAddressTest() {
-        //arrenge
-        loadAplication(UserRepository.get().localUser());
+//    arrenge
+        MyAccountPage myAccountPage;
+        myAccountPage = loadAplication(UserRepository.get().localUser());
+//    act
+        
+//    assert
     }
 }
