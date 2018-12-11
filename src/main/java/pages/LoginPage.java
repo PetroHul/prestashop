@@ -1,5 +1,6 @@
 package pages;
 
+import data.IUser;
 import org.openqa.selenium.*;
 
 public class LoginPage extends AHeadComponent{
@@ -76,16 +77,17 @@ public class LoginPage extends AHeadComponent{
         clickLoginButton();
     }
 
-    public MyAccountPage signin(String email, String password) {
+    public MyAccountPage logInAcount(IUser user) {
         clickEmailField();
         clearEmailField();
-        emailField.sendKeys(email);
+        emailField.sendKeys(user.getEmail());
         clickPasswordField();
         clearPasswordField();
-        passwordField.sendKeys(password);
+        passwordField.sendKeys(user.getPassword());
         clickLoginButton();
         return new MyAccountPage(driver);
     }
+
 }
 
 

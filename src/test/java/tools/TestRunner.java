@@ -1,16 +1,19 @@
 package tools;
 
+import data.IUser;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.MyAccountPage;
 
 import java.util.concurrent.TimeUnit;
 
 public abstract class TestRunner {
 
     protected WebDriver driver;
+    private Object IUser;
 
     @BeforeClass
     public void setUp() {
@@ -38,6 +41,12 @@ public abstract class TestRunner {
         return new HomePage(driver);
     }
 
+    protected MyAccountPage loadAplication(IUser user) {
+        HomePage homePage = loadAplication();
+        LoginPage loginPage = homePage.clickSignInButton();
+        return loginPage.logInAcount(user);
+    }
+
     protected void delayExecution(long miliseconds) {
         try {
             Thread.sleep(miliseconds);
@@ -61,5 +70,4 @@ public abstract class TestRunner {
 
 
     }
-
 }
