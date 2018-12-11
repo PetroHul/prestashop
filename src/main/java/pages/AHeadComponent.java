@@ -202,6 +202,7 @@ public abstract class AHeadComponent {
     }
 
 
+
     public String getUserName () {
         return driver.findElement(By.cssSelector(".account")).getText().trim();
     }

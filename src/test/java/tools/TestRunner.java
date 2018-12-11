@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 import pages.HomePage;
-import pages.SearchResultPage;
+import pages.LoginPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -34,15 +34,32 @@ public abstract class TestRunner {
 //        driver.get("http://localhost/PRESTASHOP/en/index.php");
 //    }
 
-    protected HomePage loadAplication(){
+    protected HomePage loadAplication() {
         return new HomePage(driver);
     }
 
-    protected void delayExecution(long miliseconds){
+    protected void delayExecution(long miliseconds) {
         try {
             Thread.sleep(miliseconds);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+
+    protected void sigiIn() {
+
+        final String email = "User@gmail.com";
+        final String password = "qwerty";
+
+        HomePage homePage = loadAplication();
+        homePage.clickSignInButton();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.clickLoginButton();
+        loginPage.fillLoginForm(email, password);
+
+
+    }
+
 }
