@@ -3,6 +3,8 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,41 +15,62 @@ public abstract class AHeadComponent {
     protected WebDriver driver;
     protected final String SEARCH_VALUE = "mug";
 
+    @FindBy(css = "#contact-link > a")
     private WebElement contactUsButton;
-    private WebElement localization;
-    private WebElement currency;
-    private WebElement signInButton;
-    private WebElement cartButton;
-    private WebElement logo;
-    private WebElement searchProductField;
-    private WebElement searchProductButton;
-    private List<WebElement> menuTop;
-    private WebElement accessoriesButton;
-    private WebElement footerAddressesButton;
 
+    @FindBy(css = "#_desktop_language_selector > div > div > button > span")
+    private WebElement localization;
+    @FindBy(css = "#_desktop_currency_selector > div > button > span")
+    private WebElement currency;
+
+    @FindBy(css = ".user-info > a[href='http://studio5f.online/en/my-account']")
+    private WebElement signInButton;
+
+    @FindBy(id = "_desktop_cart")
+    private WebElement cartButton;
+
+    @FindBy(css = ".logo.img-responsive")
+    private WebElement logo;
+
+    @FindBy(name = "s")
+    private WebElement searchProductField;
+
+    @FindBy(css = "button[type='submit']")
+    private WebElement searchProductButton;
+
+    @FindBy(css =".top-menu")
+    private List<WebElement> menuTop;
+
+    @FindBy(css ="#category-6")
+    private WebElement accessoriesButton;
+
+    @FindBy(css ="div#block_myaccount_infos a[href*='addresses']")
+    private WebElement footerAddressesButton;
 
     protected AHeadComponent(WebDriver driver) {
         this.driver = driver;
-
-
-        contactUsButton = driver.findElement(By.cssSelector("#contact-link > a"));
-        localization = driver.findElement(By.cssSelector("#_desktop_language_selector > div > div > button > span"));
-        currency = driver.findElement(By.cssSelector("#_desktop_currency_selector > div > button > span"));
-
-
-        signInButton = driver.findElement(By.cssSelector(".user-info > a[href='http://studio5f.online/en/my-account']"));
-        cartButton = driver.findElement(By.id("_desktop_cart"));
-
-        logo = driver.findElement(By.cssSelector(".logo.img-responsive"));
-
-        searchProductField = driver.findElement(By.name("s"));
-        searchProductButton = driver.findElement(By.cssSelector("button[type='submit']"));
-
-        menuTop = driver.findElements(By.cssSelector(".top-menu"));
-        accessoriesButton = driver.findElement(By.cssSelector("#category-6"));
-
-        footerAddressesButton = driver.findElement(By.cssSelector("div#block_myaccount_infos a[href*='addresses']"));
+        PageFactory.initElements(driver, this);
     }
+//    protected AHeadComponent(WebDriver driver) {
+//        this.driver = driver;
+
+//        contactUsButton = driver.findElement(By.cssSelector("#contact-link > a"));
+//        localization = driver.findElement(By.cssSelector("#_desktop_language_selector > div > div > button > span"));
+//        currency = driver.findElement(By.cssSelector("#_desktop_currency_selector > div > button > span"));
+//
+//
+//        signInButton = driver.findElement(By.cssSelector(".user-info > a[href='http://studio5f.online/en/my-account']"));
+//        cartButton = driver.findElement(By.id("_desktop_cart"));
+//        logo = driver.findElement(By.cssSelector(".logo.img-responsive"));
+
+//        searchProductField = driver.findElement(By.name("s"));
+//        searchProductButton = driver.findElement(By.cssSelector("button[type='submit']"));
+//
+//        menuTop = driver.findElements(By.cssSelector(".top-menu"));
+//        accessoriesButton = driver.findElement(By.cssSelector("#category-6"));
+//
+//        footerAddressesButton = driver.findElement(By.cssSelector("div#block_myaccount_infos a[href*='addresses']"));
+//    }
 
 
     // PageObject Atomic Operation
@@ -204,7 +227,7 @@ public abstract class AHeadComponent {
     }
 
 
-    public String getUserName () {
+    public String getUserName() {
         return driver.findElement(By.cssSelector(".account")).getText().trim();
     }
 
