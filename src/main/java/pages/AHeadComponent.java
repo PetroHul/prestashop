@@ -4,7 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class AHeadComponent {
+import java.util.ArrayList;
+import java.util.List;
+
+
+public abstract class AHeadComponent {
+
     protected WebDriver driver;
     protected final String SEARCH_VALUE = "mug";
 
@@ -16,19 +21,30 @@ public class AHeadComponent {
     private WebElement logo;
     private WebElement searchProductField;
     private WebElement searchProductButton;
+    private List<WebElement> menuTop;
+    private WebElement accessoriesButton;
 
 
     protected AHeadComponent(WebDriver driver) {
         this.driver = driver;
 
+
         contactUsButton = driver.findElement(By.cssSelector("#contact-link > a"));
         localization = driver.findElement(By.cssSelector("#_desktop_language_selector > div > div > button > span"));
         currency = driver.findElement(By.cssSelector("#_desktop_currency_selector > div > button > span"));
-        signInButton = driver.findElement(By.cssSelector("#_desktop_user_info > div > a"));
-        cartButton = driver.findElement(By.cssSelector(".blockcart.cart-preview"));
+
+
+        signInButton = driver.findElement(By.cssSelector(".user-info > a[href='http://studio5f.online/en/my-account']"));      
+        cartButton = driver.findElement(By.id("_desktop_cart"));
+
         logo = driver.findElement(By.cssSelector(".logo.img-responsive"));
+
         searchProductField = driver.findElement(By.name("s"));
         searchProductButton = driver.findElement(By.cssSelector("button[type='submit']"));
+
+        menuTop = driver.findElements(By.cssSelector(".top-menu"));
+        accessoriesButton = driver.findElement(By.cssSelector("#category-6"));
+
     }
 
 
@@ -83,8 +99,9 @@ public class AHeadComponent {
         return getSignInButton().getText();
     }
 
-    public void clickSignInButton() {
+    public LoginPage clickSignInButton() {
         getSignInButton().click();
+        return new LoginPage(driver);
     }
 
 
@@ -119,27 +136,72 @@ public class AHeadComponent {
         return searchProductField;
     }
 
-    public String getSearchProductFieldText() {
-        return getSearchProductField().getAttribute(SEARCH_VALUE);
+    public String getSearchProductFieldText(String text) {
+        return getSearchProductField().getAttribute(text);
     }
 
-    public void setSearchProductField(String text) {
-        getSearchProductField().sendKeys(text);
+    public void setSearchProductField() {
+        getSearchProductField().sendKeys(SEARCH_VALUE);
+    }
+
+    public void clickSearchProductField() {
+        getSearchProductField().click();
     }
 
     public void clearSearchProductField() {
         getSearchProductField().clear();
     }
 
+
     //SearcProductButton
     public WebElement getSearchProductButton() {
         return searchProductButton;
     }
 
-    public void clickSearchProductButton() {
+    public SearchResultPage clickSearchProductButton() {
         getSearchProductButton().click();
+        return new SearchResultPage(driver);
+    }
 
+    //menuTop
+    public List<WebElement> getMenuTop() {
+        return menuTop;
+    }
+
+    public List<String> getMenuTopTexts() {
+        List<String> result = new ArrayList<String>();
+        for (WebElement current : getMenuTop()) {
+            result.add(current.findElement(By.cssSelector(".top-menu")).getText()); // not good selector
+        }
+        return result;
     }
 
 
+    public WebElement getMenuTopByCategoryPartialName(String categoryName) {
+        WebElement result = null;
+        for (WebElement current : getMenuTop()) {
+            if (current.findElement(By.cssSelector(".top-menu")).getText() // not good selector
+                    .toLowerCase().contains(categoryName.toLowerCase())) {
+                result = current;
+                break;
+            }
+        }
+        return result;
+    }
+
+    //topmenu
+
+    public void setMenuTop(List<WebElement> menuTop) {
+        this.menuTop = menuTop;
+    }
+
+
+    public CategoryPage clickAccesssoriesButton() {
+        accessoriesButton.click();
+        return new CategoryPage(driver);
+
+    public String getUserName() {
+        return driver.findElement(By.cssSelector(".account")).getText().trim();
+    }
 }
+
