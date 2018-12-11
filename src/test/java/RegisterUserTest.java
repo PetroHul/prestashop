@@ -30,7 +30,7 @@ public class RegisterUserTest extends TestRunner {
         String expected = newUser.getFirstName() + " " + newUser.getLastName();
 
 
-        //actual
+        //Actual
         loginPage = homePage.clickSignInButton();
         createAccountPage = loginPage.clickNoAccountButton();
         createAccountPage.setSocialTitle(newUser.getSocialTitle());
@@ -39,11 +39,11 @@ public class RegisterUserTest extends TestRunner {
         createAccountPage.setEmail(newUser.getEmail());
         createAccountPage.setPassword(newUser.getPassword());
         createAccountPage.setBirthdate(newUser.getBirthdate());
-        //createAccountPage.setNewsletter(newUser.isNewsletter());
+        createAccountPage.setReceiveOffers(newUser.isRecieveOffers());
+        createAccountPage.setNewsletter(newUser.isNewsletter());
         delayExecution(1000);
         resultPage = createAccountPage.clickSaveButton();
         actual = resultPage.getUserName();
-
 
         //Assert
         System.out.println(actual);
