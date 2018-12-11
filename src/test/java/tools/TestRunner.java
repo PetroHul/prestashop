@@ -41,10 +41,11 @@ public abstract class TestRunner {
         return new HomePage(driver);
     }
 
-    protected MyAccountPage loadAplication(IUser user) {
-        HomePage homePage = loadAplication();
-        LoginPage loginPage = homePage.clickSignInButton();
-        return loginPage.logInAcount(user);
+    protected HomePage loadAplication(IUser user) {
+        HomePage homePage = new HomePage(driver);
+        homePage.clickSignInButton().logInAcount(user).clickLogo();
+        return homePage;
+
     }
 
     protected void delayExecution(long miliseconds) {
