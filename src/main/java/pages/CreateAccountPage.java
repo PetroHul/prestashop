@@ -12,7 +12,7 @@ import java.util.List;
 
 
 
-public class CreateAnAccountPage extends AHeadComponent {
+public class CreateAccountPage extends AHeadComponent {
 
     private WebElement heading;
     private List<WebElement> socialTitle;
@@ -27,7 +27,7 @@ public class CreateAnAccountPage extends AHeadComponent {
 
 
 
-    protected CreateAnAccountPage(WebDriver driver) {
+    protected CreateAccountPage(WebDriver driver) {
         super(driver);
         initRegisterComponent();
     }
@@ -124,16 +124,17 @@ public class CreateAnAccountPage extends AHeadComponent {
         this.receiveOffers.click();
         this.receiveOffers.clear();
         this.receiveOffers.sendKeys(receiveOffers);
+
     }
 
     public WebElement getNewsletter() {
         return newsletter;
     }
 
-    public void setNewsletter(String newsletter) {
+    public void setNewsletter(boolean newsletter) {
         this.newsletter.click();
         this.newsletter.clear();
-        this.newsletter.sendKeys(newsletter);
+        //this.newsletter.sendKeys(newsletter);
     }
 
     public WebDriver getDriver() {
