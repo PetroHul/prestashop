@@ -29,5 +29,16 @@ public class UserRepository {
                 .build();
     }
 
+    public IUser localUser() {
+        return User.get()
+                .setSocialTitle(SocialTitle.MR)
+                .setFirstName("Vasia")
+                .setLastName("Pupkin")
+                .setEMail("local_part@domain.com")
+                .setPassword("qwerty")
+                .setBirthdate("05/25/1995")
+                .build();
+    }
+
 
 }
