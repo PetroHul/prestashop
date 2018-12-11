@@ -23,9 +23,11 @@ public class UserRepository {
                 .setSocialTitle(SocialTitle.MR)
                 .setFirstName("someone")
                 .setLastName("someoneelse")
-                .setEMail("emailex@ukr.net")
+                .setEMail("emaisomrerr@ukr.net")
                 .setPassword("password1")
-                .setBirthdate("10/12/1956")
+                .setBirthdate("10/12/1986")
+                .setRecieveOffers(false)
+                .setNewsLetter(true)
                 .build();
     }
 

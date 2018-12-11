@@ -61,9 +61,9 @@ public class LoginPage extends AHeadComponent{
 
     //noAccountButton
     public WebElement getNoAccountButton(){return noAccountButton;}
-    public CreateAnAccountPage clickNoAccountButton(){
+    public CreateAccountPage clickNoAccountButton(){
         getNoAccountButton().click();
-        return new CreateAnAccountPage(driver);
+        return new CreateAccountPage(driver);
     }
 
     // Business Logic

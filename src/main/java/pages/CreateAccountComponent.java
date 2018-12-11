@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class CreateAnAccountComponent {
+public class CreateAccountComponent {
 
 
 }
