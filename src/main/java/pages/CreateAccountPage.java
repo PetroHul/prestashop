@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
-
 public class CreateAccountPage extends AHeadComponent {
 
     private WebElement heading;
@@ -26,7 +24,6 @@ public class CreateAccountPage extends AHeadComponent {
     private WebElement saveButton;
 
 
-
     protected CreateAccountPage(WebDriver driver) {
         super(driver);
         initRegisterComponent();
@@ -34,15 +31,15 @@ public class CreateAccountPage extends AHeadComponent {
 
     private void initRegisterComponent() {
         heading = driver.findElement(By.cssSelector(".page-header > h1"));
-        socialTitle=driver.findElements(By.cssSelector("input[name='id_gender']"));
-        firstName=driver.findElement(By.cssSelector("input[name='firstname']"));
-        lastName=driver.findElement(By.cssSelector("input[name='lastname']"));
-        email=driver.findElement(By.cssSelector(".form-control[name='email']"));
-        password=driver.findElement(By.cssSelector("input[name='password']"));
-        birthdate=driver.findElement(By.cssSelector("input[name='birthday']"));
-        receiveOffers=driver.findElement(By.cssSelector("input[name='optin']"));
-        newsletter=driver.findElement(By.cssSelector("input[name='newsletter"));
-        saveButton=driver.findElement(By.cssSelector(".btn.btn-primary.form-control-submit.float-xs-right"));
+        socialTitle = driver.findElements(By.cssSelector("input[name='id_gender']"));
+        firstName = driver.findElement(By.cssSelector("input[name='firstname']"));
+        lastName = driver.findElement(By.cssSelector("input[name='lastname']"));
+        email = driver.findElement(By.cssSelector(".form-control[name='email']"));
+        password = driver.findElement(By.cssSelector("input[name='password']"));
+        birthdate = driver.findElement(By.cssSelector("input[name='birthday']"));
+        receiveOffers = driver.findElement(By.cssSelector("input[name='optin']"));
+        newsletter = driver.findElement(By.cssSelector("input[name='newsletter"));
+        saveButton = driver.findElement(By.cssSelector(".btn.btn-primary.form-control-submit.float-xs-right"));
 
 
     }
@@ -57,11 +54,13 @@ public class CreateAccountPage extends AHeadComponent {
     }
 
     public void setSocialTitle(SocialTitle socialTitle) {
-        switch (socialTitle){
-            case MR:this.socialTitle.get(0).click();
-            break;
-            case MRS:this.socialTitle.get(1).click();
-            break;
+        switch (socialTitle) {
+            case MR:
+                this.socialTitle.get(0).click();
+                break;
+            case MRS:
+                this.socialTitle.get(1).click();
+                break;
         }
 
     }
@@ -120,10 +119,11 @@ public class CreateAccountPage extends AHeadComponent {
         return receiveOffers;
     }
 
-    public void setReceiveOffers(String receiveOffers) {
-        this.receiveOffers.click();
-        this.receiveOffers.clear();
-        this.receiveOffers.sendKeys(receiveOffers);
+    public void setReceiveOffers(boolean receiveOffers) {
+
+        if (receiveOffers) {
+            this.receiveOffers.click();
+        } else ; //do nothing
 
     }
 
@@ -132,9 +132,9 @@ public class CreateAccountPage extends AHeadComponent {
     }
 
     public void setNewsletter(boolean newsletter) {
-        this.newsletter.click();
-        this.newsletter.clear();
-        //this.newsletter.sendKeys(newsletter);
+        if (newsletter) {
+            this.newsletter.click();
+        } else ; //do nothing
     }
 
     public WebDriver getDriver() {
