@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class MyAccountPage extends AHeadComponent {
-    @FindBy(css = "footer.page-footer a[href*='mylogout']")
+//    @FindBy(css = "footer.page-footer a[href*='mylogout']")
     private WebElement heading;
 
     private WebElement informationButton;
@@ -18,7 +18,7 @@ public class MyAccountPage extends AHeadComponent {
 
     public MyAccountPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver, this);
+//        PageFactory.initElements(driver, this);
         initMyAcountComponent();
     }
 
