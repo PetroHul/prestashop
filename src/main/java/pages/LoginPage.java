@@ -84,7 +84,7 @@ public class LoginPage extends AHeadComponent{
         clearPasswordField();
         passwordField.sendKeys(password);
         clickLoginButton();
-        return new MyAccountPage();
+        return new MyAccountPage(driver);
     }
 }
 

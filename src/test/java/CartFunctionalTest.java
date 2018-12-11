@@ -1,20 +1,27 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.HomePage;
-import pages.ProductMessagePage;
-import pages.ProductPage;
-import pages.ShoppingCartPage;
+import pages.*;
 import tools.TestRunner;
 
 
 public class CartFunctionalTest extends TestRunner {
     @Test
-    public void addProductToShoppingCart() {
+    public void addProductToShoppingCartTest() {
         //arrange
         HomePage homePage = loadAplication();
         delayExecution(1000);
+
+        sigiIn();
+
+        delayExecution(10000);
+
+        AccountUser accountUser = new AccountUser(driver);
+        accountUser.clickLogo();
+        delayExecution(10000);
+
         //actual
-        homePage.getProductsListComponent().getProductComponentByPartialName("Hummingbird Printed T-Shirt").clickToProduct();
+        HomePage homePage1 = new HomePage(driver);
+        homePage1.getProductsListComponent().getProductComponentByPartialName("Hummingbird Printed T-Shirt").clickToProduct();
         ProductPage productPage = new ProductPage(driver);
         productPage.clickToAddButton();
 
@@ -30,5 +37,9 @@ public class CartFunctionalTest extends TestRunner {
         Assert.assertTrue(soppingCartPage.getProductNameText().equals("Hummingbird printed t-shirt"));
     }
 
+    @Test
+    public void deleteProductFromShoppingCartTest() {
+
+    }
 
 }

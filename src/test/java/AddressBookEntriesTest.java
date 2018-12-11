@@ -20,6 +20,5 @@ public class AddressBookEntriesTest extends TestRunner {
 
         LoginPage loginPage = homePage.clickSignInButton();
         MyAccountPage myAccountPage = loginPage.signin(LOGIN, PASSWORD);
-
     }
 }
