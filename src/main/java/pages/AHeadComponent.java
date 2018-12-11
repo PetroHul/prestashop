@@ -200,8 +200,12 @@ public abstract class AHeadComponent {
         accessoriesButton.click();
         return new CategoryPage(driver);
     }
-    public String getUserName() {
+
+
+
+    public String getUserName () {
         return driver.findElement(By.cssSelector(".account")).getText().trim();
     }
 }
+
 

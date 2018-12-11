@@ -13,6 +13,7 @@ public class LoginPageTest extends TestRunner {
 
     @Test
     public void testLogin() throws InterruptedException {
+        //arrange
         boolean expected;
         final String email = "barzoom5@gmail.com";
         final String password = "529440";
