@@ -74,8 +74,17 @@ public class LoginPage extends AHeadComponent{
         clearPasswordField();
         passwordField.sendKeys(password);
         clickLoginButton();
-        clickNoAccountButton();
+    }
 
+    public MyAccountPage signin(String email, String password) {
+        clickEmailField();
+        clearEmailField();
+        emailField.sendKeys(email);
+        clickPasswordField();
+        clearPasswordField();
+        passwordField.sendKeys(password);
+        clickLoginButton();
+        return new MyAccountPage();
     }
 }
 
