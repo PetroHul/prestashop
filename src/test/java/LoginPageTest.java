@@ -7,34 +7,28 @@ import tools.TestRunner;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class LoginPageTest extends TestRunner {
 
     @Test
     public void testLogin() throws InterruptedException {
-
+        boolean expected;
         final String email = "barzoom5@gmail.com";
         final String password = "529440";
 
         HomePage homePage = loadAplication();
         homePage.clickSignInButton();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-//        LoginPage loginPage = new LoginPage(); // тут бага
-//        loginPage.clickLoginButton();
-//        loginPage.fillLoginForm(email,password);
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.clickLoginButton();
+        loginPage.fillLoginForm(email,password);
 
         String actual = driver.getCurrentUrl();
-        String expected = "";
-        expected.contains("my-account");
-        assertEquals(actual,"sa");
-        System.out.println(expected);
-        System.out.println(actual);
-
-
+        expected = actual.contains("my-account");
+        assertTrue(expected);
+      
         //HomePage homePage = HomePage()
-
-
         // .fillLoginForm('barzoom5@gmailcom',"529440");
     }
 }
