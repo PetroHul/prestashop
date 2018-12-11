@@ -7,7 +7,6 @@ public class LoginPage extends AHeadComponent{
     private WebElement passwordField;
     private WebElement loginButton;
 
-    protected WebDriver driver;
     public LoginPage(WebDriver driver){
         super(driver);
         initLoginComponent();
