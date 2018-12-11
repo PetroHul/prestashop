@@ -74,7 +74,7 @@ public class LoginPage extends AHeadComponent{
         clearPasswordField();
         passwordField.sendKeys(password);
         clickLoginButton();
-        clickNoAccountButton();
+//        clickNoAccountButton();
 
     }
 }
