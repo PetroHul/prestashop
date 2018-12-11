@@ -23,6 +23,7 @@ public abstract class AHeadComponent {
     private WebElement searchProductButton;
     private List<WebElement> menuTop;
     private WebElement accessoriesButton;
+    private WebElement footerAddressesButton;
 
 
     protected AHeadComponent(WebDriver driver) {
@@ -45,6 +46,7 @@ public abstract class AHeadComponent {
         menuTop = driver.findElements(By.cssSelector(".top-menu"));
         accessoriesButton = driver.findElement(By.cssSelector("#category-6"));
 
+        footerAddressesButton = driver.findElement(By.cssSelector("div#block_myaccount_infos a[href*='addresses']"));
     }
 
 
@@ -204,6 +206,11 @@ public abstract class AHeadComponent {
 
     public String getUserName () {
         return driver.findElement(By.cssSelector(".account")).getText().trim();
+    }
+
+    //footer
+    public AddressesPage clickFooterAddressesButton() {
+        return new AddressesPage(driver);
     }
 }
 

@@ -20,10 +20,10 @@ public class MyAccountPage extends AHeadComponent {
     private void initMyAcountComponent() {
         heading = driver.findElement(By.cssSelector("footer.page-footer a[href*='mylogout']"));
         informationButton = driver.findElement(By.cssSelector("a#identity-link[href*='identity']"));
-        addressesButton = driver.findElement(By.cssSelector("a#identity-link[href*='address']"));
-        orderHistoryAndDetailsButton = driver.findElement(By.cssSelector("a#identity-link[href*='order-history']"));
-        creditSlipsButton = driver.findElement(By.cssSelector("a#identity-link[href*='credit-slip']"));
-        logOutButton = driver.findElement(By.cssSelector("a#identity-link[href*='identity']"));
+        addressesButton = driver.findElement(By.cssSelector("a#address-link[href*='address']"));
+        orderHistoryAndDetailsButton = driver.findElement(By.cssSelector("a#history-link[href*='order-history']"));
+        creditSlipsButton = driver.findElement(By.cssSelector("a#order-slips-link[href*='credit-slip']"));
+        logOutButton = driver.findElement(By.cssSelector(".page-footer a[href*='mylogout']"));
     }
 
     public String getHeading() {
