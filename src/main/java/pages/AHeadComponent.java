@@ -199,6 +199,7 @@ public abstract class AHeadComponent {
     public CategoryPage clickAccesssoriesButton() {
         accessoriesButton.click();
         return new CategoryPage(driver);
+    }
 
     public String getUserName() {
         return driver.findElement(By.cssSelector(".account")).getText().trim();
