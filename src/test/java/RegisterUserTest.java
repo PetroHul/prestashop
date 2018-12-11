@@ -45,7 +45,6 @@ public class RegisterUserTest extends TestRunner {
         resultPage = createAccountPage.clickSaveButton();
         actual = resultPage.getUserName();
 
-
         //Assert
         System.out.println(actual);
         Assert.assertEquals(actual, expected);
