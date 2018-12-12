@@ -1,7 +1,6 @@
 package pages;
 
-import data.Country;
-import data.IUser;
+import data.Address;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,7 +13,7 @@ public class AddressFormPage extends AHeadComponent {
     private WebElement alias;
     @FindBy(css = ".form-control[name='firstname']")
     private WebElement firstName;
-    @FindBy(css = ".form-control[name='lastName']")
+    @FindBy(css = ".form-control[name='lastname']")
     private WebElement lastName;
     @FindBy(css = ".form-control[name='company']")
     private WebElement company;
@@ -40,8 +39,18 @@ public class AddressFormPage extends AHeadComponent {
         PageFactory.initElements(driver, this);
     }
 
-    public void fillAll(IUser localUser) {
-
+    public void fillAll(Address data) {
+        fill(alias, data.getAlias());
+        fill(firstName, data.getFirstName());
+        fill(lastName, data.getLastName());
+        fill(company, data.getCompany());
+        fill(vatNumber, data.getVatNumber());
+        fill(address1, data.getAddress1());
+        fill(address2, data.getAddress2());
+        fill(postCode, data.getPostCode());
+        fill(city, data.getCity());
+//        setCountry(country, data.getCountry());
+        fill(phone, data.getPhone());
     }
 
     private void fill(WebElement field, String value) {
@@ -88,10 +97,16 @@ public class AddressFormPage extends AHeadComponent {
 
 //    public void setCountry(Country country) {
 //        this.country.click();
-//  TODO set by country.getValue
+////  TODO set by country.getValue
 //    }
 
     public void fillPhone(String phone) {
         fill(this.phone, phone);
+    }
+
+    public AddressesPage clickSaveButton() {
+        saveButton.click();
+        return new AddressesPage(driver);
+//        TODO create exeption for incorrect entries
     }
 }
