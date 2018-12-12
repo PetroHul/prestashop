@@ -6,7 +6,7 @@ import pages.LoginPage;
 import pages.MyAccountPage;
 import tools.TestRunner;
 
-public class AddressBookEntriesTest extends TestRunner {
+public class AddressesEntriesTest extends TestRunner {
     @Test
     public void addAddressTest() {
     //arrenge

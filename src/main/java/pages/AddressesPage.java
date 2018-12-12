@@ -1,16 +1,17 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class AddressesPage extends AHeadComponent {
-    //    @FindBy(how = How.CSS, using = (".page-header > h1");
+    @FindBy(css = ".page-header > h1")
     private WebElement heading;
 
     protected AddressesPage(WebDriver driver) {
         super(driver);
-        heading = driver.findElement(By.cssSelector(".page-header > h1"));
+            PageFactory.initElements(driver, this);
     }
 
     public String getHeadingText() {
