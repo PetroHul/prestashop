@@ -1,9 +1,6 @@
 import data.UserRepository;
 import org.testng.annotations.*;
-import pages.AddressesPage;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.MyAccountPage;
+import pages.*;
 import tools.TestRunner;
 
 public class AddressesEntriesTest extends TestRunner {
@@ -13,7 +10,10 @@ public class AddressesEntriesTest extends TestRunner {
         HomePage homePage = loadAplication(UserRepository.get().localUser());
         AddressesPage addressesPage = homePage.clickFooterAddressesButton();
     //act
-        System.out.println(addressesPage.getHeadingText());
+        String your_addresses = (addressesPage.getHeadingText());
+        AddressFormPage addressFormPage = addressesPage.clickCreate();
+//        addressFormPage.fillAll(UserRepository.get().localUser())
     //assert
+
     }
 }
