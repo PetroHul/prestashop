@@ -1,5 +1,6 @@
 package pages;
 
+import data.Address;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,18 +10,20 @@ public class AddressFormPage extends AHeadComponent {
     @FindBy(css = ".page-header > h1")
     private WebElement heading;
     @FindBy(css = ".form-control[name='alias']")
-    private WebElement firstName;
+    private WebElement alias;
     @FindBy(css = ".form-control[name='firstname']")
+    private WebElement firstName;
+    @FindBy(css = ".form-control[name='lastname']")
     private WebElement lastName;
-    @FindBy(css = ".form-control[name='lastName']")
-    private WebElement company;
     @FindBy(css = ".form-control[name='company']")
-    private WebElement vatNumber;
+    private WebElement company;
     @FindBy(css = ".form-control[name='vat_number']")
-    private WebElement address;
+    private WebElement vatNumber;
     @FindBy(css = ".form-control[name='address1']")
-    private WebElement addressComplement;
+    private WebElement address1;
     @FindBy(css = ".form-control[name='address2']")
+    private WebElement address2;
+    @FindBy(css = ".form-control[name='postcode']")
     private WebElement postCode;
     @FindBy(css = ".form-control[name='city']")
     private WebElement city;
@@ -36,4 +39,74 @@ public class AddressFormPage extends AHeadComponent {
         PageFactory.initElements(driver, this);
     }
 
+    public void fillAll(Address data) {
+        fill(alias, data.getAlias());
+        fill(firstName, data.getFirstName());
+        fill(lastName, data.getLastName());
+        fill(company, data.getCompany());
+        fill(vatNumber, data.getVatNumber());
+        fill(address1, data.getAddress1());
+        fill(address2, data.getAddress2());
+        fill(postCode, data.getPostCode());
+        fill(city, data.getCity());
+//        setCountry(country, data.getCountry());
+        fill(phone, data.getPhone());
+    }
+
+    private void fill(WebElement field, String value) {
+        field.click();
+        field.clear();
+        field.sendKeys(value);
+    }
+
+    public void fillAlias(String alias) {
+        fill(this.alias, alias);
+    }
+
+    public void fillFirstName(String firstName) {
+        fill(this.firstName, firstName);
+    }
+
+    public void fillLastName(String lastName) {
+        fill(this.lastName, lastName);
+    }
+
+    public void fillCompany(String company) {
+        fill(this.company, company);
+    }
+
+    public void fillVatNumber(String vatNumber) {
+        fill(this.vatNumber, vatNumber);
+    }
+
+    public void fillAddress1(String address1) {
+        fill(this.address1, address1);
+    }
+
+    public void fillAddress2(String address2) {
+        fill(this.address2, address2);
+    }
+
+    public void fillPostCode(String postCode) {
+        fill(this.postCode, postCode);
+    }
+
+    public void fillCity(String city) {
+        fill(this.city, city);
+    }
+
+//    public void setCountry(Country country) {
+//        this.country.click();
+////  TODO set by country.getValue
+//    }
+
+    public void fillPhone(String phone) {
+        fill(this.phone, phone);
+    }
+
+    public AddressesPage clickSaveButton() {
+        saveButton.click();
+        return new AddressesPage(driver);
+//        TODO create exeption for incorrect entries
+    }
 }

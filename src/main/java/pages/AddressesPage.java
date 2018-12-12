@@ -8,6 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 public class AddressesPage extends AHeadComponent {
     @FindBy(css = ".page-header > h1")
     private WebElement heading;
+    @FindBy(css = ".addresses-footer a[data-link-action='add-address']")
+    private WebElement createBunnon;
+    @FindBy(css = ".address-body")
+    private WebElement addressBody;
 
     protected AddressesPage(WebDriver driver) {
         super(driver);
@@ -16,5 +20,14 @@ public class AddressesPage extends AHeadComponent {
 
     public String getHeadingText() {
         return heading.getText().trim().toUpperCase();
+    }
+
+    public AddressFormPage clickCreate() {
+        createBunnon.click();
+        return new AddressFormPage(driver);
+    }
+
+    public String getAddressBodyText() {
+        return addressBody.getText();
     }
 }
