@@ -11,7 +11,7 @@ import static org.testng.Assert.assertTrue;
 public class LoginPageTest extends TestRunner {
 
     @Test
-    public void testLogin() throws InterruptedException {
+    public void loginTest() throws InterruptedException {
         //arrange
         boolean expected;
         final String email = "barzoom5@gmail.com";
@@ -20,15 +20,16 @@ public class LoginPageTest extends TestRunner {
         HomePage homePage = loadAplication();
         homePage.clickSignInButton();
 
+       // delayExecution(1000);
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.clickLoginButton();
         loginPage.fillLoginForm(email,password);
 
         String actual = driver.getCurrentUrl();
         expected = actual.contains("my-account");
         assertTrue(expected);
-      
-        //HomePage homePage = HomePage()
-        // .fillLoginForm('barzoom5@gmailcom',"529440");
+
+        //login invalid data assertFalse
+        // + add method(negative)
+        //exept
     }
 }

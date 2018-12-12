@@ -238,6 +238,7 @@ public abstract class AHeadComponent {
 
     //footer
     public AddressesPage clickFooterAddressesButton() {
+        footerAddressesButton.click();
         return new AddressesPage(driver);
     }
 }
