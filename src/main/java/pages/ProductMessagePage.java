@@ -3,19 +3,21 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ProductMessagePage extends ProductPage{
+public class ProductMessagePage extends ProductPage {
 
+    @FindBy(xpath = "//*[@id='blockcart-modal']/div")
     private WebElement alertMessage;
 
     public ProductMessagePage(WebDriver driver) {
         super(driver);
-        initAlertMessage();
+        PageFactory.initElements(driver, this);
     }
 
-    private void initAlertMessage() {
-        alertMessage = driver.findElement(By.xpath("//*[@id='blockcart-modal']/div"));
-    }
 
     // alertMessage
     public WebElement getAlertMessage() {
@@ -28,6 +30,7 @@ public class ProductMessagePage extends ProductPage{
 
     // Business Logic
     public ProductPage closeAlertMessage() {
+//        new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(getAlertMessageCloseButton()));
         getAlertMessageCloseButton().click();
         return new ProductPage(driver);
     }

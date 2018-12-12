@@ -2,7 +2,10 @@ package tools;
 
 import data.IUser;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import pages.HomePage;
 import pages.LoginPage;
@@ -21,9 +24,7 @@ public abstract class TestRunner {
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-//        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.get("http://studio5f.online/en/");
-
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     @AfterClass(alwaysRun = true)
@@ -31,10 +32,10 @@ public abstract class TestRunner {
         driver.quit();
     }
 
-//    @BeforeMethod
-//    public void beforeMethod() {
-//        driver.get("http://localhost/PRESTASHOP/en/index.php");
-//    }
+    @BeforeMethod
+    public void beforeMethod() {
+        driver.get("http://studio5f.online/en/");
+    }
 
     protected HomePage loadApplication() {
         return new HomePage(driver);
@@ -49,6 +50,13 @@ public abstract class TestRunner {
         return new HomePage(driver);
     }
 
+    protected void delayExplicitExecution(WebElement webElement){
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+
+        wait.until(ExpectedConditions.elementToBeClickable(webElement));
+
+    }
+
     protected void delayExecution(long miliseconds) {
         try {
             Thread.sleep(miliseconds);
@@ -57,7 +65,7 @@ public abstract class TestRunner {
         }
     }
 
-    protected void sigiIn() {
+    protected void signIn() {
 
         final String email = "User@gmail.com";
         final String password = "qwerty";
