@@ -3,6 +3,7 @@ package data;
 public class UserRepository {
 
     private static volatile UserRepository instance = null;
+    String email=RandomString.generate(10)+"@gmail.com";
 
     private UserRepository() {
     }
@@ -18,18 +19,22 @@ public class UserRepository {
         return instance;
     }
 
+
+
     public IUser newUser() {
         return User.get()
                 .setSocialTitle(SocialTitle.MR)
                 .setFirstName("someone")
                 .setLastName("someoneelse")
-                .setEMail("emaisomrerr@ukr.net")
+                .setEMail(email)
                 .setPassword("password1")
                 .setBirthdate("10/12/1986")
                 .setRecieveOffers(false)
                 .setNewsLetter(true)
                 .build();
     }
+
+    //метод який рандомно генерує 10 символів до @
 
     public IUser localUser() {
         return User.get()
