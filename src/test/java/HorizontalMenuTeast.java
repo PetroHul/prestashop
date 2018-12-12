@@ -6,14 +6,12 @@ import org.testng.annotations.Test;
 import pages.*;
 import tools.TestRunner;
 
-import javax.swing.plaf.ActionMapUIResource;
-
 
 public class HorizontalMenuTeast extends TestRunner {
     @Test
     public void addProductToShoppingCart() {
         //arrange
-        HomePage homePage = loadAplication();
+        HomePage homePage = loadApplication();
         CategoryPage accessoriesPage;
         String actual;
         String expected = Category.ACCESSORIES.toString();

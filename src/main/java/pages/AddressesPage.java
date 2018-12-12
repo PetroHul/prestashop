@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,9 +10,15 @@ public class AddressesPage extends AHeadComponent {
     @FindBy(css = ".page-header > h1")
     private WebElement heading;
     @FindBy(css = ".addresses-footer a[data-link-action='add-address']")
-    private WebElement createBunnon;
-    @FindBy(css = ".address-body")
-    private WebElement addressBody;
+    private WebElement createButton;
+    @FindBy(xpath = "(//*[@class='address-body'])[last()]")
+    private WebElement lastAddressBody;
+    @FindBy(xpath = "(//a[@data-link-action='edit-address'])[last()]")
+    private WebElement updateLastButtom;
+    @FindBy(xpath = "(//a[@data-link-action='delete-address'])[last()]")
+    private WebElement deleteLastButtom;
+
+    private WebElement alertSuccess;
 
     protected AddressesPage(WebDriver driver) {
         super(driver);
@@ -23,11 +30,26 @@ public class AddressesPage extends AHeadComponent {
     }
 
     public AddressFormPage clickCreate() {
-        createBunnon.click();
+        createButton.click();
         return new AddressFormPage(driver);
     }
 
-    public String getAddressBodyText() {
-        return addressBody.getText();
+    public AddressFormPage clickUpdateLast() {
+        updateLastButtom.click();
+        return new AddressFormPage(driver);
+    }
+
+    public String clickDeleteLast() {
+        deleteLastButtom.click();
+        return getAlertSuccessText();
+    }
+
+    public String getAlertSuccessText() {
+        return driver.findElement(By.cssSelector("article.alert.alert-success")).getText();
+        //TODO throws Exception
+    }
+
+    public String getLastAddressText() {
+        return lastAddressBody.getText();
     }
 }

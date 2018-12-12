@@ -21,7 +21,7 @@ public class RegisterUserTest extends TestRunner {
     public void registerNewUser() {
 
         //Arrange
-        HomePage homePage = loadAplication();
+        HomePage homePage = loadApplication();
         LoginPage loginPage;
         CreateAccountPage createAccountPage;
         HomePage resultPage;

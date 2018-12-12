@@ -8,7 +8,7 @@ public class CartFunctionalTest extends TestRunner {
     @Test
     public void addProductToShoppingCartTest() {
         //arrange
-        HomePage homePage = loadAplication();
+        HomePage homePage = loadApplication();
         delayExecution(1000);
 
         sigiIn();

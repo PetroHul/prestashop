@@ -6,7 +6,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 import pages.HomePage;
 import pages.LoginPage;
-import pages.MyAccountPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -22,7 +21,7 @@ public abstract class TestRunner {
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.get("http://studio5f.online/en/");
 
     }
@@ -37,11 +36,11 @@ public abstract class TestRunner {
 //        driver.get("http://localhost/PRESTASHOP/en/index.php");
 //    }
 
-    protected HomePage loadAplication() {
+    protected HomePage loadApplication() {
         return new HomePage(driver);
     }
 
-    protected HomePage loadAplication(IUser user) {
+    protected HomePage loadApplication(IUser user) {
         HomePage homePage = new HomePage(driver);
         homePage.clickSignInButton()
                 .logInAcount(user)
@@ -63,14 +62,13 @@ public abstract class TestRunner {
         final String email = "User@gmail.com";
         final String password = "qwerty";
 
-        HomePage homePage = loadAplication();
+        HomePage homePage = loadApplication();
         homePage.clickSignInButton();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickLoginButton();
         loginPage.fillLoginForm(email, password);
-
 
     }
 }
