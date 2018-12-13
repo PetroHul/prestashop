@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import pages.HomePage;
 import pages.LoginPage;
-import pages.MyAccountPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -38,11 +37,11 @@ public abstract class TestRunner {
         driver.get("http://studio5f.online/en/");
     }
 
-    protected HomePage loadAplication() {
+    protected HomePage loadApplication() {
         return new HomePage(driver);
     }
 
-    protected HomePage loadAplication(IUser user) {
+    protected HomePage loadApplication(IUser user) {
         HomePage homePage = new HomePage(driver);
         homePage.clickSignInButton()
                 .logInAcount(user)
@@ -66,19 +65,18 @@ public abstract class TestRunner {
         }
     }
 
-    protected void sigiIn() {
+    protected void signIn() {
 
         final String email = "User@gmail.com";
         final String password = "qwerty";
 
-        HomePage homePage = loadAplication();
+        HomePage homePage = loadApplication();
         homePage.clickSignInButton();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickLoginButton();
         loginPage.fillLoginForm(email, password);
-
 
     }
 }
