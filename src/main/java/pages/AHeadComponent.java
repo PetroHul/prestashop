@@ -131,6 +131,11 @@ public abstract class AHeadComponent {
         return new LoginPage(driver);
     }
 
+    //SignOutButtom
+    public void clickSignOutButtom() {
+        driver.findElement(By.cssSelector(".user-info a[href*='mylogout']")).click();
+    }
+
 
     //CartButton
     public WebElement getCartButton() {

@@ -8,8 +8,8 @@ public class CartFunctionalTest extends TestRunner {
     @Test
     public void addProductToShoppingCartTest() {
         //arrange
-        loadAplication();
-        sigiIn();
+        loadApplication();
+        signIn();
 
         MyAccountPage accountUser = new MyAccountPage(driver);
         delayExplicitExecution(accountUser.getLogo());
