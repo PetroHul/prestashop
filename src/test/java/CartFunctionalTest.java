@@ -8,29 +8,27 @@ public class CartFunctionalTest extends TestRunner {
     @Test
     public void addProductToShoppingCartTest() {
         //arrange
-        HomePage homePage = loadAplication();
-        delayExecution(1000);
-
+        loadAplication();
         sigiIn();
 
-        delayExecution(10000);
-
         MyAccountPage accountUser = new MyAccountPage(driver);
+        delayExplicitExecution(accountUser.getLogo());
         accountUser.clickLogo();
-        delayExecution(10000);
+
 
         //actual
-        HomePage homePage1 = new HomePage(driver);
-        homePage1.getProductsListComponent().getProductComponentByPartialName("Hummingbird Printed T-Shirt").clickToProduct();
+        HomePage homePage = new HomePage(driver);
+        homePage.getProductsListComponent().getProductComponentByPartialName("Hummingbird Printed T-Shirt").clickToProduct();
         ProductPage productPage = new ProductPage(driver);
         productPage.clickToAddButton();
 
-        delayExecution(10000);
-
         ProductMessagePage productMessagePage = new ProductMessagePage(driver);
+        delayExplicitExecution(productMessagePage.getAlertMessageCloseButton());
         productMessagePage.closeAlertMessage();
 
         delayExecution(10000);
+//        delayExplicitExecution(productMessagePage.getCartButton());
+
         productMessagePage.clickShoppingCart();
         ShoppingCartPage soppingCartPage = new ShoppingCartPage(driver);
         //assert

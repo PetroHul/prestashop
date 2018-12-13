@@ -20,12 +20,6 @@ public class ShoppingCartPage extends AHeadComponent{
         PageFactory.initElements(driver, this);
     }
 
-//    private void initProduct() {
-//        this.productName = driver.findElement(By.cssSelector(".product-line-info [href]"));
-//        this.productPrice = driver.findElement(By.cssSelector("span.product-price"));
-////        this.deleteButton = driver.findElement(By.xpath(".remove-from-cart"));
-//    }
-
     public WebElement getProductName() {
         return productName;
     }
