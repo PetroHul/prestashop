@@ -84,7 +84,7 @@ public abstract class AHeadComponent {
 //
 //        footerAddressesButton = driver.findElement(By.cssSelector("div#block_myaccount_infos a[href*='addresses']"));
 //    }
-
+    }
 
     // PageObject Atomic Operation
 

@@ -2,7 +2,7 @@ import data.IUser;
 import data.UserRepository;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CreateAnAccountPage;
+import pages.CreateAccountPage;
 import pages.HomePage;
 import pages.LoginPage;
 import tools.TestRunner;
@@ -21,9 +21,9 @@ public class RegisterUserTest extends TestRunner {
     public void registerNewUser() {
 
         //Arrange
-        HomePage homePage = loadAplication();
+        HomePage homePage = loadApplication();
         LoginPage loginPage;
-        CreateAnAccountPage createAnAccountPage;
+        CreateAccountPage createAnAccountPage;
         HomePage resultPage;
         final IUser newUser = UserRepository.get().newUser();
         String actual;

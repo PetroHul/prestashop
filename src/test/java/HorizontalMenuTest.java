@@ -23,7 +23,7 @@ public class HorizontalMenuTest extends TestRunner {
 
     @BeforeMethod
     public void init() {
-        homePage = loadAplication();
+        homePage = loadApplication();
     }
 
     @Test
