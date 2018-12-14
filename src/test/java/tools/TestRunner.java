@@ -44,7 +44,7 @@ public abstract class TestRunner {
         return new HomePage(driver);
     }
 
-    protected void delayExplicitExecution(WebElement webElement){
+    protected void delayExplicitExecution(WebElement webElement) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
 
         wait.until(ExpectedConditions.elementToBeClickable(webElement));
