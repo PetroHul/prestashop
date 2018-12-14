@@ -1,11 +1,17 @@
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.IdentityAccountPage;
 import pages.LoginPage;
 import pages.MyAccountPage;
 import tools.TestRunner;
+import tools.ConncectDB;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -13,9 +19,10 @@ import static org.testng.Assert.assertTrue;
 public class IdentityAccountTest extends TestRunner{
 
     @Test
-    public void changePasswordTest() throws InterruptedException {
-        final String email = "barzoom5@gmail.com";
+    public void changePasswordTest() throws InterruptedException, SQLException {
+        final String email = "olx@set.ua";
         final String password = "529440";
+        final String newPassword = "268405";
 
 
         HomePage homePage = loadApplication();
@@ -28,17 +35,18 @@ public class IdentityAccountTest extends TestRunner{
         myAccount.clickInformation();
 
         IdentityAccountPage identity = new IdentityAccountPage(driver);
-        identity.typePassword("529440");
-        identity.typeNewPassword("268405");
+        identity.typePassword(password);
+        identity.typeNewPassword(newPassword);
         identity.clickButtonSave();
         //How this input PageObject
-        String actual = driver.findElement(By.cssSelector(".alert.alert-success > ul > li")).getText();
+        String actual = identity.getAlertSuccessText();
         String expected = "Information successfully updated.";
         Assert.assertEquals(actual,expected);
 
         //MyAccountPage myAccount = new MyAccountPage(driver);
 
-
+        ConncectDB conncectDB = new ConncectDB();
+        conncectDB.dataDaseQuery("DELETE FROM ps_customer WHERE id_customer=45;");
 
 
     }

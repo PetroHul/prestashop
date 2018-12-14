@@ -201,6 +201,12 @@ public class IdentityAccountPage extends AHeadComponent{
         getButtonSave().click();
     }
 
+    //Success massages
+    public String getAlertSuccessText() {
+        return driver.findElement(By.cssSelector("article.alert.alert-success")).getText();
+        //TODO throws Exception
+    }
+
     // Business Logic
     public void fillLoginForm(String firsname, String lastname, String email,
                               String pass, String newpass, String birthdate) {
