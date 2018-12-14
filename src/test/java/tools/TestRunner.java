@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit;
 public abstract class TestRunner {
 
     protected WebDriver driver;
-    private Object IUser;
 
     @BeforeClass
     public void setUp() {
@@ -25,11 +24,6 @@ public abstract class TestRunner {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    }
-
-    @AfterClass(alwaysRun = true)
-    public void tearDown() {
-        driver.quit();
     }
 
     @BeforeMethod
@@ -78,5 +72,10 @@ public abstract class TestRunner {
         loginPage.clickLoginButton();
         loginPage.fillLoginForm(email, password);
 
+    }
+
+    @AfterClass(alwaysRun = true)
+    public void tearDown() {
+        driver.quit();
     }
 }
