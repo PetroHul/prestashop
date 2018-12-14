@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +46,7 @@ public abstract class AHeadComponent {
 
     @FindBy(css ="div#block_myaccount_infos a[href*='addresses']")
     private WebElement footerAddressesButton;
+
 
     protected AHeadComponent(WebDriver driver) {
         this.driver = driver;
@@ -186,6 +185,10 @@ public abstract class AHeadComponent {
     public void clearSearchProductField() {
         getSearchProductField().clear();
     }
+
+    public void clickContactUsButton(){getContactUsButton().click();}
+
+    public void clearContactUsButton(){getContactUsButton().click();}
 
 
     //SearcProductButton
