@@ -1,5 +1,6 @@
 package pages;
 
+import data.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,6 +24,8 @@ public abstract class AHeadComponent {
     private WebElement searchProductButton;
     private List<WebElement> menuTop;
     private WebElement accessoriesButton;
+    private WebElement clothesButton;
+    private  WebElement artButton;
 
 
     protected AHeadComponent(WebDriver driver) {
@@ -34,7 +37,7 @@ public abstract class AHeadComponent {
         currency = driver.findElement(By.cssSelector("#_desktop_currency_selector > div > button > span"));
 
 
-        signInButton = driver.findElement(By.cssSelector(".user-info > a[href='http://studio5f.online/en/my-account']"));      
+        signInButton = driver.findElement(By.cssSelector(".user-info > a[href='http://studio5f.online/en/my-account']"));
         cartButton = driver.findElement(By.id("_desktop_cart"));
 
         logo = driver.findElement(By.cssSelector(".logo.img-responsive"));
@@ -44,6 +47,8 @@ public abstract class AHeadComponent {
 
         menuTop = driver.findElements(By.cssSelector(".top-menu"));
         accessoriesButton = driver.findElement(By.cssSelector("#category-6"));
+        clothesButton = driver.findElement(By.cssSelector("#category-3"));
+        artButton = driver.findElement(By.cssSelector("#category-9"));
 
     }
 
@@ -196,12 +201,25 @@ public abstract class AHeadComponent {
     }
 
 
-    public CategoryPage clickAccesssoriesButton() {
+    public CategoryPage clickAccessoriesButton() {
         accessoriesButton.click();
         return new CategoryPage(driver);
-
-    public String getUserName() {
-        return driver.findElement(By.cssSelector(".account")).getText().trim();
     }
+
+    public CategoryPage clickClothesButton() {
+        clothesButton.click();
+        return new CategoryPage(driver);
+    }
+
+    public CategoryPage clickArtButton() {
+        artButton.click();
+        return new CategoryPage(driver);
+    }
+
+
+
+
 }
+
+
 
