@@ -1,7 +1,6 @@
 import data.Address;
 import data.UserRepository;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import pages.AddressFormPage;
 import pages.AddressesPage;
@@ -12,7 +11,7 @@ import static org.testng.Assert.assertEquals;
 
 public class AddressesEntriesTest extends TestRunner {
 
-    @Test(priority=1)
+    @Test(priority = 1)
     public void addAddressTest() {
         //arrenge
         Address userAddress = Address.VASIA_PUPKIN;
@@ -28,11 +27,9 @@ public class AddressesEntriesTest extends TestRunner {
         actualAddress = addressesPage.getLastAddressText();
         //assert
         assertEquals(actualAddress, expectedAddress);
-        //after
-//        addressesPage.clickSignOutButtom();
     }
 
-    @Test(priority=2)
+    @Test(priority = 2)
     public void updateAddressTest() {
         //arrenge
         Address userAddress = Address.EVA_PUPKINA;
@@ -48,10 +45,9 @@ public class AddressesEntriesTest extends TestRunner {
         //assert
         assertEquals(actualAddress, expectedAddress);
         //after
-//        addressesPage.clickSignOutButtom();
     }
 
-    @Test(priority=3)
+    @Test(priority = 3)
     public void deleteAddressTest() {
         //arrenge
         final String actualAlert;
@@ -62,8 +58,6 @@ public class AddressesEntriesTest extends TestRunner {
         actualAlert = addressesPage.clickDeleteLast();
         //assert
         assertEquals(actualAlert, expectedAlert);
-        //after
-//        addressesPage.clickSignOutButtom();
     }
 
     @AfterMethod
@@ -71,5 +65,4 @@ public class AddressesEntriesTest extends TestRunner {
         HomePage homePage = loadApplication();
         homePage.clickSignOutButtom();
     }
-
 }
