@@ -20,15 +20,7 @@ public class ProductPage extends AHeadComponent {
     public ProductPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
-//        initProductComponent();
     }
-
-//    private void initProductComponent() {
-//        this.productName = driver.findElement(By.cssSelector("h1[itemprop = 'name']"));
-//        this.productPrice = driver.findElement(By.cssSelector(".product-prices"));
-//        this.addToCartButton = driver.findElement(By.cssSelector(".btn.btn-primary.add-to-cart"));
-//    }
-
 
     //    addToCartButton
     public WebElement getAddToCartButton() {

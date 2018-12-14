@@ -1,42 +1,34 @@
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
+import tools.CartFunctionalRunner;
 import tools.TestRunner;
 
 
-public class CartFunctionalTest extends TestRunner {
+public class CartFunctionalTest extends CartFunctionalRunner {
+
+    @BeforeMethod
+    public void runApp() {
+        addProductTOCart();
+    }
+
     @Test
-    public void addProductToShoppingCartTest() {
-        //arrange
-        loadApplication();
-        signIn();
+    public void addToCartTest() {
 
-        MyAccountPage accountUser = new MyAccountPage(driver);
-        delayExplicitExecution(accountUser.getLogo());
-        accountUser.clickLogo();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
 
-
-        //actual
-        HomePage homePage = new HomePage(driver);
-        homePage.getProductsListComponent().getProductComponentByPartialName("Hummingbird Printed T-Shirt").clickToProduct();
-        ProductPage productPage = new ProductPage(driver);
-        productPage.clickToAddButton();
-
-        ProductMessagePage productMessagePage = new ProductMessagePage(driver);
-        delayExplicitExecution(productMessagePage.getAlertMessageCloseButton());
-        productMessagePage.closeAlertMessage();
-
-        delayExecution(10000);
-//        delayExplicitExecution(productMessagePage.getCartButton());
-
-        productMessagePage.clickShoppingCart();
-        ShoppingCartPage soppingCartPage = new ShoppingCartPage(driver);
-        //assert
-        Assert.assertTrue(soppingCartPage.getProductNameText().equals("Hummingbird printed t-shirt"));
+        Assert.assertTrue(shoppingCartPage.getProductNameText().equals("Hummingbird printed t-shirt"));
     }
 
     @Test
     public void deleteProductFromShoppingCartTest() {
+
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        shoppingCartPage.clickDeleteButton();
+        ShoppingEmptyCartPage shoppingEmptyCartPage = new ShoppingEmptyCartPage(driver);
+
+        Assert.assertTrue(shoppingEmptyCartPage.getMessageText().equals("There are no more items in your cart"));
 
     }
 
