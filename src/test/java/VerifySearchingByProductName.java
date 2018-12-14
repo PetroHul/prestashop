@@ -1,4 +1,6 @@
+import io.restassured.RestAssured;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.ProductPage;
 import pages.SearchResultPage;
@@ -8,7 +10,12 @@ import tools.TestRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VerifySearchingByProductName extends TestRunner {
+import static io.restassured.RestAssured.get;
+import static io.restassured.RestAssured.post;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.xml.HasXPath.hasXPath;
+
+public class VerifySearchingByProductName extends TestRunner{
 
     @Test
     public void TestSearchingByProductName(){
@@ -36,4 +43,13 @@ public class VerifySearchingByProductName extends TestRunner {
         Assert.assertEquals(searchResultPage.getProductListComponent().getProductsNameList(),products_name);
 
     }
+    @Test
+    public void getProductFromAPI() {
+        get("http://Z8FVNB1KKDMU382ZPILGHIZ7J6ZWBV3H@studio5f.online/api/products?display=[name]&filter[id]=[3]&language=1")
+                .then()
+                .statusCode(200).assertThat()
+                .body("prestashop.products.product.name.language", equalTo("The best is yet to come' Framed poster"));
+
+    }
+
 }
