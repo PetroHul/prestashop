@@ -1,7 +1,15 @@
 
 
 import data.Category;
+import org.junit.Before;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.*;
 import tools.TestRunner;
@@ -11,10 +19,17 @@ import javax.swing.plaf.ActionMapUIResource;
 
 public class HorizontalMenuTest extends TestRunner {
 
+    private HomePage homePage;
+
+    @BeforeMethod
+    public void init() {
+        homePage = loadAplication();
+    }
+
     @Test
     public void checkClothes() {
         //arrange
-        HomePage homePage = loadAplication();
+
         CategoryPage clothesPage;
         String actual;
         String expected = Category.CLOTHES.toString();
@@ -30,12 +45,12 @@ public class HorizontalMenuTest extends TestRunner {
     @Test
     public void checkAccessories() {
         //arrange
-        HomePage homePage1 = loadAplication();
+
         CategoryPage accessoriesPage;
         String actual;
         String expected = Category.ACCESSORIES.toString();
         //act
-        accessoriesPage = homePage1.clickAccessoriesButton();
+        accessoriesPage = homePage.clickAccessoriesButton();
         actual = accessoriesPage.getCategoryName();
         //assert
         Assert.assertEquals(actual, expected);
@@ -45,17 +60,50 @@ public class HorizontalMenuTest extends TestRunner {
     @Test
     public void checkArt() {
         //arrange
-        HomePage homePage3 = loadAplication();
+
         CategoryPage artPage;
         String actual;
         String expected = Category.ART.toString();
         //act
-        artPage = homePage3.clickArtButton();
+        artPage = homePage.clickArtButton();
         actual = artPage.getCategoryName();
         //assert
         Assert.assertEquals(actual, expected);
 
 
     }
+
+    @Test
+    public void testMouseHoverWorksProperlyClothes() {
+        //arrange
+
+        String expected = Category.MEN.toString();
+        //act
+        homePage.hoverClothesButton();
+
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#category-4")));
+        WebElement menElement = driver.findElement(By.cssSelector("#category-4"));
+        String actual = menElement.getText();
+
+
+        Assert.assertEquals(actual, expected);
+    }
+    @Test
+    public void testMouseHoverWorksPropertyAccessories() {
+        //arrange
+
+        String expected = Category.STATIONERY.toString();
+        //act
+        homePage.hoverAccessoriesButton();
+
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#category-7")));
+        WebElement stationeryElement = driver.findElement(By.cssSelector("#category-7"));
+        String actual = stationeryElement.getText();
+
+        Assert.assertEquals(actual, expected);
+    }
+
 }
 

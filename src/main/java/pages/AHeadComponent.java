@@ -4,6 +4,7 @@ import data.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,8 @@ public abstract class AHeadComponent {
     private List<WebElement> menuTop;
     private WebElement accessoriesButton;
     private WebElement clothesButton;
-    private  WebElement artButton;
+    private WebElement artButton;
+    private WebElement menButton;
 
 
     protected AHeadComponent(WebDriver driver) {
@@ -49,6 +51,7 @@ public abstract class AHeadComponent {
         accessoriesButton = driver.findElement(By.cssSelector("#category-6"));
         clothesButton = driver.findElement(By.cssSelector("#category-3"));
         artButton = driver.findElement(By.cssSelector("#category-9"));
+        menButton = driver.findElement(By.cssSelector("#category-4"));
 
     }
 
@@ -93,6 +96,8 @@ public abstract class AHeadComponent {
 
     public void clickCurrency() {
         getCurrency().click();
+        return;
+//        return new ShoppingCartPage(driver);
     }
 
     //SignInButton
@@ -168,31 +173,31 @@ public abstract class AHeadComponent {
         return new SearchResultPage(driver);
     }
 
-    //menuTop
-    public List<WebElement> getMenuTop() {
-        return menuTop;
-    }
-
-    public List<String> getMenuTopTexts() {
-        List<String> result = new ArrayList<String>();
-        for (WebElement current : getMenuTop()) {
-            result.add(current.findElement(By.cssSelector(".top-menu")).getText()); // not good selector
-        }
-        return result;
-    }
-
-
-    public WebElement getMenuTopByCategoryPartialName(String categoryName) {
-        WebElement result = null;
-        for (WebElement current : getMenuTop()) {
-            if (current.findElement(By.cssSelector(".top-menu")).getText() // not good selector
-                    .toLowerCase().contains(categoryName.toLowerCase())) {
-                result = current;
-                break;
-            }
-        }
-        return result;
-    }
+//    //menuTop
+//    public List<WebElement> getMenuTop() {
+//        return menuTop;
+//    }
+//
+//    public List<String> getMenuTopTexts() {
+//        List<String> result = new ArrayList<String>();
+//        for (WebElement current : getMenuTop()) {
+//            result.add(current.findElement(By.cssSelector(".top-menu")).getText()); // not good selector
+//        }
+//        return result;
+//    }
+//
+//
+//    public WebElement getMenuTopByCategoryPartialName(String categoryName) {
+//        WebElement result = null;
+//        for (WebElement current : getMenuTop()) {
+//            if (current.findElement(By.cssSelector(".top-menu")).getText() // not good selector
+//                    .toLowerCase().contains(categoryName.toLowerCase())) {
+//                result = current;
+//                break;
+//            }
+//        }
+//        return result;
+//    }
 
     //topmenu
 
@@ -216,9 +221,28 @@ public abstract class AHeadComponent {
         return new CategoryPage(driver);
     }
 
+    public CategoryPage hoverArtButton() {
+        artButton.click();
+        return new CategoryPage(driver);
+    }
+
+    public void hoverClothesButton() {
+        Actions builder = new Actions(driver);
+        builder.moveToElement(clothesButton).perform();
+//        return new CategoryPage(driver);
+    }
+
+//    public CategoryPage menButton() {
+//        menButton.click();
+//        return new CategoryPage(driver);
+//    }
+
+    public void hoverAccessoriesButton() {
+        Actions builder = new Actions(driver);
+        builder.moveToElement(accessoriesButton).perform();
 
 
-
+    }
 }
 
 
