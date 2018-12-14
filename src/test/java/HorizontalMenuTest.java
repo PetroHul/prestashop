@@ -19,10 +19,24 @@ public class HorizontalMenuTeast extends TestRunner {
         String expected = Category.ACCESSORIES.toString();
 
         //act
-        accessoriesPage = homePage.clickAccesssoriesButton();
+        accessoriesPage = homePage.clickAccessoriesButton();
         actual = accessoriesPage.getCategoryName();
         //assert
          Assert.assertEquals(actual,expected);
+
+
+        public void addProductToShoppingCart() {
+            //arrange
+            HomePage homePage1 = loadAplication();
+            CategoryPage accessoriesPage;
+            String actual;
+            String expected = Category.ACCESSORIES.toString();
+
+            //act
+            accessoriesPage = homePage.clickAccessoriesButton();
+            actual = accessoriesPage.getCategoryName();
+            //assert
+            Assert.assertEquals(actual,expected);
 
 
 
