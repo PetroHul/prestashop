@@ -3,8 +3,6 @@ import pages.HomePage;
 import pages.LoginPage;
 import tools.TestRunner;
 
-import java.util.concurrent.TimeUnit;
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -17,7 +15,7 @@ public class LoginPageTest extends TestRunner {
         final String email = "barzoom5@gmail.com";
         final String password = "529440";
 
-        HomePage homePage = loadAplication();
+        HomePage homePage = loadApplication();
         homePage.clickSignInButton();
 
        // delayExecution(1000);
