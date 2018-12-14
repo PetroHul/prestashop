@@ -41,7 +41,7 @@ public class RegisterUserTest extends TestRunner {
         createAccountPage.setBirthdate(newUser.getBirthdate());
         createAccountPage.setReceiveOffers(newUser.isRecieveOffers());
         createAccountPage.setNewsletter(newUser.isNewsletter());
-        delayExecution(1000);
+        delayExplicitExecution(createAccountPage.getSaveButton());
         resultPage = createAccountPage.clickSaveButton();
         actual = resultPage.getUserName();
 

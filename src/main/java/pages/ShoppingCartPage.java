@@ -13,13 +13,18 @@ public class ShoppingCartPage extends AHeadComponent{
     @FindBy(css ="span.product-price")
     private WebElement productPrice;
 
-//    private WebElement deleteButton;
+    @FindBy(css =".remove-from-cart")
+    private WebElement deleteButton;
+
+    @FindBy(css ="a[href*='order'].btn.btn-primary")
+    private WebElement orderButton;
+
 
     public ShoppingCartPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
-
+    //productname
     public WebElement getProductName() {
         return productName;
     }
@@ -27,7 +32,21 @@ public class ShoppingCartPage extends AHeadComponent{
         return getProductName().getText();
     }
 
-//    public WebElement getDeleteButton() {
-//        return deleteButton;
-//    }
+    //deleteButton
+    public WebElement getDeleteButton() {
+        return deleteButton;
+    }
+    public ShoppingEmptyCartPage clickDeleteButton(){
+        getDeleteButton().click();
+        return new ShoppingEmptyCartPage(driver);
+    }
+
+    //orderButton
+    public WebElement getOrderButton() {
+        return orderButton;
+    }
+
+    public void clickOrderButton(){
+        getOrderButton().click();
+    }
 }

@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
 public class ProductComponent {
 
     private WebElement productLayout;
@@ -42,7 +41,7 @@ public class ProductComponent {
         return getPrice().getText();
     }
 
-    public void clickToProduct(){
+    public void clickToProduct() {
         getName().click();
     }
 

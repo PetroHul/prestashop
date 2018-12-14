@@ -1,48 +1,77 @@
 package pages;
 
 import data.SocialTitle;
-import data.User;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
 public class CreateAccountPage extends AHeadComponent {
 
+    @FindBy(css = ".page-header > h1")
     private WebElement heading;
+
+    @FindBy(css = "input[name='id_gender']")
     private List<WebElement> socialTitle;
+
+    @FindBy(css = "input[name='firstname']")
     private WebElement firstName;
+
+    @FindBy(css = "input[name='lastname']")
     private WebElement lastName;
+
+    @FindBy(css = ".form-control[name='email']")
     private WebElement email;
+
+    @FindBy(css = "input[name='password']")
     private WebElement password;
+
+    @FindBy(css = "input[name='birthday']")
     private WebElement birthdate;
+
+    @FindBy(css = "input[name='optin']")
     private WebElement receiveOffers;
+
+    @FindBy(css = "input[name='newsletter")
     private WebElement newsletter;
+
+    @FindBy(css = ".btn.btn-primary.form-control-submit.float-xs-right")
     private WebElement saveButton;
+
+//    private WebElement heading;
+//    private List<WebElement> socialTitle;
+//    private WebElement firstName;
+//    private WebElement lastName;
+//    private WebElement email;
+//    private WebElement password;
+//    private WebElement birthdate;
+//    private WebElement receiveOffers;
+//    private WebElement newsletter;
+//    private WebElement saveButton;
 
 
     protected CreateAccountPage(WebDriver driver) {
         super(driver);
-        initRegisterComponent();
+        PageFactory.initElements(driver, this);
     }
 
-    private void initRegisterComponent() {
-        heading = driver.findElement(By.cssSelector(".page-header > h1"));
-        socialTitle = driver.findElements(By.cssSelector("input[name='id_gender']"));
-        firstName = driver.findElement(By.cssSelector("input[name='firstname']"));
-        lastName = driver.findElement(By.cssSelector("input[name='lastname']"));
-        email = driver.findElement(By.cssSelector(".form-control[name='email']"));
-        password = driver.findElement(By.cssSelector("input[name='password']"));
-        birthdate = driver.findElement(By.cssSelector("input[name='birthday']"));
-        receiveOffers = driver.findElement(By.cssSelector("input[name='optin']"));
-        newsletter = driver.findElement(By.cssSelector("input[name='newsletter"));
-        saveButton = driver.findElement(By.cssSelector(".btn.btn-primary.form-control-submit.float-xs-right"));
-
-
-    }
+//    private void initRegisterComponent() {
+//        heading = driver.findElement(By.cssSelector(".page-header > h1"));
+//        socialTitle = driver.findElements(By.cssSelector("input[name='id_gender']"));
+//        firstName = driver.findElement(By.cssSelector("input[name='firstname']"));
+//        lastName = driver.findElement(By.cssSelector("input[name='lastname']"));
+//        email = driver.findElement(By.cssSelector(".form-control[name='email']"));
+//        password = driver.findElement(By.cssSelector("input[name='password']"));
+//        birthdate = driver.findElement(By.cssSelector("input[name='birthday']"));
+//        receiveOffers = driver.findElement(By.cssSelector("input[name='optin']"));
+//        newsletter = driver.findElement(By.cssSelector("input[name='newsletter"));
+//        saveButton = driver.findElement(By.cssSelector(".btn.btn-primary.form-control-submit.float-xs-right"));
+//
+//
+//    }
 
     public String getHeading() {
         return heading.getText().trim();
