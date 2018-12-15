@@ -20,7 +20,7 @@ public class AddressesEntriesTest extends TestRunner {
         HomePage homePage = loadApplication(UserRepository.get().removingAddressUser());
         AddressesPage addressesPage = homePage.clickFooterAddressesButton();
         //act
-        String your_addresses = (addressesPage.getHeadingText());
+//        String your_addresses = (addressesPage.getHeadingText());
         AddressFormPage addressFormPage = addressesPage.clickCreate();
         addressFormPage.fillAll(userAddress);
         addressesPage = addressFormPage.clickSaveButton();
