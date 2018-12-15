@@ -56,4 +56,4 @@
 //        // проверка, что столицей является Осло
 //        AssertJUnit.assertEquals(capital, "Kiev");
 //    }
-//}
+
