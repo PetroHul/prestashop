@@ -1,21 +1,17 @@
 package API;
 
+import data.IUser;
+import data.UserRepository;
 import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 
-import static API.APIclient.generateBytesArrayFromResource;
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.get;
+import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.core.StringContains.containsString;
 
-/*
-* http://studio5f.online/api
-* */
 public class UserTest {
     @BeforeTest
     public void setUp () {
@@ -32,26 +28,28 @@ public class UserTest {
 
     @Test
     public void createUser() throws IOException {
-        byte[] myRequest = generateBytesArrayFromResource("xml_sources/create_user.xml");
-
+        IUser user = UserRepository.get().creatingUser();
         given()
             .contentType("text/xml")
-            .body(myRequest).
+            .body(APItools.createUserXML(user)).
         when().
-            post("customers/").
+            post("customers").
         then().
-            statusCode(201).
-                body("prestashop.customer.id", equalTo("id"));//TODO getID
+            statusCode(201)
+                .body("prestashop.customers.customer.firstname", equalTo(user.getFirstName()))
+                .body("prestashop.customers.customer.lastname", equalTo(user.getLastName()))
+                .body("prestashop.customers.customer.email", equalTo(user.getEmail()))
+        //        .body("prestashop.customer.id", equalTo("")) TODO getId
+        ;
     }
 
 //    @Test
-//    public void deliteUser() throws IOException {
+//    public void deleteUser(String id) throws IOException {
 //        given().
 //        when().
-//            delete("customers/48").
+//            delete("customers/" + id).
 //        then().
-//            statusCode(201).
-//                body("prestashop.customer.id", equalTo("id"));//TODO getID
+//            statusCode(200);
 //    }
 
 

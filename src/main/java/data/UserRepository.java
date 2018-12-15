@@ -70,4 +70,15 @@ public class UserRepository {
                 .build();
     }
 
+    public IUser creatingUser() {
+        return User.get()
+                .setSocialTitle(SocialTitle.MR)
+                .setFirstName("Vasilii")
+                .setLastName("Pupkin")
+                .setEMail("create@set.com")
+                .setPassword("qwerty")
+                .setBirthdate("10/10/2010")
+                .build();
+    }
+
 }

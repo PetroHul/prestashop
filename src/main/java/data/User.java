@@ -72,6 +72,11 @@ public class User implements ISocialTitle, IFirstName, ILastName, IEMail, IPassw
         return socialTitle;
     }
 
+    public String getGender() {
+        if(getSocialTitle() == SocialTitle.MR){
+            return "1";} else return "2";
+    };
+
     public String getFirstName() {
         return firstName;
     }

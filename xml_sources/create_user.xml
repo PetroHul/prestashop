@@ -10,10 +10,10 @@
         <secure_key></secure_key>
         <deleted></deleted>
         <passwd>qwerty</passwd>
-        <lastname>Marley</lastname>
-        <firstname>Bob</firstname>
-        <email>lol_lol_lolb@set.com</email>
-        <id_gender></id_gender>
+        <lastname>Lastname</lastname>
+        <firstname>Firstname</firstname>
+        <email>lol_lol_lolc@set.com</email>
+        <id_gender>2</id_gender>
         <birthday></birthday>
         <newsletter></newsletter>
         <optin></optin>
