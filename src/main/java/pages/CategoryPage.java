@@ -9,8 +9,7 @@ public class CategoryPage extends AHeadComponent {
 
     protected CategoryPage(WebDriver driver) {
         super(driver);
-
-     categoryName = driver.findElement(By.cssSelector( ".block-category.card.card-block.hidden-sm-down > h1.h1"));
+        categoryName = driver.findElement(By.cssSelector(".block-category.card.card-block.hidden-sm-down > h1.h1"));
 
     }
 
