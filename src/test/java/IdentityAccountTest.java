@@ -1,53 +1,55 @@
-import org.openqa.selenium.By;
-import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.IdentityAccountPage;
 import pages.LoginPage;
 import pages.MyAccountPage;
-import tools.TestRunner;
 import tools.ConncectDB;
+import tools.TestRunner;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class IdentityAccountTest extends TestRunner{
-
+        // add create user un db! precondition
     @Test
     public void changePasswordTest() throws InterruptedException, SQLException {
         final String email = "olx@set.ua";
         final String password = "529440";
         final String newPassword = "268405";
 
-
+        //load app
         HomePage homePage = loadApplication();
         homePage.clickSignInButton();
-
+        //logining account
         LoginPage loginPage = new LoginPage(driver);
         loginPage.fillLoginForm(email,password);
-
+        //go to information
         MyAccountPage myAccount = new MyAccountPage(driver);
         myAccount.clickInformation();
-
+        //change password
         IdentityAccountPage identity = new IdentityAccountPage(driver);
         identity.typePassword(password);
         identity.typeNewPassword(newPassword);
         identity.clickButtonSave();
-        //How this input PageObject
+        //check massage
         String actual = identity.getAlertSuccessText();
         String expected = "Information successfully updated.";
-        Assert.assertEquals(actual,expected);
-
-        //MyAccountPage myAccount = new MyAccountPage(driver);
-
+        assertEquals(actual,expected);
+        //logout
+        identity.clickSignOutButtom();
+        //login
+        delayExecution(1000);
+        LoginPage loginPage1 = new LoginPage(driver);
+        loginPage1.fillLoginForm(email,newPassword);
+        delayExecution(1000);
+        //get actual url
+        String actual1 = driver.getCurrentUrl();
+        boolean expected1 = actual1.contains("identity");
+        assertTrue(expected1);
+        //del user
         ConncectDB conncectDB = new ConncectDB();
-        conncectDB.dataDaseQuery("DELETE FROM ps_customer WHERE id_customer=45;");
-
-
+        conncectDB.deleteDataQuery("delete from ps_customer where email="+"\"olx@set.ua\";");
     }
 }
