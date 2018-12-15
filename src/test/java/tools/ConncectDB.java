@@ -17,7 +17,7 @@ public class ConncectDB {
     private static String password = "Petro529440";
     private static String URL = "jdbc:mysql://sql189.main-hosting.eu:3306/u349814629_prest";
 
-    public void selectDataQuery(String selectQuery) throws SQLException{
+    public void onlySelectDataQuery(String selectQuery) throws SQLException{
 
         DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 
@@ -46,13 +46,13 @@ public class ConncectDB {
         System.out.println("DONE");
     }
 
-    public void deleteDataQuery(String deleteQuery) throws SQLException{
+    public void DMLDataQuery(String dml) throws SQLException{
 
         DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 
         con = DriverManager.getConnection(URL, username, password);
         Statement st = con.createStatement();
-        st.executeUpdate(deleteQuery);
+        st.executeUpdate(dml);
 
         if (st != null) {
             st.close();

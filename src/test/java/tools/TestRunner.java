@@ -70,7 +70,7 @@ public abstract class TestRunner {
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickLoginButton();
-        loginPage.fillLoginForm(email, password);
+        loginPage.signIn(email, password);
 
     }
 
