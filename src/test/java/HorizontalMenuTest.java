@@ -13,11 +13,10 @@ import tools.TestRunner;
 
 public class HorizontalMenuTest extends TestRunner {
 
-    private HomePage homePage;
-
+    public HomePage homePage;
     @BeforeMethod
     public void init() {
-        homePage = loadApplication();
+    homePage = loadApplication();
     }
 
     @Test
@@ -39,7 +38,6 @@ public class HorizontalMenuTest extends TestRunner {
     @Test
     public void checkAccessories() {
         //arrange
-
         CategoryPage accessoriesPage;
         String actual;
         String expected = Category.ACCESSORIES.toString();

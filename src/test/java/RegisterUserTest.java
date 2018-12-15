@@ -29,7 +29,7 @@ public class RegisterUserTest extends TestRunner {
         String actual;
         String expected=newUser.getFirstName()+" " + newUser.getLastName();
 
-
+//взяти собі в тест генерація нового юзера з рандомною поштою ПЕТРО
         //actual
         loginPage = homePage.clickSignInButton();
         createAnAccountPage = loginPage.clickNoAccountButton();
