@@ -1,41 +1,21 @@
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.OrderPage;
-import pages.ShoppingCartPage;
-import tools.CartFunctionalRunner;
+import pages.OrderMessagePage;
+import tools.OrderRunner;
 
-public class OrderTest extends CartFunctionalRunner {
+public class OrderTest extends OrderRunner {
 
     @BeforeMethod
-    public void runApp() {
+    public void prepareCart() {
         addProductTOCart();
     }
 
     @Test
-    public void findButton() {
-        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
-        shoppingCartPage.clickOrderButton();
-
-        OrderPage orderPage = new OrderPage(driver);
-
-        orderPage.clickContinueAddressButton();
-
-        delayExplicitExecution(orderPage.getContinueDeliveryButton());
-
-        orderPage.clickContinueDeliveryButton();
-
-
-        delayExplicitExecution(orderPage.getPayByCheckCheckbox());
-
-        orderPage.clickPayByCheckCheckbox();
-
-        delayExplicitExecution(orderPage.getAgreeElement());
-        orderPage.clickAgreeElement();
-
-        delayExplicitExecution(orderPage.getOrderButton());
-        orderPage.clickOrderButton();
-
-
+    public void makeOrderTest() {
+        makeOrder();
+        OrderMessagePage orderMessagePage = new OrderMessagePage(driver);
+        Assert.assertTrue(orderMessagePage.getMessageText().contains("YOUR ORDER IS CONFIRMED"));
     }
 
 
