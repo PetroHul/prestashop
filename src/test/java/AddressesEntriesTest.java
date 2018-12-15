@@ -44,7 +44,6 @@ public class AddressesEntriesTest extends TestRunner {
         actualAddress = addressesPage.getLastAddressText();
         //assert
         assertEquals(actualAddress, expectedAddress);
-        //after
     }
 
     @Test(priority = 3)
