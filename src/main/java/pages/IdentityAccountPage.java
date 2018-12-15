@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class IdentityAccountPage {
+public class IdentityAccountPage extends AHeadComponent{
 
     //Page Factory
     @FindBy(css = "input[name='id_gender'][value='1']")
@@ -33,7 +33,7 @@ public class IdentityAccountPage {
     @FindBy(css = "input.form-control[name='birthday']")
     private WebElement birthday;
 
-    @FindBy(css = "input[name='optin']")
+    @FindBy(css = "input[namIdentityAccountPagee='optin']")
     private WebElement optionCheackBox;
 
     @FindBy(css = "input[name='newsletter']")
@@ -41,6 +41,12 @@ public class IdentityAccountPage {
 
     @FindBy(css = "button[data-link-action='save-customer']")
     private WebElement buttonSave;
+
+    public IdentityAccountPage(WebDriver driver) {
+        super(driver);
+    }
+
+
 
     // PageObject Atomic Operation
 
@@ -191,7 +197,15 @@ public class IdentityAccountPage {
     public void clickButtonSave() {
         getButtonSave().click();
     }
+    public void clickButtonSaveAndStatus() {
+        getButtonSave().click();
+    }
 
+    //Success massages
+    public String getAlertSuccessText() {
+        return driver.findElement(By.cssSelector("article.alert.alert-success")).getText();
+        //TODO throws Exception
+    }
 
     // Business Logic
     public void fillLoginForm(String firsname, String lastname, String email,
