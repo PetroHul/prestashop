@@ -1,29 +1,22 @@
-
-
 import data.Category;
-import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pages.*;
+import pages.CategoryPage;
+import pages.HomePage;
 import tools.TestRunner;
-
-import javax.swing.plaf.ActionMapUIResource;
 
 
 public class HorizontalMenuTest extends TestRunner {
 
-    private HomePage homePage;
-
+    public HomePage homePage;
     @BeforeMethod
     public void init() {
-        homePage = loadApplication();
+    homePage = loadApplication();
     }
 
     @Test
@@ -45,7 +38,6 @@ public class HorizontalMenuTest extends TestRunner {
     @Test
     public void checkAccessories() {
         //arrange
-
         CategoryPage accessoriesPage;
         String actual;
         String expected = Category.ACCESSORIES.toString();

@@ -30,8 +30,11 @@ public class IdentityAccountTest extends TestRunner{
         myAccount.clickInformation();
         //change password
         IdentityAccountPage identity = new IdentityAccountPage(driver);
+        delayExecution(1000);
         identity.typePassword(password);
+        delayExecution(1000);
         identity.typeNewPassword(newPassword);
+        delayExecution(1000);
         identity.clickButtonSave();
         //check massage
         String actual = identity.getAlertSuccessText();
