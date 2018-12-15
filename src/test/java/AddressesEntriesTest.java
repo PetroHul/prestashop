@@ -11,13 +11,13 @@ import static org.testng.Assert.assertEquals;
 
 public class AddressesEntriesTest extends TestRunner {
 
-    @Test(priority = 1)
+    @Test
     public void addAddressTest() {
         //arrenge
-        Address userAddress = Address.VASIA_PUPKIN;
+        Address userAddress = Address.EVA_PUPKINA;
         String actualAddress;
         final String expectedAddress = userAddress.getAddressBodyText();
-        HomePage homePage = loadApplication(UserRepository.get().localUser());
+        HomePage homePage = loadApplication(UserRepository.get().removingAddressUser());
         AddressesPage addressesPage = homePage.clickFooterAddressesButton();
         //act
         String your_addresses = (addressesPage.getHeadingText());
@@ -29,13 +29,13 @@ public class AddressesEntriesTest extends TestRunner {
         assertEquals(actualAddress, expectedAddress);
     }
 
-    @Test(priority = 2)
+    @Test
     public void updateAddressTest() {
         //arrenge
         Address userAddress = Address.EVA_PUPKINA;
         String actualAddress;
         final String expectedAddress = userAddress.getAddressBodyText();
-        HomePage homePage = loadApplication(UserRepository.get().localUser());
+        HomePage homePage = loadApplication(UserRepository.get().addingAddressUser());
         AddressesPage addressesPage = homePage.clickFooterAddressesButton();
         //act
         AddressFormPage addressFormPage = addressesPage.clickUpdateLast();
@@ -44,15 +44,14 @@ public class AddressesEntriesTest extends TestRunner {
         actualAddress = addressesPage.getLastAddressText();
         //assert
         assertEquals(actualAddress, expectedAddress);
-        //after
     }
 
-    @Test(priority = 3)
+    @Test
     public void deleteAddressTest() {
         //arrenge
         final String actualAlert;
         final String expectedAlert = "Address successfully deleted!";
-        HomePage homePage = loadApplication(UserRepository.get().localUser());
+        HomePage homePage = loadApplication(UserRepository.get().addingAddressUser());
         AddressesPage addressesPage = homePage.clickFooterAddressesButton();
         //act
         actualAlert = addressesPage.clickDeleteLast();
