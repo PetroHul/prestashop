@@ -43,14 +43,14 @@ public class UserTest {
         ;
     }
 
-    @Test
-    public void deleteUser(String id) throws IOException {
-        given().
-        when().
-            delete("customers/" + id).
-        then().
-            statusCode(200);
-    }
+//    @Test
+//    public void deleteUser(String id) throws IOException {
+//        given().
+//        when().
+//            delete("customers/" + id).
+//        then().
+//            statusCode(200);
+//    }
 
 
 }
