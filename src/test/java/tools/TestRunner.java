@@ -70,9 +70,9 @@ public abstract class TestRunner {
             homePage.clickSignInButton();
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-            LoginPage loginPage = new LoginPage(driver);
-            loginPage.clickLoginButton();
-            loginPage.fillLoginForm(email, password);
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.clickLoginButton();
+        loginPage.signIn(email, password);
 
     }
 

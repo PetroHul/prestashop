@@ -20,7 +20,7 @@ public class LoginPageTest extends TestRunner {
 
        // delayExecution(1000);
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.fillLoginForm(email,password);
+        loginPage.signIn(email,password);
 
         String actual = driver.getCurrentUrl();
         expected = actual.contains("my-account");
