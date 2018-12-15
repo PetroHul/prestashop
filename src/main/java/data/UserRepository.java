@@ -36,7 +36,7 @@ public class UserRepository {
 
     //метод який рандомно генерує 10 символів до @
 
-    public IUser localUser() {
+    public IUser addingAddressUser() {
         return User.get()
                 .setSocialTitle(SocialTitle.MR)
                 .setFirstName("Vasia")
@@ -44,6 +44,29 @@ public class UserRepository {
                 .setEMail("local_part@domain.com")
                 .setPassword("qwerty")
                 .setBirthdate("05/25/1995")
+                .build();
+    }
+
+    public IUser updatingAddressUser() {
+        return User.get()
+                .setSocialTitle(SocialTitle.MRS)
+                .setFirstName("Eva")
+                .setLastName("Pupkina")
+                .setEMail("local@mail.com")
+                .setPassword("qwerty")
+                .setBirthdate("05/25/1995")
+                .build();
+    }
+
+
+    public IUser removingAddressUser() {
+        return User.get()
+                .setSocialTitle(SocialTitle.MR)
+                .setFirstName("Bob")
+                .setLastName("Marley")
+                .setEMail("local_local@set.com")
+                .setPassword("qwerty")
+                .setBirthdate("10/10/2010")
                 .build();
     }
 
