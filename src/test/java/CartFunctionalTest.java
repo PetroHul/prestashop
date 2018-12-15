@@ -9,7 +9,7 @@ import tools.TestRunner;
 public class CartFunctionalTest extends CartFunctionalRunner {
 
     @BeforeMethod
-    public void runApp() {
+    public void prepareCart() {
         addProductTOCart();
     }
 
