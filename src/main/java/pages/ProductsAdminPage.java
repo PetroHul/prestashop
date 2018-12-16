@@ -9,13 +9,13 @@ public class ProductsAdminPage extends AMenuAdminComponent {
     public ProductsAdminPage(WebDriver driver){
         super(driver);
     }
-    @FindBy(css = "#page-header-desc-configuration-add")
-    private WebElement createNewProductButton;
-
-    public WebElement getCreateNewProductButton(){
-        return createNewProductButton;
-    }
-    public void clickCreateNewProduct() {
-        getCreateNewProductButton().click();
-    }
+//    @FindBy(css = "#page-header-desc-configuration-add")
+//    private WebElement createNewProductButton;
+//
+//    public WebElement getCreateNewProductButton(){
+//        return createNewProductButton;
+//    }
+//    public void clickCreateNewProduct() {
+//        getCreateNewProductButton().click();
+//    }
 }

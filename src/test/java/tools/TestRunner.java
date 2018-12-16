@@ -8,7 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import pages.HomePage;
+import pages.LoginAdminPage;
 import pages.LoginPage;
+import pages.ProductsAdminPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -49,6 +51,23 @@ public abstract class TestRunner {
                 .click();
         return new HomePage(driver);
     }
+    public LoginAdminPage loadAdminPage() {
+        return new LoginAdminPage(driver);
+    }
+
+    protected ProductsAdminPage signInAsAdmin(){
+
+        driver.get("http://studio5f.online/admin166mehs6u/index.php?controller=AdminLogin&token=f90774d4cf1bef623f2802e0de734b2d&logout");
+
+        final String email = "set@set.ua";
+        final String password ="12345678";
+
+        LoginAdminPage loginAdminPage = loadAdminPage();
+        loginAdminPage.fillLoginForm(email, password);
+
+        return new ProductsAdminPage(driver);
+
+    }
 
     protected void delayExplicitExecution(WebElement webElement) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -78,5 +97,7 @@ public abstract class TestRunner {
         loginPage.clickLoginButton();
         loginPage.fillLoginForm(email, password);
 
-    }
+
+       }
+
 }
