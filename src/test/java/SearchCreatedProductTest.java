@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.CreateNewProductPage;
+import pages.CreateNewProductPageInAdmin;
 import pages.ProductsAdminPage;
 import pages.SearchResultPage;
 import tools.TestRunner;
@@ -14,9 +14,8 @@ public class SearchCreatedProductTest extends TestRunner {
     public void searchCreatedProductTest() {
 
         Product product = Product.CUPS1;
-        final String expectedProduct = product.getProductBodyText();
         ProductsAdminPage productsAdminPage = signInAsAdmin();
-        CreateNewProductPage createNewProduct = new CreateNewProductPage(driver);
+        CreateNewProductPageInAdmin createNewProduct = new CreateNewProductPageInAdmin(driver);
 
 
         createNewProduct.clickCreateNewProduct();
@@ -38,8 +37,8 @@ public class SearchCreatedProductTest extends TestRunner {
         delayExecution(1000);
 
 
-        Search search = Search.CUP1;
-        final String expectedSearch = search.getSearchBodyText();
+        Search search = Search.CUPS1;
+        final String expectedSearch = search.toString().toLowerCase();
 
         //steps
         searchResultPage.fillAll(search);
@@ -47,7 +46,7 @@ public class SearchCreatedProductTest extends TestRunner {
         searchResultPage = searchResultPage.clickSearchProductButton();
         delayExecution(1000);
 
-        Assert.assertTrue(searchResultPage.getProductNameText().equals(expectedSearch));
+        Assert.assertEquals(searchResultPage.getProductNameText(), expectedSearch);
 
 
     }
@@ -55,7 +54,8 @@ public class SearchCreatedProductTest extends TestRunner {
     @AfterMethod
     public void deleteProduct(){
         ProductsAdminPage productsAdminPage = signInAsAdmin();
-        CreateNewProductPage createNewProduct = new CreateNewProductPage(driver);
+        CreateNewProductPageInAdmin createNewProduct = new CreateNewProductPageInAdmin(driver);
+
         createNewProduct.clickDropdownDeleteButton();
         createNewProduct.clickDeleteProductButton();
         createNewProduct.clickAgreeDeleteProductButton();

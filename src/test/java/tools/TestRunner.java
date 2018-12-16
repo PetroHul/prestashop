@@ -49,6 +49,7 @@ public abstract class TestRunner {
                 .click();
         return new HomePage(driver);
     }
+
     public LoginAdminPage loadAdminPage() {
         return new LoginAdminPage(driver);
     }
