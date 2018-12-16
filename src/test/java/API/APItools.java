@@ -1,15 +1,31 @@
 package API;
 
 import data.IUser;
-import data.SocialTitle;
+import io.restassured.response.Response;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import static io.restassured.RestAssured.get;
+import static org.hamcrest.Matchers.equalTo;
 
 public class APItools {
-    public static String generateStringFromResource(String path) throws IOException {
-            return new String(Files.readAllBytes(Paths.get(path)));
+
+    public static boolean isEmailInBase(String email) {
+        Response response = get("customers/?display=[email]");
+        return response.asString().contains(email);
+    }
+
+    public static String getUserEmail(String id) {
+        Response response = get("customers/?display=[email]&filter[id]=[" + id + "]");
+        String fst = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<prestashop xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n" +
+                "<customers>\n" +
+                "<customer>\n" +
+                "\t<email><![CDATA[";
+        String end = "]]></email>\n" +
+                "</customer>\n" +
+                "</customers>\n" +
+                "</prestashop>\n";
+
+        return response.asString().substring(fst.length()).replaceAll(end,"");
     }
 
     public static String createUserXML(IUser user) {
