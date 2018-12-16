@@ -35,7 +35,7 @@ public class SearchResultPage extends AHeadComponent {
     }
 
     public String getProductNameText() {
-        return getProductName().getText();
+        return getProductName().getText().toLowerCase();
     }
     public WebElement getSortByButton() {
         return sortByButton;

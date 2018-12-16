@@ -21,13 +21,10 @@ public class ProductTest {
 
     @Test
     public void createNewProduct() throws IOException {
-
-        Response rs = given()
+                given()
                 .body(APItools.generateStringFromXML("xml_sources/create_product.xml"))
                 .when()
                 .post("/products");
-
-
     }
 
     @Test

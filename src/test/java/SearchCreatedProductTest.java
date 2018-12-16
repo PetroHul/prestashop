@@ -14,7 +14,6 @@ public class SearchCreatedProductTest extends TestRunner {
     public void searchCreatedProductTest() {
 
         Product product = Product.CUPS1;
-        final String expectedProduct = product.getProductBodyText();
         ProductsAdminPage productsAdminPage = signInAsAdmin();
         CreateNewProductPageInAdmin createNewProduct = new CreateNewProductPageInAdmin(driver);
 
@@ -38,8 +37,8 @@ public class SearchCreatedProductTest extends TestRunner {
         delayExecution(1000);
 
 
-        Search search = Search.CUP1;
-        final String expectedSearch = search.getSearchBodyText();
+        Search search = Search.CUPS1;
+        final String expectedSearch = search.toString().toLowerCase();
 
         //steps
         searchResultPage.fillAll(search);
@@ -47,7 +46,7 @@ public class SearchCreatedProductTest extends TestRunner {
         searchResultPage = searchResultPage.clickSearchProductButton();
         delayExecution(1000);
 
-        Assert.assertTrue(searchResultPage.getProductNameText().equals(expectedSearch));
+        Assert.assertEquals(searchResultPage.getProductNameText(), expectedSearch);
 
 
     }
@@ -55,7 +54,6 @@ public class SearchCreatedProductTest extends TestRunner {
     @AfterMethod
     public void deleteProduct(){
         ProductsAdminPage productsAdminPage = signInAsAdmin();
-
         CreateNewProductPageInAdmin createNewProduct = new CreateNewProductPageInAdmin(driver);
 
         createNewProduct.clickDropdownDeleteButton();

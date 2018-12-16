@@ -80,7 +80,7 @@ public class SearchingByProductNameTest extends TestRunner{
         delayExecution(1000);
 
         Search search = Search.SFDD;
-        final String expectedSearch = search.getSearchBodyText();
+        final String expectedSearch = search.toString().toLowerCase();
         //steps
         searchEmptyResultPage.fillAll(search);
         searchEmptyResultPage.clickSearchProductButton();

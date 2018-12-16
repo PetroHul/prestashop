@@ -34,7 +34,6 @@ public class CreateNewProductPageInAdmin extends AMenuAdminComponent {
     }
 
     private void fill(WebElement field, String value) {
-//        field.click();
         field.clear();
         field.sendKeys(value);
     }
