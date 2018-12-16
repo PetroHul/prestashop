@@ -60,6 +60,9 @@ public abstract class AHeadComponent {
     @FindBy(css ="div#block_myaccount_infos a[href*='addresses']")
     private WebElement footerAddressesButton;
 
+    @FindBy(xpath ="//*[@id='_desktop_user_info']/div/a[2]/span")
+    private WebElement registerUserName;
+
 
     protected AHeadComponent(WebDriver driver) {
         this.driver = driver;
@@ -129,6 +132,14 @@ public abstract class AHeadComponent {
         driver.findElement(By.cssSelector(".user-info a[href*='mylogout']")).click();
     }
 
+    //RegisterUserName
+    public WebElement getregisterUserName() {
+        return registerUserName;
+    }
+
+    public String getUserName() {
+        return registerUserName.getText();
+    }
 
     //CartButton
     public WebElement getCartButton() {
