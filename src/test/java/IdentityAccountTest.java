@@ -1,3 +1,4 @@
+import data.RandomString;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -12,11 +13,10 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class IdentityAccountTest extends TestRunner{
-        // add create user un db! precondition
-        //
 
         @DataProvider(name = "newuser")
         public static Object[][] insertUser() {
+
             final String insert = "INSERT INTO `ps_customer` (`id_customer`, `id_shop_group`, `id_shop`, `id_gender`," +
                     " `id_default_group`, `id_lang`, `id_risk`, `company`, `siret`," +
                     " `ape`, `firstname`, `lastname`, `email`, `passwd`," +
@@ -56,7 +56,7 @@ public class IdentityAccountTest extends TestRunner{
             final String newPassword1 = "147852";
 
             final String delete = "DELETE FROM ps_customer WHERE email="+"\"setstore@set.ua\";";
-            final String delete1 = "DELETE FROM ps_customer WHERE email="+"\"superstor@gmail.set\";";
+            final String delete1 = "DELETE FROM ps_customer WHERE email="+"\"setsanta@gmail.set\";";
 
             return new Object[][] {{ insert, email, password, newPassword, delete},
                     { insert1, email1, password1, newPassword1, delete1 }};
@@ -81,19 +81,14 @@ public class IdentityAccountTest extends TestRunner{
         identity.typeNewPassword(newPassword);
         identity.clickButtonSave();
 
-        //check massage
         String actual = identity.getAlertSuccessText();
         String expected = "Information successfully updated.";
         assertEquals(actual,expected);
 
-        //logout
         identity.clickSignOutButtom();
-
-        //login
         LoginPage loginPage1 = new LoginPage(driver);
         loginPage1.signIn(email,newPassword);
 
-        //get actual url
         String actual1 = driver.getCurrentUrl();
         boolean expected1 = actual1.contains("identity");
         assertTrue(expected1);
