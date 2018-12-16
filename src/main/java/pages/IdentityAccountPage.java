@@ -48,8 +48,6 @@ public class IdentityAccountPage extends AHeadComponent{
         PageFactory.initElements(driver, this);
     }
 
-    // PageObject Atomic Operation
-
     //Social title
     public WebElement getSocialTitleMr() {
         return socialTitleMr;
@@ -173,7 +171,6 @@ public class IdentityAccountPage extends AHeadComponent{
         getBirthday().sendKeys(value);
     }
 
-
     //First CheackBox Receive offers from out partners
     public WebElement getOptionCheackBox() {
         return optionCheackBox;
@@ -204,38 +201,5 @@ public class IdentityAccountPage extends AHeadComponent{
     //Success massages
     public String getAlertSuccessText() {
         return driver.findElement(By.cssSelector("article.alert.alert-success")).getText();
-        //TODO throws Exception
-    }
-
-    // Business Logic
-    public void fillLoginForm(String firsname, String lastname, String email,
-                              String pass, String newpass, String birthdate) {
-        clickSocialTitleMr();
-
-        clearFirstName();
-        clickFirstName();
-        typeFirstName(firsname);
-
-        clearLastName();
-        clickLastName();
-        typeLastName(lastname);
-
-        clearEmail();
-        clickEmail();
-        typeEmail(email);
-
-        clearPassword();
-        clickPassword();
-        typePassword(pass);
-
-        clearNewPassword();
-        clickNewPassword();
-        typeNewPassword(newpass);
-
-        clearBirthday();
-        clickBirthday();
-        typeBirthday(birthdate);
-
-        clickButtonSave();
     }
 }
