@@ -41,6 +41,9 @@ public class CreateAccountPage extends AHeadComponent {
     @FindBy(css = ".btn.btn-primary.form-control-submit.float-xs-right")
     private WebElement saveButton;
 
+    @FindBy(xpath = "//*[@id='customer-form']/section/div[4]/div[1]/div/ul/li")
+    private WebElement errorMessage;
+
 //    private WebElement heading;
 //    private List<WebElement> socialTitle;
 //    private WebElement firstName;
@@ -53,7 +56,7 @@ public class CreateAccountPage extends AHeadComponent {
 //    private WebElement saveButton;
 
 
-    protected CreateAccountPage(WebDriver driver) {
+    public CreateAccountPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
@@ -181,5 +184,13 @@ public class CreateAccountPage extends AHeadComponent {
     public HomePage clickSaveButton() {
         this.saveButton.click();
         return new HomePage(driver);
+    }
+
+    public WebElement getErrorMessaget() {
+        return errorMessage;
+    }
+
+    public String getMessageText(){
+        return getErrorMessaget().getText();
     }
 }

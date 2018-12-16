@@ -49,6 +49,7 @@ public abstract class TestRunner {
                 .click();
         return new HomePage(driver);
     }
+
     public LoginAdminPage loadAdminPage() {
         return new LoginAdminPage(driver);
     }
@@ -94,6 +95,7 @@ public abstract class TestRunner {
         loginPage.signIn(email, password);
 
     }
+
 
     @AfterClass(alwaysRun = true)
     public void tearDown() {

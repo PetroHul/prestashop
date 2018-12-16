@@ -1,33 +1,41 @@
 import data.Category;
 import data.Currencies;
 import org.testng.Assert;
+
+
+import org.testng.annotations.DataProvider;
+
 import org.testng.annotations.Test;
-import pages.AHeadComponent;
-import pages.CategoryPage;
-import pages.HomePage;
+import pages.*;
 import tools.TestRunner;
 
-public class CurrencyFunctionalTest extends TestRunner  {
-
-    private HomePage homePage;
-    @Test
-    public void checkCurrencyTest() {
-//        CategoryPage accessoriesPage;
-//        String actual;
-//        String expected = Category.ACCESSORIES.toString();
-//        //act
-//        accessoriesPage = homePage.clickAccessoriesButton();
-//        actual = accessoriesPage.getCategoryName();
-//        //assert
-//        Assert.assertEquals(actual, expected);
-//    }
-
-        AHeadComponent currencyPage;
-        String actual;
-        String expected = Currencies.UAH.toString();
-//act
-//        currencyPage = homePage.clickCurrency();
+public class CurrencyFunctionalTest extends TestRunner {
 
 
+    @DataProvider//(parallel = true)
+    public Object[][] currencyData() {
+        // Read from ...
+        return new Object[][]{{Currencies.UAH, "UAH ₴"}, {Currencies.EURO, "EUR €"}, {Currencies.USD, "USD $"}};
     }
+
+    @Test(dataProvider = "currencyData")
+    public void checkCurrency(Currencies currency, String expectedCurrencyText) {
+        //
+        // Precondition
+        HomePage homePage = loadApplication();
+        delayExecution(1000);
+        //
+        // Steps
+        homePage = homePage.chooseCurrency(currency);
+        delayExecution(1000);
+        //
+        // Check
+        Assert.assertEquals(homePage.getCurrencyText(), expectedCurrencyText);
+        delayExecution(2000);
+        //
+        // Return to previous state
+    }
+
+
 }
+

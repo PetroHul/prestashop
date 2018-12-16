@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <prestashop xmlns:xlink="http://www.w3.org/1999/xlink">
     <cart>
-        <id><![CDATA[433]]></id>
+        <id></id>
         <id_address_delivery></id_address_delivery>
         <id_address_invoice></id_address_invoice>
         <id_currency xlink:href="http://studio5f.online/api/currencies/1"><![CDATA[1]]></id_currency>

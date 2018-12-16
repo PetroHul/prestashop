@@ -3,14 +3,13 @@ package API;
 import data.IUser;
 import data.UserRepository;
 import io.restassured.RestAssured;
-import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import tools.APItools;
 
 import java.io.IOException;
 
-import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -43,7 +42,7 @@ public class UserTest {
                 .body("prestashop.customers.customer.firstname", equalTo(user.getFirstName()))
                 .body("prestashop.customers.customer.lastname", equalTo(user.getLastName()))
                 .body("prestashop.customers.customer.email", equalTo(user.getEmail()))
-                .body("prestashop.customer.id", equalTo("")) //TODO getId
+//                .body("prestashop.customer.id", equalTo("")) //TODO getId
         ;
     }
 

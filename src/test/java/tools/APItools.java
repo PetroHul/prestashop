@@ -1,10 +1,12 @@
-package API;
+package tools;
 
 import data.IUser;
 import io.restassured.response.Response;
 
+import java.io.*;
+
 import static io.restassured.RestAssured.get;
-import static org.hamcrest.Matchers.equalTo;
+
 
 public class APItools {
 
@@ -75,4 +77,21 @@ public class APItools {
                 "    </customer>\n" +
                 "</prestashop>";
     }
+
+
+    public static String generateStringFromXML(String path) throws IOException {
+        File xmlFile = new File(path);
+        Reader fileReader = new FileReader(xmlFile);
+        BufferedReader bufReader = new BufferedReader(fileReader);
+        StringBuilder sb = new StringBuilder();
+        String line = bufReader.readLine();
+        while (line != null) {
+            sb.append(line).append("\n");
+            line = bufReader.readLine();
+        }
+        String xml2String = sb.toString();
+
+        return xml2String;
+    }
+
 }
