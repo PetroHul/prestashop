@@ -1,27 +1,17 @@
 import data.Search;
-import io.restassured.RestAssured;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.ProductPage;
 import pages.SearchEmptyResultPage;
 import pages.SearchResultPage;
-import pages.ShoppingCartPage;
 import tools.TestRunner;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static io.restassured.RestAssured.get;
-import static io.restassured.RestAssured.post;
-import static org.hamcrest.core.IsEqual.equalTo;
-import static org.hamcrest.xml.HasXPath.hasXPath;
-
-public class VerifySearchingByProductNameTest extends TestRunner{
+public class VerifySearchingByProductNameTest extends TestRunner {
 
     @Test
-    public void SearchingByProductNameTest(){
+    public void SearchingByProductNameTest() {
         //precondition
         SearchResultPage searchResultPage = new SearchResultPage(driver);
         delayExecution(1000);
@@ -42,10 +32,11 @@ public class VerifySearchingByProductNameTest extends TestRunner{
         delayExecution(1000);
         System.out.println(searchResultPage.getProductListComponent());
 
-        Assert.assertEquals(searchResultPage.getProductListComponent().getProductsNameList(),products_name);
+        Assert.assertEquals(searchResultPage.getProductListComponent().getProductsNameList(), products_name);
 
     }
-//
+
+    //
 //    @Test
 //    public void SortByProductNameZATest(){
 //        //precondition
@@ -81,7 +72,7 @@ public class VerifySearchingByProductNameTest extends TestRunner{
 //    }
 //
     @Test
-    public void getErrorMassegeinInvalidSearchingTest(){
+    public void getErrorMassegeinInvalidSearchingTest() {
 
         SearchEmptyResultPage searchEmptyResultPage = new SearchEmptyResultPage(driver);
         delayExecution(1000);
@@ -93,7 +84,7 @@ public class VerifySearchingByProductNameTest extends TestRunner{
         searchEmptyResultPage.clickSearchProductButton();
         delayExecution(1000);
 
-        Assert.assertEquals(searchEmptyResultPage.getTextProductIsNotFoundMessage(),"Sorry for the inconvenience.");
+        Assert.assertEquals(searchEmptyResultPage.getTextProductIsNotFoundMessage(), "Sorry for the inconvenience.");
 
 
     }
