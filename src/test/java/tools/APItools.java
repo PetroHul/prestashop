@@ -1,4 +1,4 @@
-package API;
+package tools;
 
 import data.IUser;
 import io.restassured.response.Response;
