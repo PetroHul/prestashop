@@ -31,7 +31,7 @@ public class AdminRunner extends TestRunner {
         adminDriver.get("http://studio5f.online/admin166mehs6u/index.php?controller=AdminLogin&token=f90774d4cf1bef623f2802e0de734b2d&logout");
     }
 
-    protected LoginAdminPage loadAdminPage() {
+    public LoginAdminPage loadAdminPage() {
         return new LoginAdminPage(adminDriver);
     }
 

@@ -34,7 +34,17 @@ public class UserRepository {
                 .build();
     }
 
-    //метод який рандомно генерує 10 символів до @
+    public IUser newUserAdmin() {
+        return User.get()
+                .setSocialTitle(SocialTitle.MR)
+                .setFirstName("red")
+                .setLastName("fran")
+                .setEMail(email)
+                .setPassword("12345")
+                .setBirthdate("15/05/1978")
+                .build();
+    }
+
 
     public IUser addingAddressUser() {
         return User.get()
