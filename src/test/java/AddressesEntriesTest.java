@@ -17,7 +17,7 @@ public class AddressesEntriesTest extends TestRunner {
         Address userAddress = Address.EVA_PUPKINA;
         String actualAddress;
         final String expectedAddress = userAddress.getAddressBodyText();
-        HomePage homePage = loadApplication(UserRepository.get().removingAddressUser());
+        HomePage homePage = loadApplication(UserRepository.get().addingAddressUser());
         AddressesPage addressesPage = homePage.clickFooterAddressesButton();
         //act
 //        String your_addresses = (addressesPage.getHeadingText());
@@ -35,7 +35,7 @@ public class AddressesEntriesTest extends TestRunner {
         Address userAddress = Address.EVA_PUPKINA;
         String actualAddress;
         final String expectedAddress = userAddress.getAddressBodyText();
-        HomePage homePage = loadApplication(UserRepository.get().addingAddressUser());
+        HomePage homePage = loadApplication(UserRepository.get().updatingAddressUser());
         AddressesPage addressesPage = homePage.clickFooterAddressesButton();
         //act
         AddressFormPage addressFormPage = addressesPage.clickUpdateLast();
@@ -51,7 +51,7 @@ public class AddressesEntriesTest extends TestRunner {
         //arrenge
         final String actualAlert;
         final String expectedAlert = "Address successfully deleted!";
-        HomePage homePage = loadApplication(UserRepository.get().addingAddressUser());
+        HomePage homePage = loadApplication(UserRepository.get().removingAddressUser());
         AddressesPage addressesPage = homePage.clickFooterAddressesButton();
         //act
         actualAlert = addressesPage.clickDeleteLast();

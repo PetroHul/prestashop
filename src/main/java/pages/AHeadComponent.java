@@ -50,7 +50,6 @@ public abstract class AHeadComponent {
     @FindBy(css = "div#block_myaccount_infos a[href*='addresses']")
     private WebElement footerAddressesButton;
 
-
     @FindBy(xpath ="//*[@id='_desktop_user_info']/div/a[2]/span")
     private WebElement registerUserName;
 
