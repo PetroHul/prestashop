@@ -7,11 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CreateNewProductPage extends AMenuAdminComponent {
-    protected final String NAME_PRODUCT_VALUE = "Cup3";
+public class CreateNewProductPageInAdmin extends AMenuAdminComponent {
 
-
-    @FindBy(css="#form_step1_name_2")
+    @FindBy(css = "#form_step1_name_2")
     WebElement nameProductInput;
 
     @FindBy(css = "#form_step6_reference")
@@ -30,17 +28,16 @@ public class CreateNewProductPage extends AMenuAdminComponent {
     WebElement addNewProductButton;
 
 
-
-    public CreateNewProductPage(WebDriver driver){
+    public CreateNewProductPageInAdmin(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
     private void fill(WebElement field, String value) {
-//        field.click();
         field.clear();
         field.sendKeys(value);
     }
+
     public void fillAll(Product data) {
         fill(nameProductInput, data.getName());
         fill(articuleInput, data.getArticle());
@@ -51,14 +48,16 @@ public class CreateNewProductPage extends AMenuAdminComponent {
     public WebElement getAddNewProductButton() {
         return addNewProductButton;
     }
-    public void clickAddNewProductButton(){
+
+    public void clickAddNewProductButton() {
         getAddNewProductButton().click();
     }
 
     public WebElement getDropdownButton() {
         return dropdownButton;
     }
-    public void clicDropdownButton(){
+
+    public void clicDropdownButton() {
         getDropdownButton().click();
     }
 

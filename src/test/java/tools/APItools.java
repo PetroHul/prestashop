@@ -80,7 +80,7 @@ public class APItools {
 
 
     public static String generateStringFromXML(String path) throws IOException {
-        File xmlFile = new File("xml_sources/cart.xml");
+        File xmlFile = new File(path);
         Reader fileReader = new FileReader(xmlFile);
         BufferedReader bufReader = new BufferedReader(fileReader);
         StringBuilder sb = new StringBuilder();

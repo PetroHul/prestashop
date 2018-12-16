@@ -7,8 +7,6 @@ import pages.HomePage;
 import pages.LoginPage;
 import tools.ConncectDB;
 import tools.TestRunner;
-
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class RegisterUserTest extends TestRunner {
@@ -45,6 +43,7 @@ public class RegisterUserTest extends TestRunner {
         createAnAccountPage.setReceiveOffers(newUser.isRecieveOffers());
         createAnAccountPage.setNewsletter(newUser.isNewsletter());
         resultPage = createAnAccountPage.clickSaveButton();
+
         actual = resultPage.getUserName();
 
         //Assert
@@ -64,7 +63,7 @@ public class RegisterUserTest extends TestRunner {
     }
 
     @Test
-    public void registerUserWithExistedEmail() {
+    public void registerUserWithExistedEmail() throws SQLException {
         //Arrange
         HomePage homePage = loadApplication();
         LoginPage loginPage;
@@ -84,7 +83,19 @@ public class RegisterUserTest extends TestRunner {
         //Assert
         Assert.assertTrue(actual.getMessageText().equals("The email \"ola-good96@ukr.net\" is already used, please choose another one or sign in"));
 
+
+
+        ConncectDB conncectDB = new ConncectDB();
+        String s=newUser.getEmail();
+
+       // conncectDB.DMLDataQuery("SELECT * FROM ps_customer WHERE email="+"\""+s+"\";");
+
+
+        conncectDB.DMLDataQuery("DELETE FROM ps_customer WHERE email="+"\""+s+"\";");
     }
+
+
+
 
 
 }
