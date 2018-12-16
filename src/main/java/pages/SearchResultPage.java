@@ -16,7 +16,11 @@ public class SearchResultPage extends AHeadComponent {
     @FindBy(css = "a[href*='=product.name.desc&s=mug']")
     private WebElement sortNameZAButton;
 
+    @FindBy(css = ".h3.product-title a")
+    private WebElement productName;
+
     private ProductListComponent productListComponent;
+    private ProductComponent productComponent;
 
 
     public SearchResultPage(WebDriver driver) {
@@ -26,6 +30,13 @@ public class SearchResultPage extends AHeadComponent {
 
     }
 
+    public WebElement getProductName() {
+        return productName;
+    }
+
+    public String getProductNameText() {
+        return getProductName().getText();
+    }
     public WebElement getSortByButton() {
         return sortByButton;
     }
@@ -45,6 +56,7 @@ public class SearchResultPage extends AHeadComponent {
     public ProductListComponent getProductListComponent() {
         return productListComponent;
     }
+
 
 
 }

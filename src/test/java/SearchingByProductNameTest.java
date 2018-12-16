@@ -66,8 +66,9 @@ public class SearchingByProductNameTest extends TestRunner{
         delayExecution(1000);
 
         searchResultPage.clickSortNameZAButton();
-        delayExecution(1000);
-        System.out.println(searchResultPage.getProductListComponent().getProductsNameList());
+        delayExecution(3000);
+
+
         Assert.assertEquals(searchResultPage.getProductListComponent().getProductsNameList(),sortProducts_name);
 
     }

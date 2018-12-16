@@ -46,8 +46,8 @@ public class SearchCreatedProductTest extends TestRunner {
 
         searchResultPage = searchResultPage.clickSearchProductButton();
         delayExecution(1000);
-        System.out.println(searchResultPage.getProductListComponent().getProductsNameList());
-        Assert.assertTrue(searchResultPage.getProductListComponent().getProductsNameList().equals(expectedSearch));
+
+        Assert.assertTrue(searchResultPage.getProductNameText().equals(expectedSearch));
 
 
     }
