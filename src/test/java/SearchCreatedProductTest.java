@@ -46,8 +46,9 @@ public class SearchCreatedProductTest extends TestRunner {
 
         searchResultPage = searchResultPage.clickSearchProductButton();
         delayExecution(1000);
-        System.out.println(searchResultPage.getProductListComponent().getProductComponents());
-        Assert.assertEquals(searchResultPage.getProductListComponent().getProductComponents(),expectedSearch);
+
+        Assert.assertTrue(searchResultPage.getProductNameText().equals(expectedSearch));
+
 
     }
 
@@ -55,11 +56,8 @@ public class SearchCreatedProductTest extends TestRunner {
     public void deleteProduct(){
         ProductsAdminPage productsAdminPage = signInAsAdmin();
         CreateNewProductPage createNewProduct = new CreateNewProductPage(driver);
-        delayExecution(3000);
         createNewProduct.clickDropdownDeleteButton();
-        delayExecution(3000);
         createNewProduct.clickDeleteProductButton();
-        delayExecution(3000);
         createNewProduct.clickAgreeDeleteProductButton();
         createNewProduct.clickIconForLogOut();
         createNewProduct.clickLogOutButton();
