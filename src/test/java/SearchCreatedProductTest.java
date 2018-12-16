@@ -55,7 +55,9 @@ public class SearchCreatedProductTest extends TestRunner {
     @AfterMethod
     public void deleteProduct(){
         ProductsAdminPage productsAdminPage = signInAsAdmin();
+
         CreateNewProductPageInAdmin createNewProduct = new CreateNewProductPageInAdmin(driver);
+
         createNewProduct.clickDropdownDeleteButton();
         createNewProduct.clickDeleteProductButton();
         createNewProduct.clickAgreeDeleteProductButton();

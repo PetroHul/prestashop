@@ -16,6 +16,16 @@ public abstract class AMenuAdminComponent {
     @FindBy(css = "#subtab-AdminProducts")
     private WebElement productsButton;
 
+
+    @FindBy(xpath = "//*[@id='subtab-AdminParentCustomer']/a/span")
+    private WebElement clientsFirstButton;
+
+    @FindBy(css = "#subtab-AdminCustomers")
+    private WebElement clientsButton;
+
+    @FindBy(css = "#page-header-desc-customer-new_customer")
+    private WebElement addUserButton;
+
     @FindBy(css = "#page-header-desc-configuration-add")
     private WebElement createNewProductButton;
 
@@ -39,7 +49,6 @@ public abstract class AMenuAdminComponent {
         PageFactory.initElements(driver, this);
     }
 
-
     public WebElement getCatalogButton() {
         return catalogButton;
     }
@@ -54,6 +63,28 @@ public abstract class AMenuAdminComponent {
 //      Create product
     public void clickProducts() {
         getProductsButton().click();
+    }
+
+
+    public WebElement getClientsFirstButton() {
+        return clientsFirstButton;
+    }
+    public void clickClientsFirstButton() {
+        getClientsFirstButton().click();
+    }
+
+    public WebElement getClientsButton() {
+        return clientsButton;
+    }
+    public void clickClientsButton() {
+        getClientsButton().click();
+    }
+
+    public WebElement getAddUserButton() {
+        return addUserButton;
+    }
+    public void clickAddUserButton() {
+        getAddUserButton().click();
     }
 
     public WebElement getCreateNewProductButton() {
@@ -84,6 +115,7 @@ public abstract class AMenuAdminComponent {
     public WebElement getAgreeDeleteProductButton() {
         return agreeDeleteProductButton;
     }
+
 
     public void clickAgreeDeleteProductButton() {
         getAgreeDeleteProductButton().click();
