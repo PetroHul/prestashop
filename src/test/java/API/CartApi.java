@@ -8,6 +8,7 @@ import static org.hamcrest.Matchers.*;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.xml.XmlPath;
+import io.restassured.response.Response;
 import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -72,14 +73,14 @@ public class CartApi {
 //
 
 
-
-
     @Test
     public void addToCart() throws IOException {
-        given()
-                .body(APItools.generateStringFromResource("xml_sources/cart.xml"))
-                .when()
-                .post("/carts");
+
+        Response rs = given()
+                        .body(APItools.generateStringFromXML("xml_sources/cart.xml"))
+                        .when()
+                        .post("/carts");
+
 
     }
 
@@ -90,6 +91,7 @@ public class CartApi {
                 body(hasXPath("//*[@id=last()]"));
 
     }
+
     @Test
     public void deleteFromCart() {
         given().

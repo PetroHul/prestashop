@@ -3,13 +3,9 @@ package API;
 import data.IUser;
 import io.restassured.response.Response;
 
-import java.beans.XMLEncoder;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.get;
-import static org.hamcrest.Matchers.equalTo;
 
 
 public class APItools {
