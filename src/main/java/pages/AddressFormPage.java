@@ -1,6 +1,8 @@
 package pages;
 
 import data.Address;
+import data.Country;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -49,7 +51,7 @@ public class AddressFormPage extends AHeadComponent {
         fill(address2, data.getAddress2());
         fill(postCode, data.getPostCode());
         fill(city, data.getCity());
-//        setCountry(country, data.getCountry());
+        selectCountry(data.getCountry());
         fill(phone, data.getPhone());
     }
 
@@ -95,10 +97,11 @@ public class AddressFormPage extends AHeadComponent {
         fill(this.city, city);
     }
 
-//    public void setCountry(Country country) {
-//        this.country.click();
-////  TODO set by country.getValue
-//    }
+    public void selectCountry(Country country) {
+        driver.findElement(By.cssSelector(String.format("select.form-control[name='id_country'] option[value='%s']",
+                country.getValue())))
+                .click();
+    }
 
     public void fillPhone(String phone) {
         fill(this.phone, phone);
@@ -107,6 +110,7 @@ public class AddressFormPage extends AHeadComponent {
     public AddressesPage clickSaveButton() {
         saveButton.click();
         return new AddressesPage(driver);
-//        TODO create exeption for incorrect entries
+//        TODO create exception for incorrect entries
     }
+
 }

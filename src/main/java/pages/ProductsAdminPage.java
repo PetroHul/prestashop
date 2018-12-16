@@ -9,6 +9,7 @@ public class ProductsAdminPage extends AMenuAdminComponent {
     public ProductsAdminPage(WebDriver driver){
         super(driver);
     }
+
 //    @FindBy(css = "#page-header-desc-configuration-add")
 //    private WebElement createNewProductButton;
 //
@@ -18,4 +19,5 @@ public class ProductsAdminPage extends AMenuAdminComponent {
 //    public void clickCreateNewProduct() {
 //        getCreateNewProductButton().click();
 //    }
+
 }

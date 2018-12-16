@@ -4,6 +4,7 @@ import data.IUser;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
@@ -17,21 +18,18 @@ import java.util.concurrent.TimeUnit;
 public abstract class TestRunner {
 
     protected WebDriver driver;
-    private Object IUser;
 
     @BeforeClass
     public void setUp() {
         String property = System.getProperty("user.dir") + "/driver/chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", property);
 
+//        ChromeOptions options = new ChromeOptions();
+//        options.setHeadless(true);
+
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    }
-
-    @AfterClass(alwaysRun = true)
-    public void tearDown() {
-        driver.quit();
     }
 
     @BeforeMethod
@@ -71,9 +69,7 @@ public abstract class TestRunner {
 
     protected void delayExplicitExecution(WebElement webElement) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-
         wait.until(ExpectedConditions.elementToBeClickable(webElement));
-
     }
 
     protected void delayExecution(long miliseconds) {
@@ -86,18 +82,23 @@ public abstract class TestRunner {
 
     protected void signIn() {
 
-        final String email = "User@gmail.com";
-        final String password = "qwerty";
+            final String email = "User@gmail.com";
+            final String password = "qwerty";
 
-        HomePage homePage = loadApplication();
-        homePage.clickSignInButton();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            HomePage homePage = loadApplication();
+            homePage.clickSignInButton();
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickLoginButton();
-        loginPage.fillLoginForm(email, password);
+        loginPage.signIn(email, password);
+
+    }
 
 
-       }
+    @AfterClass(alwaysRun = true)
+    public void tearDown() {
+        driver.quit();
+    }
 
 }

@@ -1,11 +1,15 @@
 package pages;
 
+
 import data.Search;
+
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +48,15 @@ public abstract class AHeadComponent {
     @FindBy(css ="#category-6")
     private WebElement accessoriesButton;
 
+    @FindBy(css = "#category-3")
+    private WebElement clothesButton;
+
+    @FindBy(css = "#category-9")
+    private WebElement artButton;
+
+    @FindBy(css = "#category-4")
+    private WebElement menButton;
+
     @FindBy(css ="div#block_myaccount_infos a[href*='addresses']")
     private WebElement footerAddressesButton;
 
@@ -52,27 +65,6 @@ public abstract class AHeadComponent {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-//    protected AHeadComponent(WebDriver driver) {
-//        this.driver = driver;
-
-//        contactUsButton = driver.findElement(By.cssSelector("#contact-link > a"));
-//        localization = driver.findElement(By.cssSelector("#_desktop_language_selector > div > div > button > span"));
-//        currency = driver.findElement(By.cssSelector("#_desktop_currency_selector > div > button > span"));
-//
-//
-//        signInButton = driver.findElement(By.cssSelector(".user-info > a[href='http://studio5f.online/en/my-account']"));
-//        cartButton = driver.findElement(By.id("_desktop_cart"));
-//        logo = driver.findElement(By.cssSelector(".logo.img-responsive"));
-
-//        searchProductField = driver.findElement(By.name("s"));
-//        searchProductButton = driver.findElement(By.cssSelector("button[type='submit']"));
-//
-//        menuTop = driver.findElements(By.cssSelector(".top-menu"));
-//        accessoriesButton = driver.findElement(By.cssSelector("#category-6"));
-//
-//        footerAddressesButton = driver.findElement(By.cssSelector("div#block_myaccount_infos a[href*='addresses']"));
-//    }
-
 
     // PageObject Atomic Operation
 
@@ -114,6 +106,8 @@ public abstract class AHeadComponent {
 
     public void clickCurrency() {
         getCurrency().click();
+        return;
+//        return new ShoppingCartPage(driver);
     }
 
     //SignInButton
@@ -210,47 +204,45 @@ public abstract class AHeadComponent {
         return new SearchResultPage(driver);
     }
 
-    //menuTop
-    public List<WebElement> getMenuTop() {
-        return menuTop;
-    }
-
-    public List<String> getMenuTopTexts() {
-        List<String> result = new ArrayList<String>();
-        for (WebElement current : getMenuTop()) {
-            result.add(current.findElement(By.cssSelector(".top-menu")).getText()); // not good selector
-        }
-        return result;
-    }
-
-
-    public WebElement getMenuTopByCategoryPartialName(String categoryName) {
-        WebElement result = null;
-        for (WebElement current : getMenuTop()) {
-            if (current.findElement(By.cssSelector(".top-menu")).getText() // not good selector
-                    .toLowerCase().contains(categoryName.toLowerCase())) {
-                result = current;
-                break;
-            }
-        }
-        return result;
-    }
-
     //topmenu
-
     public void setMenuTop(List<WebElement> menuTop) {
         this.menuTop = menuTop;
     }
 
-
-    public CategoryPage clickAccesssoriesButton() {
+    public CategoryPage clickAccessoriesButton() {
         accessoriesButton.click();
         return new CategoryPage(driver);
     }
 
+    public CategoryPage clickClothesButton() {
+        clothesButton.click();
+        return new CategoryPage(driver);
+    }
 
-    public String getUserName() {
-        return driver.findElement(By.cssSelector(".account")).getText().trim();
+    public CategoryPage clickArtButton() {
+        artButton.click();
+        return new CategoryPage(driver);
+    }
+
+    public CategoryPage hoverArtButton() {
+        artButton.click();
+        return new CategoryPage(driver);
+    }
+
+    public void hoverClothesButton() {
+        Actions builder = new Actions(driver);
+        builder.moveToElement(clothesButton).perform();
+//        return new CategoryPage(driver);
+    }
+
+//    public CategoryPage menButton() {
+//        menButton.click();
+//        return new CategoryPage(driver);
+//    }
+
+    public void hoverAccessoriesButton() {
+        Actions builder = new Actions(driver);
+        builder.moveToElement(accessoriesButton).perform();
     }
 
     //footer
@@ -259,5 +251,7 @@ public abstract class AHeadComponent {
         return new AddressesPage(driver);
     }
 }
+
+
 
 

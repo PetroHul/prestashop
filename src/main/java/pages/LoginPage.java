@@ -2,24 +2,33 @@ package pages;
 
 import data.IUser;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends AHeadComponent{
+    @FindBy(css = "input.form-control[name='email']")
     private WebElement emailField;
+
+    @FindBy(css = "input.form-control[name='password']")
     private WebElement passwordField;
+
+    @FindBy(css = "#submit-login")
     private WebElement loginButton;
+
+    @FindBy(css = "a[href*='login?create_account']")
     private WebElement noAccountButton;
 
     public LoginPage(WebDriver driver){
         super(driver);
-        initLoginComponent();
+        PageFactory.initElements(driver, this);
     }
-
-    private void initLoginComponent() {
-        emailField = driver.findElement(By.cssSelector("input.form-control[name='email']"));
-        passwordField = driver.findElement(By.cssSelector("input.form-control[name='password']"));
-        loginButton = driver.findElement(By.cssSelector("#submit-login"));
-        noAccountButton=driver.findElement(By.cssSelector("a[href*='login?create_account']"));
-    }
+//
+//    private void initLoginComponent() {
+//        emailField = driver.findElement(By.cssSelector("input.form-control[name='email']"));
+//        passwordField = driver.findElement(By.cssSelector("input.form-control[name='password']"));
+//        loginButton = driver.findElement(By.cssSelector("#submit-login"));
+//        noAccountButton=driver.findElement(By.cssSelector("a[href*='login?create_account']"));
+//    }
 
     // PageObject Atomic Operation
 
@@ -67,7 +76,7 @@ public class LoginPage extends AHeadComponent{
     }
 
     // Business Logic
-    public void fillLoginForm(String email, String password) {
+    public void signIn(String email, String password) {
         clickEmailField();
         clearEmailField();
         emailField.sendKeys(email);

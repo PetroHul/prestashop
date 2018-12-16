@@ -9,6 +9,7 @@ public abstract class AMenuAdminComponent {
 
     protected WebDriver driver;
 
+
     @FindBy(css = ".link-levelone.has_submenu.-active a[href*='collapse-9'] span")
     private WebElement catalogButton;
 
@@ -42,6 +43,7 @@ public abstract class AMenuAdminComponent {
     public WebElement getCatalogButton() {
         return catalogButton;
     }
+
     public void clickCatalog() {
         getCatalogButton().click();
     }
@@ -49,49 +51,59 @@ public abstract class AMenuAdminComponent {
     public WebElement getProductsButton() {
         return productsButton;
     }
+//      Create product
     public void clickProducts() {
         getProductsButton().click();
     }
 
-    public WebElement getCreateNewProductButton(){
+    public WebElement getCreateNewProductButton() {
         return createNewProductButton;
     }
+
     public void clickCreateNewProduct() {
         getCreateNewProductButton().click();
     }
+
+//    Delete product
     public WebElement getDropdownDeleteButton() {
         return dropdownDeleteButton;
     }
-    public void clickDropdownDeleteButton(){
+
+    public void clickDropdownDeleteButton() {
         getDropdownDeleteButton().click();
     }
 
     public WebElement getDeleteProductButton() {
         return deleteProductButton;
     }
-    public void clickDeleteProductButton(){
+
+    public void clickDeleteProductButton() {
         getDeleteProductButton().click();
     }
+
     public WebElement getAgreeDeleteProductButton() {
         return agreeDeleteProductButton;
     }
-    public void clickAgreeDeleteProductButton(){
+
+    public void clickAgreeDeleteProductButton() {
         getAgreeDeleteProductButton().click();
     }
 
+    //Log out
     public WebElement getIconForLogOut() {
         return iconForLogOut;
     }
-    public void clickIconForLogOut(){
+
+    public void clickIconForLogOut() {
         getIconForLogOut().click();
     }
 
     public WebElement getLogOutButton() {
         return logOutButton;
     }
-    public void clickLogOutButton(){
+
+    public void clickLogOutButton() {
         getLogOutButton().click();
     }
-
 
 }
