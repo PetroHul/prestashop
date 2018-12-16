@@ -22,15 +22,6 @@ public class LoginPage extends AHeadComponent{
         super(driver);
         PageFactory.initElements(driver, this);
     }
-//
-//    private void initLoginComponent() {
-//        emailField = driver.findElement(By.cssSelector("input.form-control[name='email']"));
-//        passwordField = driver.findElement(By.cssSelector("input.form-control[name='password']"));
-//        loginButton = driver.findElement(By.cssSelector("#submit-login"));
-//        noAccountButton=driver.findElement(By.cssSelector("a[href*='login?create_account']"));
-//    }
-
-    // PageObject Atomic Operation
 
     // emailField
     public WebElement getEmailField() {
