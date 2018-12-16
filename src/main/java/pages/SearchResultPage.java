@@ -6,17 +6,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.ArrayList;
 
 
 public class SearchResultPage extends AHeadComponent {
-
 
     @FindBy(css = ".btn-unstyle.select-title")
     private WebElement sortByButton;
 
     @FindBy(css = "a[href*='=product.name.desc&s=mug']")
     private WebElement sortNameZAButton;
+
     private ProductListComponent productListComponent;
 
 

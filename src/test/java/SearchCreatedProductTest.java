@@ -49,6 +49,7 @@ public class SearchCreatedProductTest extends TestRunner {
         System.out.println(searchResultPage.getProductListComponent().getProductsNameList());
         Assert.assertTrue(searchResultPage.getProductListComponent().getProductsNameList().equals(expectedSearch));
 
+
     }
 
     @AfterMethod
