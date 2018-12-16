@@ -55,11 +55,8 @@ public class IdentityAccountTest extends TestRunner{
         myAccount.clickInformation();
         //change password
         IdentityAccountPage identity = new IdentityAccountPage(driver);
-        delayExecution(1000);
         identity.typePassword(password);
-        delayExecution(1000);
         identity.typeNewPassword(newPassword);
-        delayExecution(1000);
         identity.clickButtonSave();
         //check massage
         String actual = identity.getAlertSuccessText();
@@ -68,10 +65,8 @@ public class IdentityAccountTest extends TestRunner{
         //logout
         identity.clickSignOutButtom();
         //login
-        delayExecution(1000);
         LoginPage loginPage1 = new LoginPage(driver);
         loginPage1.signIn(email,newPassword);
-        delayExecution(1000);
         //get actual url
         String actual1 = driver.getCurrentUrl();
         boolean expected1 = actual1.contains("identity");
