@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.CreateNewProductPage;
+import pages.CreateNewProductPageInAdmin;
 import pages.ProductsAdminPage;
 import pages.SearchResultPage;
 import tools.TestRunner;
@@ -16,7 +16,7 @@ public class SearchCreatedProductTest extends TestRunner {
         Product product = Product.CUPS1;
         final String expectedProduct = product.getProductBodyText();
         ProductsAdminPage productsAdminPage = signInAsAdmin();
-        CreateNewProductPage createNewProduct = new CreateNewProductPage(driver);
+        CreateNewProductPageInAdmin createNewProduct = new CreateNewProductPageInAdmin(driver);
 
 
         createNewProduct.clickCreateNewProduct();
@@ -55,7 +55,7 @@ public class SearchCreatedProductTest extends TestRunner {
     @AfterMethod
     public void deleteProduct(){
         ProductsAdminPage productsAdminPage = signInAsAdmin();
-        CreateNewProductPage createNewProduct = new CreateNewProductPage(driver);
+        CreateNewProductPageInAdmin createNewProduct = new CreateNewProductPageInAdmin(driver);
         createNewProduct.clickDropdownDeleteButton();
         createNewProduct.clickDeleteProductButton();
         createNewProduct.clickAgreeDeleteProductButton();
