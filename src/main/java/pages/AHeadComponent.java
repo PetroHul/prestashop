@@ -194,34 +194,13 @@ public abstract class AHeadComponent {
     }
 
     //SearchProductField
-//    public WebElement getSearchProductField() {
-//        return searchProductField;
-//    }
-
-//    public String getSearchProductFieldText(String text) {
-//        return getSearchProductField().getAttribute(text);
-//    }
-//
-//    public void setSearchProductField(WebElement searchProductField) {
-//          this.searchProductField=searchProductField;
-//    }
-//
-//    public void clickSearchProductField() {
-//        getSearchProductField().click();
-//    }
-//
-//    public void clearSearchProductField() {
-//        getSearchProductField().clear();
-//    }
-
     private void fill(WebElement field, String value) {
-//        field.click();
         field.clear();
         field.sendKeys(value);
     }
 
     public void fillAll(Search data) {
-        fill(searchProductField, data.getName());
+        fill(searchProductField, data.toString().toLowerCase());
     }
 
     public void clickContactUsButton() {
