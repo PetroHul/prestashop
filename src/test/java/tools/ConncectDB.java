@@ -46,6 +46,26 @@ public class ConncectDB {
         System.out.println("DONE");
     }
 
+    public ResultSet DMLDataSelect(String selectQuery) throws SQLException{
+
+        DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+
+        con = DriverManager.getConnection(URL, username, password);
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery(selectQuery);
+        //String result = rs;
+        if (rs != null) {
+            rs.close();
+        }
+        if (st != null) {
+            st.close();
+        }
+        if (con != null) {
+            con.close();
+        }
+        return rs;
+    }
+
     public void DMLDataQuery(String dml) throws SQLException{
 
         DriverManager.registerDriver(new com.mysql.jdbc.Driver());

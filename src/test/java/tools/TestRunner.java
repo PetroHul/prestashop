@@ -49,23 +49,6 @@ public abstract class TestRunner {
                 .click();
         return new HomePage(driver);
     }
-    public LoginAdminPage loadAdminPage() {
-        return new LoginAdminPage(driver);
-    }
-
-    protected ProductsAdminPage signInAsAdmin(){
-
-        driver.get("http://studio5f.online/admin166mehs6u/index.php?controller=AdminLogin&token=f90774d4cf1bef623f2802e0de734b2d&logout");
-
-        final String email = "set@set.ua";
-        final String password ="12345678";
-
-        LoginAdminPage loginAdminPage = loadAdminPage();
-        loginAdminPage.fillLoginForm(email, password);
-
-        return new ProductsAdminPage(driver);
-
-    }
 
     public LoginAdminPage loadAdminPage() {
         return new LoginAdminPage(driver);

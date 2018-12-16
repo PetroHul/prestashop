@@ -11,7 +11,6 @@ public class CreateNewProductPage extends AMenuAdminComponent {
     protected final String NAME_PRODUCT_VALUE = "Cup3";
 
 
-
     @FindBy(css="#form_step1_name_2")
     WebElement nameProductInput;
 
