@@ -21,11 +21,11 @@ public abstract class TestRunner {
 
     @BeforeClass
     public void setUp() {
-        String property = System.getProperty("user.dir") + "/driver/chromedriver.exe";
+        String property = System.getProperty("user.dir") + "/driver/chromedriver";
         System.setProperty("webdriver.chrome.driver", property);
 
-//        ChromeOptions options = new ChromeOptions();
-//        options.setHeadless(true);
+        ChromeOptions options = new ChromeOptions();
+        options.setHeadless(true);
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -86,8 +86,8 @@ public abstract class TestRunner {
             final String password = "qwerty";
 
             HomePage homePage = loadApplication();
-            homePage.clickSignInButton();
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        homePage.clickSignInButton();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickLoginButton();

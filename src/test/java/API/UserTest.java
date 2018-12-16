@@ -3,6 +3,7 @@ package API;
 import data.IUser;
 import data.UserRepository;
 import io.restassured.RestAssured;
+import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -21,7 +22,7 @@ public class UserTest {
 
     @Test
     public void isEmailFreeTest() {
-        Assert.assertTrue(APItools.isEmailInBase(UserRepository.get().addingAddressUser().getEmail()));
+        Assert.assertTrue(APItools.isEmailInBase(UserRepository.get().creatingUser().getEmail()));
     }
 
     @Test
@@ -42,18 +43,18 @@ public class UserTest {
                 .body("prestashop.customers.customer.firstname", equalTo(user.getFirstName()))
                 .body("prestashop.customers.customer.lastname", equalTo(user.getLastName()))
                 .body("prestashop.customers.customer.email", equalTo(user.getEmail()))
-        //        .body("prestashop.customer.id", equalTo("")) TODO getId
+                .body("prestashop.customer.id", equalTo("")) //TODO getId
         ;
     }
 
-//    @Test
-//    public void deleteUser(String id) throws IOException {
-//        given().
-//        when().
-//            delete("customers/" + id).
-//        then().
-//            statusCode(200);
-//    }
+    @Test
+    public void deleteUser(String id) throws IOException {
+        given().
+        when().
+            delete("customers/" + id).
+        then().
+            statusCode(200);
+    }
 
 
 }

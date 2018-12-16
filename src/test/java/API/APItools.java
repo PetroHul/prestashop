@@ -33,7 +33,7 @@ public class APItools {
                 "<prestashop xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n" +
                 "    <customer>\n" +
                 "        <id></id>\n" +
-                "        <id_default_group>3</id_default_group>\n" +
+                "        <id_default_group></id_default_group>\n" +
                 "        <id_lang></id_lang>\n" +
                 "        <newsletter_date_add></newsletter_date_add>\n" +
                 "        <ip_registration_newsletter></ip_registration_newsletter>\n" +
@@ -68,7 +68,7 @@ public class APItools {
                 "        <associations>\n" +
                 "            <groups>\n" +
                 "                <group>\n" +
-                "                    <id></id>\n" +
+                "                    <id>3</id>\n" +
                 "                </group>\n" +
                 "            </groups>\n" +
                 "        </associations>\n" +
