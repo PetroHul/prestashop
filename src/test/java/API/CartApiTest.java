@@ -1,19 +1,16 @@
 package API;
 
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
-
 import io.restassured.RestAssured;
-import io.restassured.path.xml.config.XmlPathConfig;
 import io.restassured.response.Response;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import tools.APItools;
 import tools.FileReaderWriter;
 
-import java.io.*;
+import java.io.IOException;
+
+import static io.restassured.RestAssured.get;
+import static io.restassured.RestAssured.given;
 
 
 public class CartApiTest {
@@ -25,6 +22,7 @@ public class CartApiTest {
         RestAssured.baseURI = "http://ZBWJI8GLDFZSRD4QNP76A9D6RKDXN6GT@studio5f.online/api";
 
     }
+
     @Test
     public void addToCart() throws IOException {
 
@@ -35,7 +33,9 @@ public class CartApiTest {
 
         id = rs.getBody().xmlPath().getString("prestashop.cart.id");
 
-       FileReaderWriter.saveInFile("sources/saveId.txt", id);
+        FileReaderWriter.saveInFile("sources/cartID.txt", id);
+
+        System.out.println("save id " + id);
 
 
     }
@@ -43,21 +43,21 @@ public class CartApiTest {
     @Test
     public void verifyCart() throws IOException {
 
-        id = FileReaderWriter.getFromFile("sources/saveId.txt");
-        System.out.println(id+"presented");
+        id = FileReaderWriter.getFromFile("sources/cartID.txt");
+        System.out.println("presented " + id);
 
-        get("/carts/"+id);
+        get("/carts/" + id).then().statusCode(200);
 
     }
 
     @Test
     public void deleteFromCart() throws IOException {
 
-        id = FileReaderWriter.getFromFile("sources/saveId.txt");
+        id = FileReaderWriter.getFromFile("sources/cartID.txt");
 
-        System.out.println(id + "delete");
+        System.out.println("delete" + id);
         given().
-                when().delete("/carts/" + id);
+                when().delete("/carts/" + id).then().statusCode(200);
     }
 
 }
