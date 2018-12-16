@@ -3,6 +3,7 @@ package API;
 import data.IUser;
 import data.UserRepository;
 import io.restassured.RestAssured;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -19,11 +20,13 @@ public class UserTest {
     }
 
     @Test
-    public void getMyUserTest() {
-        get("customers/?display=[firstname,lastname,email]&filter[id]=[3]").then().statusCode(200).assertThat()
-                .body("prestashop.customers.customer.lastname", equalTo("Pupkin"))
-                .body("prestashop.customers.customer.firstname", equalTo("Vasia"))
-                .body("prestashop.customers.customer.email", equalTo("local_part@domain.com"));
+    public void isEmailFreeTest() {
+        Assert.assertTrue(APItools.isEmailInBase(UserRepository.get().addingAddressUser().getEmail()));
+    }
+
+    @Test
+    public void getUserEmailById() {
+        Assert.assertEquals(APItools.getUserEmail("3"), "local_part@domain.com");
     }
 
     @Test

@@ -1,4 +1,9 @@
 //package API;
+//
+////import com.jayway.restassured.RestAssured;
+//public class FirstApiTest {
+//
+//
 ////import org.testng.annotations.Test;
 ////import pages.HomePage;
 ////import pages.LoginPage;
@@ -31,6 +36,7 @@
 //////    }
 //////
 ////}
+
 //
 //        import org.testng.AssertJUnit;
 //        import org.testng.annotations.Test;
@@ -57,3 +63,5 @@
 //        AssertJUnit.assertEquals(capital, "Kiev");
 //    }
 
+//
+//}

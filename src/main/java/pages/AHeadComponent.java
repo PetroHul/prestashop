@@ -1,6 +1,9 @@
 package pages;
 
-import data.Category;
+
+import data.Search;
+
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,7 +18,6 @@ import java.util.List;
 public abstract class AHeadComponent {
 
     protected WebDriver driver;
-    protected final String SEARCH_VALUE = "mug";
 
     @FindBy(css = "#contact-link > a")
     private WebElement contactUsButton;
@@ -34,7 +36,7 @@ public abstract class AHeadComponent {
     @FindBy(css = ".logo.img-responsive")
     private WebElement logo;
 
-    @FindBy(name = "s")
+    @FindBy(css = ".ui-autocomplete-input")
     private WebElement searchProductField;
 
     @FindBy(css = "button[type='submit']")
@@ -158,24 +160,33 @@ public abstract class AHeadComponent {
     }
 
     //SearchProductField
-    public WebElement getSearchProductField() {
-        return searchProductField;
-    }
+//    public WebElement getSearchProductField() {
+//        return searchProductField;
+//    }
 
-    public String getSearchProductFieldText(String text) {
-        return getSearchProductField().getAttribute(text);
-    }
+//    public String getSearchProductFieldText(String text) {
+//        return getSearchProductField().getAttribute(text);
+//    }
+//
+//    public void setSearchProductField(WebElement searchProductField) {
+//          this.searchProductField=searchProductField;
+//    }
+//
+//    public void clickSearchProductField() {
+//        getSearchProductField().click();
+//    }
+//
+//    public void clearSearchProductField() {
+//        getSearchProductField().clear();
+//    }
 
-    public void setSearchProductField() {
-        getSearchProductField().sendKeys(SEARCH_VALUE);
+    private void fill(WebElement field, String value) {
+//        field.click();
+        field.clear();
+        field.sendKeys(value);
     }
-
-    public void clickSearchProductField() {
-        getSearchProductField().click();
-    }
-
-    public void clearSearchProductField() {
-        getSearchProductField().clear();
+    public void fillAll(Search data) {
+        fill(searchProductField, data.getName());
     }
 
     public void clickContactUsButton(){getContactUsButton().click();}
