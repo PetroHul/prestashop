@@ -34,9 +34,30 @@ public class UserRepository {
                 .build();
     }
 
-    //метод який рандомно генерує 10 символів до @
+    public IUser newUserAdmin() {
+        return User.get()
+                .setSocialTitle(SocialTitle.MR)
+                .setFirstName("red")
+                .setLastName("fran")
+                .setEMail(email)
+                .setPassword("12345")
+                .setBirthdate("15/05/1978")
+                .build();
+    }
 
-    public IUser localUser() {
+    public IUser newUserInvalidData() {
+        return User.get()
+                .setSocialTitle(SocialTitle.MRS)
+                .setFirstName("olya")
+                .setLastName("frank")
+                .setEMail("ola-good96@ukr.net")
+                .setPassword("12345")
+                .setBirthdate("25/11/1996")
+                .build();
+    }
+
+
+    public IUser addingAddressUser() {
         return User.get()
                 .setSocialTitle(SocialTitle.MR)
                 .setFirstName("Vasia")
@@ -44,6 +65,40 @@ public class UserRepository {
                 .setEMail("local_part@domain.com")
                 .setPassword("qwerty")
                 .setBirthdate("05/25/1995")
+                .build();
+    }
+
+    public IUser updatingAddressUser() {
+        return User.get()
+                .setSocialTitle(SocialTitle.MRS)
+                .setFirstName("Eva")
+                .setLastName("Pupkina")
+                .setEMail("local@mail.com")
+                .setPassword("qwerty")
+                .setBirthdate("05/25/1995")
+                .build();
+    }
+
+
+    public IUser removingAddressUser() {
+        return User.get()
+                .setSocialTitle(SocialTitle.MR)
+                .setFirstName("Bob")
+                .setLastName("Marley")
+                .setEMail("local_local@set.com")
+                .setPassword("qwerty")
+                .setBirthdate("10/10/2010")
+                .build();
+    }
+
+    public IUser creatingUser() {
+        return User.get()
+                .setSocialTitle(SocialTitle.MR)
+                .setFirstName("Vasilii")
+                .setLastName("Pupkin")
+                .setEMail("create@set.com")
+                .setPassword("qwerty")
+                .setBirthdate("10/10/2010")
                 .build();
     }
 
