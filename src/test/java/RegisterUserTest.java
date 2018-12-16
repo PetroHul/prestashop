@@ -5,7 +5,9 @@ import org.testng.annotations.Test;
 import pages.CreateAccountPage;
 import pages.HomePage;
 import pages.LoginPage;
+import tools.ConncectDB;
 import tools.TestRunner;
+import java.sql.SQLException;
 
 public class RegisterUserTest extends TestRunner {
 
@@ -18,7 +20,7 @@ public class RegisterUserTest extends TestRunner {
 //    }
 
     @Test
-    public void registerNewUser() {
+    public void registerNewUser() throws SQLException {
 
         //Arrange
         HomePage homePage = loadApplication();
@@ -27,10 +29,9 @@ public class RegisterUserTest extends TestRunner {
         HomePage resultPage;
         final IUser newUser = UserRepository.get().newUser();
         String actual;
-        String expected=newUser.getFirstName()+" " + newUser.getLastName();
+        String expected = newUser.getFirstName() + " " + newUser.getLastName();
 
-//взяти собі в тест генерація нового юзера з рандомною поштою ПЕТРО
-        //actual
+        //Actual
         loginPage = homePage.clickSignInButton();
         createAnAccountPage = loginPage.clickNoAccountButton();
         createAnAccountPage.setSocialTitle(newUser.getSocialTitle());
@@ -39,17 +40,62 @@ public class RegisterUserTest extends TestRunner {
         createAnAccountPage.setEmail(newUser.getEmail());
         createAnAccountPage.setPassword(newUser.getPassword());
         createAnAccountPage.setBirthdate(newUser.getBirthdate());
+        createAnAccountPage.setReceiveOffers(newUser.isRecieveOffers());
+        createAnAccountPage.setNewsletter(newUser.isNewsletter());
         resultPage = createAnAccountPage.clickSaveButton();
-//        actual=resultPage.getUserName();
-//
 
+        actual = resultPage.getUserName();
 
-//
-//        //Assert
-//        System.out.println(actual);
-//        Assert.assertEquals(actual,expected);
+        //Assert
+        System.out.println(actual);
+        String currentEmail = newUser.getEmail();
+        System.out.println(currentEmail);
+        Assert.assertEquals(actual, expected);
 
+        ConncectDB conncectDB = new ConncectDB();
+        //String currentEmail = newUser.getEmail();
+
+//        ResultSet actual2 = conncectDB.DMLDataSelect("SELECT email FROM ps_customer WHERE email=" + "\"" + currentEmail + "\";");
+//        System.out.println(actual2);
+//        Assert.assertEquals(actual2.toString(), currentEmail);
+
+        conncectDB.DMLDataQuery("DELETE FROM ps_customer WHERE email=\"" + currentEmail + "\";");
     }
+
+    @Test
+    public void registerUserWithExistedEmail() throws SQLException {
+        //Arrange
+        HomePage homePage = loadApplication();
+        LoginPage loginPage;
+        CreateAccountPage actual = new CreateAccountPage(driver);
+        final IUser newUser = UserRepository.get().newUserInvalidData();
+        //Act
+        loginPage = homePage.clickSignInButton();
+        CreateAccountPage createAnAccountPage = loginPage.clickNoAccountButton();
+        createAnAccountPage.setSocialTitle(newUser.getSocialTitle());
+        createAnAccountPage.setFirstName(newUser.getFirstName());
+        createAnAccountPage.setLastName(newUser.getLastName());
+        createAnAccountPage.setEmail(newUser.getEmail());
+        createAnAccountPage.setPassword(newUser.getPassword());
+        createAnAccountPage.setBirthdate(newUser.getBirthdate());
+        createAnAccountPage.clickSaveButton();
+
+        //Assert
+        Assert.assertTrue(actual.getMessageText().equals("The email \"ola-good96@ukr.net\" is already used, please choose another one or sign in"));
+
+
+
+        ConncectDB conncectDB = new ConncectDB();
+        String s=newUser.getEmail();
+
+       // conncectDB.DMLDataQuery("SELECT * FROM ps_customer WHERE email="+"\""+s+"\";");
+
+
+        conncectDB.DMLDataQuery("DELETE FROM ps_customer WHERE email="+"\""+s+"\";");
+    }
+
+
+
 
 
 }

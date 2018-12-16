@@ -30,6 +30,8 @@ public class ProductListComponent {
         return productComponents;
     }
 
+
+
     public ProductComponent getProductComponentByPartialName(String partialProductName) {
         ProductComponent result = null;
         for (ProductComponent current : getProductComponents()) {

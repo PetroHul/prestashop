@@ -8,11 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-
-public class CreateAccountPage extends AHeadComponent {
-
-    @FindBy(css = ".page-header > h1")
-    private WebElement heading;
+public class CreateUserAdminPage extends AMenuAdminComponent {
 
     @FindBy(css = "input[name='id_gender']")
     private List<WebElement> socialTitle;
@@ -23,36 +19,19 @@ public class CreateAccountPage extends AHeadComponent {
     @FindBy(css = "input[name='lastname']")
     private WebElement lastName;
 
-    @FindBy(css = ".form-control[name='email']")
+    @FindBy(css = "#email")
     private WebElement email;
 
-    @FindBy(css = "input[name='password']")
+    @FindBy(css = "#passwd")
     private WebElement password;
 
-    @FindBy(css = "input[name='birthday']")
-    private WebElement birthdate;
-
-    @FindBy(css = "input[name='optin']")
-    private WebElement receiveOffers;
-
-    @FindBy(css = "input[name='newsletter")
-    private WebElement newsletter;
-
-    @FindBy(css = ".btn.btn-primary.form-control-submit.float-xs-right")
+    @FindBy(css = "#customer_form_submit_btn")
     private WebElement saveButton;
 
-    @FindBy(xpath = "//*[@id='customer-form']/section/div[4]/div[1]/div/ul/li")
-    private WebElement errorMessage;
-
-    public CreateAccountPage(WebDriver driver) {
+    public CreateUserAdminPage(WebDriver driver){
         super(driver);
         PageFactory.initElements(driver, this);
     }
-
-    public String getHeading() {
-        return heading.getText().trim();
-    }
-
 
     public List<WebElement> getSocialTitle() {
         return socialTitle;
@@ -110,60 +89,11 @@ public class CreateAccountPage extends AHeadComponent {
         this.password.sendKeys(password);
     }
 
-    public WebElement getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(String birthdate) {
-        this.birthdate.click();
-        this.birthdate.clear();
-        this.birthdate.sendKeys(birthdate);
-    }
-
-    public WebElement getReceiveOffers() {
-        return receiveOffers;
-    }
-
-    public void setReceiveOffers(boolean receiveOffers) {
-
-        if (receiveOffers) {
-            this.receiveOffers.click();
-        } else ; //do nothing
-
-    }
-
-    public WebElement getNewsletter() {
-        return newsletter;
-    }
-
-    public void setNewsletter(boolean newsletter) {
-        if (newsletter) {
-            this.newsletter.click();
-        } else ; //do nothing
-    }
-
-    public WebDriver getDriver() {
-        return driver;
-    }
-
-    public void setDriver(WebDriver driver) {
-        this.driver = driver;
-    }
-
     public WebElement getSaveButton() {
         return saveButton;
     }
 
-    public HomePage clickSaveButton() {
+    public void clickSaveButton() {
         this.saveButton.click();
-        return new HomePage(driver);
-    }
-
-    public WebElement getErrorMessaget() {
-        return errorMessage;
-    }
-
-    public String getMessageText(){
-        return getErrorMessaget().getText();
     }
 }
