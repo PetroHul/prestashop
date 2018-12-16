@@ -16,7 +16,7 @@ import tools.FileReaderWriter;
 import java.io.*;
 
 
-public class CartApi {
+public class CartApiTest {
 
     String id = "";
 
