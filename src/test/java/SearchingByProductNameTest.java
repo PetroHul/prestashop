@@ -18,7 +18,7 @@ import static io.restassured.RestAssured.post;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.xml.HasXPath.hasXPath;
 
-public class VerifySearchingByProductNameTest extends TestRunner{
+public class SearchingByProductNameTest extends TestRunner{
 
     @Test
     public void SearchingByProductNameTest(){
@@ -32,54 +32,46 @@ public class VerifySearchingByProductNameTest extends TestRunner{
         products_name.add("Mug Today Is A Good Day");
         products_name.add("Pack Mug + Framed Poster");
 
-        //steps
         Search search = Search.MUG;
-        final String expectedSearch = search.getSearchBodyText();
         //steps
         searchResultPage.fillAll(search);
         delayExecution(1000);
         searchResultPage = searchResultPage.clickSearchProductButton();
         delayExecution(1000);
-        System.out.println(searchResultPage.getProductListComponent());
+        System.out.println(searchResultPage.getProductListComponent().getProductsNameList());
 
         Assert.assertEquals(searchResultPage.getProductListComponent().getProductsNameList(),products_name);
 
     }
-//
-//    @Test
-//    public void SortByProductNameZATest(){
-//        //precondition
-//        SearchResultPage searchResultPage = new SearchResultPage(driver);
-//        delayExecution(1000);
-//        List<String> sortProducts_name = new ArrayList<String>();
-//        sortProducts_name.add("Pack Mug + Framed Poster");
-//        sortProducts_name.add("Mug Today Is A Good Day");
-//        sortProducts_name.add("Mug The Best Is Yet To Come");
-//        sortProducts_name.add("Mug The Adventure Begins");
-//        sortProducts_name.add("Customizable Mug");
-//
-//        //steps
-//        searchResultPage.clearSearchProductField();
-//
-//        searchResultPage.clickSearchProductField();
-//        delayExecution(1000);
-//
-//        searchResultPage.setSearchProductField();
-//        delayExecution(1000);
-//
-//        searchResultPage = searchResultPage.clickSearchProductButton();
-//        delayExecution(1000);
-//
-//        searchResultPage.clickSortByButton();
-//        delayExecution(1000);
-//
-//        searchResultPage.clickSortNameZAButton();
-//        delayExecution(1000);
-//
-//        Assert.assertEquals(searchResultPage.getProductListComponent().getProductsNameList(),sortProducts_name);
-//
-//    }
-//
+
+    @Test
+    public void SortByProductNameZATest(){
+        //precondition
+        SearchResultPage searchResultPage = new SearchResultPage(driver);
+        delayExecution(1000);
+        List<String> sortProducts_name = new ArrayList<String>();
+        sortProducts_name.add("Pack Mug + Framed Poster");
+        sortProducts_name.add("Mug Today Is A Good Day");
+        sortProducts_name.add("Mug The Best Is Yet To Come");
+        sortProducts_name.add("Mug The Adventure Begins");
+        sortProducts_name.add("Customizable Mug");
+        Search search = Search.MUG;
+        //steps
+
+        searchResultPage.fillAll(search);
+        searchResultPage = searchResultPage.clickSearchProductButton();
+        delayExecution(1000);
+
+        searchResultPage.clickSortByButton();
+        delayExecution(1000);
+
+        searchResultPage.clickSortNameZAButton();
+        delayExecution(1000);
+        System.out.println(searchResultPage.getProductListComponent().getProductsNameList());
+        Assert.assertEquals(searchResultPage.getProductListComponent().getProductsNameList(),sortProducts_name);
+
+    }
+
     @Test
     public void getErrorMassegeinInvalidSearchingTest(){
 
