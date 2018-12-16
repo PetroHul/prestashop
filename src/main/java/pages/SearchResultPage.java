@@ -14,13 +14,13 @@ public class SearchResultPage extends AHeadComponent {
 
     @FindBy(css = "a[href*='=product.name.desc&s=mug']")
     private WebElement sortNameZAButton;
+
     private ProductListComponent productListComponent;
-
-
 
     public SearchResultPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
+        productListComponent = new ProductListComponent(driver);
     }
 
     public WebElement getSortByButton() {
