@@ -116,25 +116,25 @@ public abstract class AHeadComponent {
     }
 
     // Currency
-    public WebElement getCurrency() {
+        public WebElement getCurrency() {
 //            logger.trace("getCurrency() running return currency;");
-        return currency;
-    }
+            return currency;
+        }
 
-    public String getCurrencyText() {
-        return getCurrency().getText().trim();
-    }
+        public String getCurrencyText() {
+            return getCurrency().getText().trim();
+        }
 
-    public void clickCurrency() {
-        getCurrency().click();
-    }
+        public void clickCurrency() {
+            getCurrency().click();
+        }
 
-    public void clickCurrencyByPartialName(String optionName) {
-        clickCurrency();
-        createDropdownOptions(By.cssSelector("a[href*='SubmitCurrency']"));
-        clickDropdownOptionByPartialName(optionName);
-        clickLogo();
-    }
+        public void clickCurrencyByPartialName(String optionName) {
+            clickCurrency();
+            createDropdownOptions(By.cssSelector("a[href*='SubmitCurrency']"));
+            clickDropdownOptionByPartialName(optionName);
+            clickLogo();
+        }
 
     //SignInButton
     public WebElement getSignInButton() {
@@ -276,20 +276,24 @@ public abstract class AHeadComponent {
     }
 
     // dropdownOptions
-    private void createDropdownOptions(By searchLocator) {
-        this.dropdownOptions = new DropdownOptions(searchLocator);
-    }
-
     protected DropdownOptions getDropdownOptions() {
         return dropdownOptions;
     }
 
+    private void createDropdownOptions(By searchLocator) {
+        dropdownOptions = new DropdownOptions(searchLocator);
+    }
+
+//	private void createDropdownOptions(By searchLocator, By lastLocator) {
+//             dropdownOptions = new DropdownOptions(searchLocator, lastLocator);
+//    }
+
     private boolean findDropdownOptionByPartialName(String optionName) {
         boolean isFound = false;
-        if (getDropdownOptions() == null) {
+        if(getDropdownOptions() == null) {
             throw new RuntimeException("DropdownOption is null");
         }
-        for (String current : getDropdownOptions().getListOptionsText()) {
+        for (String current : getDropdownOptions().getListOptionsText() ) {
             if (current.toLowerCase().contains(optionName.toLowerCase())) {
                 isFound = true;
             }
@@ -299,7 +303,8 @@ public abstract class AHeadComponent {
 
     private void clickDropdownOptionByPartialName(String optionName) {
         if (!findDropdownOptionByPartialName(optionName)) {
-            throw new RuntimeException(String.format("OPTION_NOT_FOUND_MESSAGE %s %s", optionName, dropdownOptions.getListOptionsText().toString()));
+            throw new RuntimeException(String.format("OPTION_NOT_FOUND_MESSAGE %s %s",
+                    optionName, dropdownOptions.getListOptionsText().toString()));
         }
         getDropdownOptions().clickDropdownOptionByPartialName(optionName);
         dropdownOptions = null;
