@@ -45,6 +45,17 @@ public class UserRepository {
                 .build();
     }
 
+    public IUser newUserInvalidData() {
+        return User.get()
+                .setSocialTitle(SocialTitle.MRS)
+                .setFirstName("olya")
+                .setLastName("frank")
+                .setEMail("ola-good96@ukr.net")
+                .setPassword("12345")
+                .setBirthdate("25/11/1996")
+                .build();
+    }
+
 
     public IUser addingAddressUser() {
         return User.get()

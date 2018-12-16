@@ -74,7 +74,7 @@ public class HorizontalMenuTest extends TestRunner {
         homePage.hoverClothesButton();
 
         WebDriverWait wait = new WebDriverWait(driver, 5);
-      //  wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#category-4")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#category-4")));
         WebElement menElement = driver.findElement(By.cssSelector("#category-4"));
         String actual = menElement.getText();
 
@@ -90,7 +90,7 @@ public class HorizontalMenuTest extends TestRunner {
         homePage.hoverAccessoriesButton();
 
         WebDriverWait wait = new WebDriverWait(driver, 5);
-      //  wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#category-7")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#category-7")));
         WebElement stationeryElement = driver.findElement(By.cssSelector("#category-7"));
         String actual = stationeryElement.getText();
 

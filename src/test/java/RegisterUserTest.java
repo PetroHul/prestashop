@@ -53,11 +53,36 @@ public class RegisterUserTest extends TestRunner {
 
         ConncectDB conncectDB = new ConncectDB();
         String s=newUser.getEmail();
-       // conncectDB.DMLDataQuery("DELETE FROM ps_customer WHERE email="+"\"setstore@set.ua\";");
-        conncectDB.DMLDataQuery("DELETE FROM ps_customer WHERE email="+"\""+s+"\";");
 
+       // conncectDB.DMLDataQuery("SELECT * FROM ps_customer WHERE email="+"\""+s+"\";");
+
+        conncectDB.DMLDataQuery("DELETE FROM ps_customer WHERE email="+"\""+s+"\";");
+    }
+
+    @Test
+    public void registerUserWithExistedEmail(){
+        //Arrange
+        HomePage homePage = loadApplication();
+        LoginPage loginPage;
+        CreateAccountPage actual=new CreateAccountPage(driver);
+        final IUser newUser = UserRepository.get().newUserInvalidData();
+        //Act
+        loginPage = homePage.clickSignInButton();
+        CreateAccountPage createAnAccountPage = loginPage.clickNoAccountButton();
+        createAnAccountPage.setSocialTitle(newUser.getSocialTitle());
+        createAnAccountPage.setFirstName(newUser.getFirstName());
+        createAnAccountPage.setLastName(newUser.getLastName());
+        createAnAccountPage.setEmail(newUser.getEmail());
+        createAnAccountPage.setPassword(newUser.getPassword());
+        createAnAccountPage.setBirthdate(newUser.getBirthdate());
+        createAnAccountPage.clickSaveButton();
+
+        //Assert
+        Assert.assertTrue(actual.getMessageText().equals("The email \"ola-good96@ukr.net\" is already used, please choose another one or sign in"));
 
     }
+
+
 
 
 }
