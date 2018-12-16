@@ -1,23 +1,64 @@
 package pages;
 
-
 import data.Search;
-
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.interactions.Actions;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
 public abstract class AHeadComponent {
+    protected WebDriver driver;
+
+    @FindBy(css = "#contact-link > a")
+    private WebElement contactUsButton;
+
+    @FindBy(css = "#_desktop_currency_selector > div > button > span")
+    private WebElement currency;
+
+    @FindBy(css = ".user-info > a[href='http://studio5f.online/en/my-account']")
+    private WebElement signInButton;
+
+    @FindBy(id = "_desktop_cart")
+    private WebElement cartButton;
+
+    @FindBy(css = ".logo.img-responsive")
+    private WebElement logo;
+
+    @FindBy(css = ".ui-autocomplete-input")
+    private WebElement searchProductField;
+
+    @FindBy(css = "button[type='submit']")
+    private WebElement searchProductButton;
+
+    @FindBy(css = "#category-6")
+    private WebElement accessoriesButton;
+
+    @FindBy(css = "#category-3")
+    private WebElement clothesButton;
+
+    @FindBy(css = "#category-9")
+    private WebElement artButton;
+
+    @FindBy(css = "#category-4")
+    private WebElement menButton;
+
+    @FindBy(css = "div#block_myaccount_infos a[href*='addresses']")
+    private WebElement footerAddressesButton;
+
+    @FindBy(xpath = "//*[@id='_desktop_user_info']/div/a[2]/span")
+    private WebElement registerUserName;
 
     private DropdownOptions dropdownOptions;
+
+    protected AHeadComponent(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
 
     private class DropdownOptions {
 
@@ -27,10 +68,8 @@ public abstract class AHeadComponent {
             initListOptions(searchLocator);
         }
 
-
-        private void initListOptions(By searchLocator){
+        private void initListOptions(By searchLocator) {
             listOptions = driver.findElements(searchLocator);
-
         }
 
         public List<WebElement> getListOptions() {
@@ -61,58 +100,6 @@ public abstract class AHeadComponent {
         }
     }
 
-    protected WebDriver driver;
-
-    @FindBy(css = "#contact-link > a")
-    private WebElement contactUsButton;
-
-    @FindBy(css = "#_desktop_language_selector > div > div > button > span")
-    private WebElement localization;
-    @FindBy(css = "#_desktop_currency_selector > div > button > span")
-    private WebElement currency;
-
-    @FindBy(css = ".user-info > a[href='http://studio5f.online/en/my-account']")
-    private WebElement signInButton;
-
-    @FindBy(id = "_desktop_cart")
-    private WebElement cartButton;
-
-    @FindBy(css = ".logo.img-responsive")
-    private WebElement logo;
-
-    @FindBy(css = ".ui-autocomplete-input")
-    private WebElement searchProductField;
-
-    @FindBy(css = "button[type='submit']")
-    private WebElement searchProductButton;
-
-    @FindBy(css =".top-menu")
-    private List<WebElement> menuTop;
-
-    @FindBy(css ="#category-6")
-    private WebElement accessoriesButton;
-
-    @FindBy(css = "#category-3")
-    private WebElement clothesButton;
-
-    @FindBy(css = "#category-9")
-    private WebElement artButton;
-
-    @FindBy(css = "#category-4")
-    private WebElement menButton;
-
-    @FindBy(css ="div#block_myaccount_infos a[href*='addresses']")
-    private WebElement footerAddressesButton;
-
-    @FindBy(xpath ="//*[@id='_desktop_user_info']/div/a[2]/span")
-    private WebElement registerUserName;
-
-
-    protected AHeadComponent(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
-
     // PageObject Atomic Operation
 
     // ContactUsButton
@@ -128,42 +115,26 @@ public abstract class AHeadComponent {
         getContactUsButton().click();
     }
 
-    //Localization
-    public WebElement getLocalization() {
-        return localization;
-    }
-
-    public String getLocalizationText() {
-        return getLocalization().getText().substring(0, 1);
-    }
-
-    public void clickLocalization() {
-        getLocalization().click();
-    }
-
-
     // Currency
-
-        public WebElement getCurrency() {
+    public WebElement getCurrency() {
 //            logger.trace("getCurrency() running return currency;");
-            return currency;
-        }
+        return currency;
+    }
 
-        public String getCurrencyText() {
-            return getCurrency().getText().trim();
-        }
+    public String getCurrencyText() {
+        return getCurrency().getText().trim();
+    }
 
-        public void clickCurrency() {
-            getCurrency().click();
-        }
+    public void clickCurrency() {
+        getCurrency().click();
+    }
 
-        public void clickCurrencyByPartialName(String optionName) {
-            clickCurrency();
-            createDropdownOptions(By.cssSelector("a[href*='SubmitCurrency']"));
-            clickDropdownOptionByPartialName(optionName);
-            clickLogo();
-        }
-
+    public void clickCurrencyByPartialName(String optionName) {
+        clickCurrency();
+        createDropdownOptions(By.cssSelector("a[href*='SubmitCurrency']"));
+        clickDropdownOptionByPartialName(optionName);
+        clickLogo();
+    }
 
     //SignInButton
     public WebElement getSignInButton() {
@@ -248,13 +219,18 @@ public abstract class AHeadComponent {
         field.clear();
         field.sendKeys(value);
     }
+
     public void fillAll(Search data) {
         fill(searchProductField, data.getName());
     }
 
-    public void clickContactUsButton(){getContactUsButton().click();}
+    public void clickContactUsButton() {
+        getContactUsButton().click();
+    }
 
-    public void clearContactUsButton(){getContactUsButton().click();}
+    public void clearContactUsButton() {
+        getContactUsButton().click();
+    }
 
 
     //SearcProductButton
@@ -287,21 +263,10 @@ public abstract class AHeadComponent {
         return new CategoryPage(driver);
     }
 
-    public CategoryPage hoverArtButton() {
-        artButton.click();
-        return new CategoryPage(driver);
-    }
-
     public void hoverClothesButton() {
         Actions builder = new Actions(driver);
         builder.moveToElement(clothesButton).perform();
-//        return new CategoryPage(driver);
     }
-
-//    public CategoryPage menButton() {
-//        menButton.click();
-//        return new CategoryPage(driver);
-//    }
 
     public void hoverAccessoriesButton() {
         Actions builder = new Actions(driver);
@@ -315,24 +280,20 @@ public abstract class AHeadComponent {
     }
 
     // dropdownOptions
+    private void createDropdownOptions(By searchLocator) {
+        this.dropdownOptions = new DropdownOptions(searchLocator);
+    }
+
     protected DropdownOptions getDropdownOptions() {
         return dropdownOptions;
     }
 
-    private void createDropdownOptions(By searchLocator) {
-        dropdownOptions = new DropdownOptions(searchLocator);
-    }
-
-//	private void createDropdownOptions(By searchLocator, By lastLocator) {
-//             dropdownOptions = new DropdownOptions(searchLocator, lastLocator);
-//    }
-
     private boolean findDropdownOptionByPartialName(String optionName) {
         boolean isFound = false;
-        if(getDropdownOptions() == null) {
+        if (getDropdownOptions() == null) {
             throw new RuntimeException("DropdownOption is null");
         }
-        for (String current : getDropdownOptions().getListOptionsText() ) {
+        for (String current : getDropdownOptions().getListOptionsText()) {
             if (current.toLowerCase().contains(optionName.toLowerCase())) {
                 isFound = true;
             }
@@ -342,8 +303,7 @@ public abstract class AHeadComponent {
 
     private void clickDropdownOptionByPartialName(String optionName) {
         if (!findDropdownOptionByPartialName(optionName)) {
-            throw new RuntimeException(String.format("OPTION_NOT_FOUND_MESSAGE %s %s",
-                    optionName, dropdownOptions.getListOptionsText().toString()));
+            throw new RuntimeException(String.format("OPTION_NOT_FOUND_MESSAGE %s %s", optionName, dropdownOptions.getListOptionsText().toString()));
         }
         getDropdownOptions().clickDropdownOptionByPartialName(optionName);
         dropdownOptions = null;
