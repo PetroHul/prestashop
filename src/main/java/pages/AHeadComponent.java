@@ -244,10 +244,6 @@ public abstract class AHeadComponent {
     }
 
     //topmenu
-    public void setMenuTop(List<WebElement> menuTop) {
-        this.menuTop = menuTop;
-    }
-
     public CategoryPage clickAccessoriesButton() {
         accessoriesButton.click();
         return new CategoryPage(driver);
