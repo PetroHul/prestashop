@@ -44,37 +44,10 @@ public class CreateAccountPage extends AHeadComponent {
     @FindBy(xpath = "//*[@id='customer-form']/section/div[4]/div[1]/div/ul/li")
     private WebElement errorMessage;
 
-//    private WebElement heading;
-//    private List<WebElement> socialTitle;
-//    private WebElement firstName;
-//    private WebElement lastName;
-//    private WebElement email;
-//    private WebElement password;
-//    private WebElement birthdate;
-//    private WebElement receiveOffers;
-//    private WebElement newsletter;
-//    private WebElement saveButton;
-
-
     public CreateAccountPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
-
-//    private void initRegisterComponent() {
-//        heading = driver.findElement(By.cssSelector(".page-header > h1"));
-//        socialTitle = driver.findElements(By.cssSelector("input[name='id_gender']"));
-//        firstName = driver.findElement(By.cssSelector("input[name='firstname']"));
-//        lastName = driver.findElement(By.cssSelector("input[name='lastname']"));
-//        email = driver.findElement(By.cssSelector(".form-control[name='email']"));
-//        password = driver.findElement(By.cssSelector("input[name='password']"));
-//        birthdate = driver.findElement(By.cssSelector("input[name='birthday']"));
-//        receiveOffers = driver.findElement(By.cssSelector("input[name='optin']"));
-//        newsletter = driver.findElement(By.cssSelector("input[name='newsletter"));
-//        saveButton = driver.findElement(By.cssSelector(".btn.btn-primary.form-control-submit.float-xs-right"));
-//
-//
-//    }
 
     public String getHeading() {
         return heading.getText().trim();
