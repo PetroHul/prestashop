@@ -175,9 +175,6 @@ public abstract class AHeadComponent {
     }
 
     public void clickShoppingCart() {
-//        WebDriverWait wait = new WebDriverWait(driver, 20);
-//
-//        wait.until(ExpectedConditions.invisibilityOf(getCartButton()));
         getCartButton().click();
     }
 

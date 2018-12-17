@@ -30,5 +30,19 @@ public class FileReaderWriter {
         bw.close();
     }
 
+    public static String generateStringFromXML(String path) throws IOException {
+        File xmlFile = new File(path);
+        Reader fileReader = new FileReader(xmlFile);
+        BufferedReader bufReader = new BufferedReader(fileReader);
+        StringBuilder sb = new StringBuilder();
+        String line = bufReader.readLine();
+        while (line != null) {
+            sb.append(line).append("\n");
+            line = bufReader.readLine();
+        }
+        String xmlString = sb.toString();
+
+        return xmlString;
+    }
 
 }
