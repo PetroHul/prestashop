@@ -24,7 +24,8 @@ public class CartFunctionalRunner extends TestRunner {
         delayExplicitExecution(productMessagePage.getAlertMessageCloseButton());
         productMessagePage.closeAlertMessage();
 
-        delayExecution(10000);
+        delayExecution(5000);
+//        driver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
         productMessagePage.clickShoppingCart();
     }
 
