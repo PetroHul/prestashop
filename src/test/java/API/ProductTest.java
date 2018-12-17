@@ -6,6 +6,7 @@ import io.restassured.response.Response;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import tools.APItools;
+import tools.FileReaderWriter;
 
 import java.io.IOException;
 
@@ -22,7 +23,7 @@ public class ProductTest {
     @Test
     public void createNewProduct() throws IOException {
                 given()
-                .body(APItools.generateStringFromXML("xml_sources/create_product.xml"))
+                .body(FileReaderWriter.generateStringFromXML("sources/create_product.xml"))
                 .when()
                 .post("/products");
     }
