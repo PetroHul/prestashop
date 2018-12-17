@@ -50,6 +50,7 @@ public abstract class AHeadComponent {
     @FindBy(css = "div#block_myaccount_infos a[href*='addresses']")
     private WebElement footerAddressesButton;
 
+
     @FindBy(xpath ="//*[@id='_desktop_user_info']/div/a[2]/span")
     private WebElement registerUserName;
 
@@ -116,25 +117,25 @@ public abstract class AHeadComponent {
     }
 
     // Currency
-        public WebElement getCurrency() {
+    public WebElement getCurrency() {
 //            logger.trace("getCurrency() running return currency;");
-            return currency;
-        }
+        return currency;
+    }
 
-        public String getCurrencyText() {
-            return getCurrency().getText().trim();
-        }
+    public String getCurrencyText() {
+        return getCurrency().getText().trim();
+    }
 
-        public void clickCurrency() {
-            getCurrency().click();
-        }
+    public void clickCurrency() {
+        getCurrency().click();
+    }
 
-        public void clickCurrencyByPartialName(String optionName) {
-            clickCurrency();
-            createDropdownOptions(By.cssSelector("a[href*='SubmitCurrency']"));
-            clickDropdownOptionByPartialName(optionName);
-            clickLogo();
-        }
+    public void clickCurrencyByPartialName(String optionName) {
+        clickCurrency();
+        createDropdownOptions(By.cssSelector("a[href*='SubmitCurrency']"));
+        clickDropdownOptionByPartialName(optionName);
+        clickLogo();
+    }
 
     //SignInButton
     public WebElement getSignInButton() {
@@ -174,9 +175,6 @@ public abstract class AHeadComponent {
     }
 
     public void clickShoppingCart() {
-//        WebDriverWait wait = new WebDriverWait(driver, 20);
-//
-//        wait.until(ExpectedConditions.invisibilityOf(getCartButton()));
         getCartButton().click();
     }
 
@@ -289,7 +287,3 @@ public abstract class AHeadComponent {
         dropdownOptions = null;
     }
 }
-
-
-
-
