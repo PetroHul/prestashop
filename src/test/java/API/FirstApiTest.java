@@ -38,7 +38,7 @@ public class FirstApiTest {
     public void changeLastName() throws IOException {
 
         Response rs1 = given()
-                .body(APItools.generateStringFromXML("sources/customerOneData.xml"))
+                .body(FileReaderWriter.generateStringFromXML("sources/customerOneData.xml"))
                 .when()
                 .get("/customers/1");
 
@@ -46,7 +46,7 @@ public class FirstApiTest {
         System.out.println(lastname);
 
         Response rs = given()
-                .body(APItools.generateStringFromXML("sources/customerOneData.xml"))
+                .body(FileReaderWriter.generateStringFromXML("sources/customerOneData.xml"))
                 .when()
                 .put("/customers/1");
 
