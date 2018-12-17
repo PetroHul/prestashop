@@ -18,10 +18,10 @@ import static io.restassured.RestAssured.post;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.xml.HasXPath.hasXPath;
 
-public class SearchingByProductNameTest extends TestRunner{
+public class SearchingByProductNameTest extends TestRunner {
 
     @Test
-    public void SearchingByProductNameTest(){
+    public void SearchingByProductNameTest() {
         //precondition
         SearchResultPage searchResultPage = new SearchResultPage(driver);
         delayExecution(1000);
@@ -40,12 +40,12 @@ public class SearchingByProductNameTest extends TestRunner{
         delayExecution(1000);
         System.out.println(searchResultPage.getProductListComponent().getProductsNameList());
 
-        Assert.assertEquals(searchResultPage.getProductListComponent().getProductsNameList(),products_name);
+        Assert.assertEquals(searchResultPage.getProductListComponent().getProductsNameList(), products_name);
 
     }
 
     @Test
-    public void SortByProductNameZATest(){
+    public void SortByProductNameZATest() {
         //precondition
         SearchResultPage searchResultPage = new SearchResultPage(driver);
         delayExecution(1000);
@@ -68,13 +68,12 @@ public class SearchingByProductNameTest extends TestRunner{
         searchResultPage.clickSortNameZAButton();
         delayExecution(3000);
 
-
-        Assert.assertEquals(searchResultPage.getProductListComponent().getProductsNameList(),sortProducts_name);
+        Assert.assertEquals(searchResultPage.getProductListComponent().getProductsNameList(), sortProducts_name);
 
     }
 
     @Test
-    public void getErrorMassegeinInvalidSearchingTest(){
+    public void getErrorMassegeinInvalidSearchingTest() {
 
         SearchEmptyResultPage searchEmptyResultPage = new SearchEmptyResultPage(driver);
         delayExecution(1000);
@@ -86,19 +85,7 @@ public class SearchingByProductNameTest extends TestRunner{
         searchEmptyResultPage.clickSearchProductButton();
         delayExecution(1000);
 
-        Assert.assertEquals(searchEmptyResultPage.getTextProductIsNotFoundMessage(),"Sorry for the inconvenience.");
-
-
+        Assert.assertEquals(searchEmptyResultPage.getTextProductIsNotFoundMessage(), "Sorry for the inconvenience.");
     }
-
-
-//    @Test
-//    public void getProductFromAPI() {
-//        get("http://Z8FVNB1KKDMU382ZPILGHIZ7J6ZWBV3H@studio5f.online/api/products?display=[name]&filter[id]=[3]&language=1")
-//                .then()
-//                .statusCode(200).assertThat()
-//                .body("prestashop.products.product.name.language", equalTo("The best is yet to come' Framed poster"));
-//
-//    }
 
 }
