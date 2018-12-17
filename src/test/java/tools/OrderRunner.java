@@ -5,7 +5,7 @@ import pages.ShoppingCartPage;
 
 public class OrderRunner extends CartFunctionalRunner {
 
-    protected void makeOrder(){
+    protected void makeOrder() {
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
         shoppingCartPage.clickOrderButton();
 
