@@ -86,8 +86,7 @@ public class IdentityAccountTest extends TestRunner{
         assertEquals(actual,expected);
 
         identity.clickSignOutButtom();
-        LoginPage loginPage1 = new LoginPage(driver);
-        loginPage1.signIn(email,newPassword);
+        loginPage.signIn(email,newPassword);
 
         String actual1 = driver.getCurrentUrl();
         boolean expected1 = actual1.contains("identity");
