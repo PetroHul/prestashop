@@ -19,8 +19,6 @@ public class UserRepository {
         return instance;
     }
 
-
-
     public IUser newUser() {
         return User.get()
                 .setSocialTitle(SocialTitle.MR)
@@ -28,7 +26,7 @@ public class UserRepository {
                 .setLastName("someoneelse")
                 .setEMail(email)
                 .setPassword("password1")
-                .setBirthdate("10/12/1986")
+                .setBirthdate("1986-12-10")
                 .setRecieveOffers(false)
                 .setNewsLetter(true)
                 .build();
@@ -64,7 +62,7 @@ public class UserRepository {
                 .setLastName("Pupkin")
                 .setEMail("local_part@domain.com")
                 .setPassword("qwerty")
-                .setBirthdate("05/25/1995")
+                .setBirthdate("1995-25-05")
                 .build();
     }
 
@@ -75,7 +73,7 @@ public class UserRepository {
                 .setLastName("Pupkina")
                 .setEMail("local@mail.com")
                 .setPassword("qwerty")
-                .setBirthdate("05/25/1995")
+                .setBirthdate("1995-05-05")
                 .build();
     }
 
@@ -87,7 +85,7 @@ public class UserRepository {
                 .setLastName("Marley")
                 .setEMail("local_local@set.com")
                 .setPassword("qwerty")
-                .setBirthdate("10/10/2010")
+                .setBirthdate("2010-10-10")
                 .build();
     }
 
@@ -98,7 +96,7 @@ public class UserRepository {
                 .setLastName("Pupkin")
                 .setEMail("create@set.com")
                 .setPassword("qwerty")
-                .setBirthdate("10/10/2010")
+                .setBirthdate("2010-10-10")
                 .build();
     }
 

@@ -9,12 +9,12 @@ import tools.TestRunner;
 public class ContactUsTest extends TestRunner {
 
     @Test
-    public void contactUs(){
+    public void contactUs() {
         //Arrange
         HomePage homePage = loadApplication();
-        ContactUsPage contactUsPage=new ContactUsPage(driver);
+        ContactUsPage contactUsPage = new ContactUsPage(driver);
         //ContactUsMessagePage resultPage;
-        ContactUsMessagePage actual=new ContactUsMessagePage(driver);
+        ContactUsMessagePage actual = new ContactUsMessagePage(driver);
 
         //Actual
         homePage.clickContactUsButton();
@@ -24,8 +24,6 @@ public class ContactUsTest extends TestRunner {
         contactUsPage.clickSaveButton();
 //        actual.getMessageText();
         Assert.assertTrue(actual.getMessageText().equals("Your message has been successfully sent to our team."));
-
-
 
 
     }

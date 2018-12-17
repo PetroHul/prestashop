@@ -2,6 +2,7 @@ package tools;
 
 import data.IUser;
 import io.restassured.response.Response;
+import io.restassured.response.ResponseBody;
 
 import java.io.*;
 
@@ -16,18 +17,8 @@ public class APItools {
     }
 
     public static String getUserEmail(String id) {
-        Response response = get("customers/?display=[email]&filter[id]=[" + id + "]");
-        String fst = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                "<prestashop xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n" +
-                "<customers>\n" +
-                "<customer>\n" +
-                "\t<email><![CDATA[";
-        String end = "]]></email>\n" +
-                "</customer>\n" +
-                "</customers>\n" +
-                "</prestashop>\n";
-
-        return response.asString().substring(fst.length()).replaceAll(end,"");
+        String response = get("customers/?display=[email]&filter[id]=[" + id + "]").xmlPath().getString("prestashop.customers.customer.email");
+        return response;
     }
 
     public static String createUserXML(IUser user) {
@@ -35,7 +26,7 @@ public class APItools {
                 "<prestashop xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n" +
                 "    <customer>\n" +
                 "        <id></id>\n" +
-                "        <id_default_group>3</id_default_group>\n" +
+                "        <id_default_group></id_default_group>\n" +
                 "        <id_lang></id_lang>\n" +
                 "        <newsletter_date_add></newsletter_date_add>\n" +
                 "        <ip_registration_newsletter></ip_registration_newsletter>\n" +
@@ -47,7 +38,7 @@ public class APItools {
                 "        <firstname>" + user.getFirstName() + "</firstname>\n" +
                 "        <email>" + user.getEmail() + "</email>\n" +
                 "        <id_gender>" + user.getGender() + "</id_gender>\n" +
-                "        <birthday></birthday>\n" +
+                "        <birthday>" + user.getBirthdate() + "</birthday>\n" +
                 "        <newsletter></newsletter>\n" +
                 "        <optin></optin>\n" +
                 "        <website></website>\n" +
@@ -70,7 +61,7 @@ public class APItools {
                 "        <associations>\n" +
                 "            <groups>\n" +
                 "                <group>\n" +
-                "                    <id></id>\n" +
+                "                    <id>3</id>\n" +
                 "                </group>\n" +
                 "            </groups>\n" +
                 "        </associations>\n" +
