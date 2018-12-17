@@ -7,17 +7,10 @@ import pages.HomePage;
 import pages.LoginPage;
 import tools.ConncectDB;
 import tools.TestRunner;
+
 import java.sql.SQLException;
 
 public class RegisterUserTest extends TestRunner {
-
-//    @DataProvider//(parallel = true)
-//    public Object[][] newUser() {
-//        // Read from ...
-//        return new Object[][] {
-//                { UserRepository.get().newUser() },
-//        };
-//    }
 
     @Test
     public void registerNewUser() throws SQLException {
@@ -53,12 +46,6 @@ public class RegisterUserTest extends TestRunner {
         Assert.assertEquals(actual, expected);
 
         ConncectDB conncectDB = new ConncectDB();
-        //String currentEmail = newUser.getEmail();
-
-//        ResultSet actual2 = conncectDB.DMLDataSelect("SELECT email FROM ps_customer WHERE email=" + "\"" + currentEmail + "\";");
-//        System.out.println(actual2);
-//        Assert.assertEquals(actual2.toString(), currentEmail);
-
         conncectDB.DMLDataQuery("DELETE FROM ps_customer WHERE email=\"" + currentEmail + "\";");
     }
 
@@ -82,16 +69,8 @@ public class RegisterUserTest extends TestRunner {
 
         //Assert
         Assert.assertTrue(actual.getMessageText().equals("The email \"ola-good96@ukr.net\" is already used, please choose another one or sign in"));
-
-
-
-        ConncectDB conncectDB = new ConncectDB();
         String s=newUser.getEmail();
 
-       // conncectDB.DMLDataQuery("SELECT * FROM ps_customer WHERE email="+"\""+s+"\";");
-
-
-        conncectDB.DMLDataQuery("DELETE FROM ps_customer WHERE email="+"\""+s+"\";");
     }
 
 
