@@ -14,10 +14,10 @@ public class AddressesEntriesTest extends TestRunner {
     @Test
     public void addAddressTest() {
         //arrenge
-        Address userAddress = Address.EVA_PUPKINA;
+        Address userAddress = Address.VASIA_PUPKIN;
         String actualAddress;
         final String expectedAddress = userAddress.getAddressBodyText();
-        HomePage homePage = loadApplication(UserRepository.get().addingAddressUser());
+        HomePage homePage = loadApplication(UserRepository.get().removingAddressUser());
         AddressesPage addressesPage = homePage.clickFooterAddressesButton();
         //act
 //        String your_addresses = (addressesPage.getHeadingText());
