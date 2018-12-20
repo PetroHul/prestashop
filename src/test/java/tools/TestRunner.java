@@ -23,10 +23,10 @@ public abstract class TestRunner {
 
     @BeforeClass
     public void setUp() {
-        String property = System.getProperty("user.dir") + "/driver/geckodriver";
+        String property = System.getProperty("user.dir") + "/driver/chromedriver";
         System.setProperty("webdriver.chrome.driver", property);
-//        driver = new ChromeDriver();
-        driver = new FirefoxDriver();
+        driver = new ChromeDriver();
+//        driver = new FirefoxDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
