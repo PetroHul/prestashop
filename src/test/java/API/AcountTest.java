@@ -18,7 +18,7 @@ import static org.hamcrest.Matchers.equalTo;
 public class AcountTest {
     @DataProvider(parallel = true)
     public Object[] removeAcounts() {
-        return new Object[] {"183"};
+        return new Object[] {"205" , "206"};
     }
 
     @BeforeTest

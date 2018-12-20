@@ -69,8 +69,17 @@ public abstract class AHeadComponent {
             initListOptions(searchLocator);
         }
 
-        private void initListOptions(By searchLocator) {
+//        public DropdownOptions(By searchLocator, By lastLocator) {
+//            initListOptions(searchLocator);
+//            listOptions.add(driver.findElement(lastLocator));
+//            //listOptions.add(search.getWebElement(lastLocator));
+//        }
+
+        private void initListOptions(By searchLocator){
             listOptions = driver.findElements(searchLocator);
+            //listOptions = search.getWebElements(searchLocator);
+            //listOptions = driver.findElements(By.cssSelector(".list-inline > li > a.dropdown-toggle + ul > li > a"));
+            //listOptions = myAccount.findElements(By.cssSelector("+ ul > li > a"));
         }
 
         public List<WebElement> getListOptions() {
@@ -100,6 +109,7 @@ public abstract class AHeadComponent {
             getDropdownOptionByPartialName(optionName).click();
         }
     }
+
 
     // PageObject Atomic Operation
 
