@@ -48,7 +48,6 @@ public class SearchCreatedProductTest extends TestRunner {
 
         Assert.assertEquals(searchResultPage.getProductNameText(), expectedSearch);
 
-
     }
 
     @AfterMethod
@@ -63,7 +62,4 @@ public class SearchCreatedProductTest extends TestRunner {
         createNewProduct.clickLogOutButton();
 
     }
-
-
-
 }

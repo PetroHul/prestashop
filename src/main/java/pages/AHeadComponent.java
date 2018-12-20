@@ -50,7 +50,8 @@ public abstract class AHeadComponent {
     @FindBy(css = "div#block_myaccount_infos a[href*='addresses']")
     private WebElement footerAddressesButton;
 
-    @FindBy(xpath = "//*[@id='_desktop_user_info']/div/a[2]/span")
+
+    @FindBy(xpath ="//*[@id='_desktop_user_info']/div/a[2]/span")
     private WebElement registerUserName;
 
     private DropdownOptions dropdownOptions;
@@ -174,9 +175,6 @@ public abstract class AHeadComponent {
     }
 
     public void clickShoppingCart() {
-//        WebDriverWait wait = new WebDriverWait(driver, 20);
-//
-//        wait.until(ExpectedConditions.invisibilityOf(getCartButton()));
         getCartButton().click();
     }
 

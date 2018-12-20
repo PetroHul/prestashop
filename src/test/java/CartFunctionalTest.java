@@ -1,10 +1,9 @@
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.*;
+import pages.ShoppingCartPage;
+import pages.ShoppingEmptyCartPage;
 import tools.CartFunctionalRunner;
-import tools.TestRunner;
-
 
 public class CartFunctionalTest extends CartFunctionalRunner {
 
@@ -31,5 +30,4 @@ public class CartFunctionalTest extends CartFunctionalRunner {
         Assert.assertTrue(shoppingEmptyCartPage.getMessageText().equals("There are no more items in your cart"));
 
     }
-
 }

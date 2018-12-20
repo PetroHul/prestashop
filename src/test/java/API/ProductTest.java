@@ -1,11 +1,10 @@
 package API;
 
-
 import io.restassured.RestAssured;
-import io.restassured.response.Response;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import tools.APItools;
+import tools.FileReaderWriter;
+
 
 import java.io.IOException;
 
@@ -22,7 +21,6 @@ public class ProductTest {
                 .then()
                 .statusCode(200).assertThat()
                 .body("prestashop.products.product.name.language", equalTo("The best is yet to come' Framed poster"));
-
     }
 
     @BeforeTest
@@ -30,11 +28,10 @@ public class ProductTest {
         RestAssured.baseURI = "http://ZBWJI8GLDFZSRD4QNP76A9D6RKDXN6GT@studio5f.online/api";
     }
 
-
     @Test
     public void createNewProduct() throws IOException {
-                given()
-                .body(APItools.generateStringFromXML("sources/create_product.xml"))
+        given()
+                .body(FileReaderWriter.generateStringFromXML("sources/create_product.xml"))
                 .when()
                 .post("/products");
     }

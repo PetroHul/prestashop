@@ -1,22 +1,21 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ShoppingCartPage extends AHeadComponent{
+public class ShoppingCartPage extends AHeadComponent {
     @FindBy(css = ".product-line-info [href]")
     private WebElement productName;
 
-    @FindBy(css ="span.product-price")
+    @FindBy(css = "span.product-price")
     private WebElement productPrice;
 
-    @FindBy(css =".remove-from-cart")
+    @FindBy(css = ".remove-from-cart")
     private WebElement deleteButton;
 
-    @FindBy(css ="a[href*='order'].btn.btn-primary")
+    @FindBy(css = "a[href*='order'].btn.btn-primary")
     private WebElement orderButton;
 
 
@@ -24,10 +23,12 @@ public class ShoppingCartPage extends AHeadComponent{
         super(driver);
         PageFactory.initElements(driver, this);
     }
+
     //productname
     public WebElement getProductName() {
         return productName;
     }
+
     public String getProductNameText() {
         return getProductName().getText();
     }
@@ -36,7 +37,8 @@ public class ShoppingCartPage extends AHeadComponent{
     public WebElement getDeleteButton() {
         return deleteButton;
     }
-    public ShoppingEmptyCartPage clickDeleteButton(){
+
+    public ShoppingEmptyCartPage clickDeleteButton() {
         getDeleteButton().click();
         return new ShoppingEmptyCartPage(driver);
     }
@@ -46,7 +48,7 @@ public class ShoppingCartPage extends AHeadComponent{
         return orderButton;
     }
 
-    public void clickOrderButton(){
+    public void clickOrderButton() {
         getOrderButton().click();
     }
 }
