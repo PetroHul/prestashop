@@ -117,25 +117,25 @@ public abstract class AHeadComponent {
     }
 
     // Currency
-        public WebElement getCurrency() {
+    public WebElement getCurrency() {
 //            logger.trace("getCurrency() running return currency;");
-            return currency;
-        }
+        return currency;
+    }
 
-        public String getCurrencyText() {
-            return getCurrency().getText().trim();
-        }
+    public String getCurrencyText() {
+        return getCurrency().getText().trim();
+    }
 
-        public void clickCurrency() {
-            getCurrency().click();
-        }
+    public void clickCurrency() {
+        getCurrency().click();
+    }
 
-        public void clickCurrencyByPartialName(String optionName) {
-            clickCurrency();
-            createDropdownOptions(By.cssSelector("a[href*='SubmitCurrency']"));
-            clickDropdownOptionByPartialName(optionName);
-            clickLogo();
-        }
+    public void clickCurrencyByPartialName(String optionName) {
+        clickCurrency();
+        createDropdownOptions(By.cssSelector("a[href*='SubmitCurrency']"));
+        clickDropdownOptionByPartialName(optionName);
+        clickLogo();
+    }
 
     //SignInButton
     public WebElement getSignInButton() {
@@ -287,7 +287,3 @@ public abstract class AHeadComponent {
         dropdownOptions = null;
     }
 }
-
-
-
-

@@ -14,7 +14,7 @@ import static org.testng.Assert.assertTrue;
 
 public class IdentityAccountTest extends TestRunner{
 
-        @DataProvider(name = "newuser")
+        @DataProvider(name = "usermManipulation")
         public static Object[][] insertUser() {
 
             final String insert = "INSERT INTO `ps_customer` (`id_customer`, `id_shop_group`, `id_shop`, `id_gender`," +
@@ -62,7 +62,7 @@ public class IdentityAccountTest extends TestRunner{
                     { insert1, email1, password1, newPassword1, delete1 }};
         }
 
-    @Test(dataProvider = "newuser")
+    @Test(dataProvider = "usermManipulation")
     public void changePasswordTest(String insert, String email, String password, String newPassword, String delete) throws SQLException {
         ConncectDB conncectDB = new ConncectDB();
         conncectDB.DMLDataQuery(insert);
@@ -91,6 +91,7 @@ public class IdentityAccountTest extends TestRunner{
         String actual1 = driver.getCurrentUrl();
         boolean expected1 = actual1.contains("identity");
         assertTrue(expected1);
+        identity.clickSignOutButtom();
 
         conncectDB.DMLDataQuery(delete);
     }

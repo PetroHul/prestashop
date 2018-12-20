@@ -32,10 +32,5 @@ public class CurrencyFunctionalTest extends TestRunner {
         // Check
         Assert.assertEquals(homePage.getCurrencyText(), expectedCurrencyText);
         delayExecution(2000);
-        //
-        // Return to previous state
     }
-
-
 }
-
