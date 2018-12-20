@@ -24,7 +24,7 @@ public abstract class TestRunner {
     @BeforeClass
     public void setUp() {
         String property = System.getProperty("user.dir") + "/driver/geckodriver";
-        System.setProperty("webdriver.chrome.driver", property);
+        System.setProperty("webdriver.geckodriver.driver", property);
 //        driver = new ChromeDriver();
         driver = new FirefoxDriver();
         driver.manage().window().maximize();
