@@ -77,12 +77,12 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.0.0-M1</version>
                     <configuration>
-                        <systemPropertyVariables>
-                            status
-                            <driver.chrome>$[project.basedir]$[file.separator]driver$[file.separator]chromedriver</driver.chrome>
-                        </systemPropertyVariables>
+                        <!--<systemPropertyVariables>-->
+                            <!--status-->
+                            <!--<driver.chrome>$[project.basedir]$[file.separator]driver$[file.separator]chromedriver</driver.chrome>-->
+                        <!--</systemPropertyVariables>-->
                         <suiteXmlFiles>
-                            <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                            <suiteXmlFile>testsuite.xml</suiteXmlFile>
                         </suiteXmlFiles>
                     </configuration>
                 </plugin>

@@ -1,27 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">-->
 
-<suite name="Suite1">
+<!--<suite name="Suite1">-->
 
-    <!--<parameter name="loginurl" value="http://studio5f.online/en/" />-->
-    <!--<parameter name="logouturl" value="http://registrator.herokuapp.com/logout" />-->
-    <!--<parameter name="browserName" value="chrome" />-->
+    <!--&lt;!&ndash;<parameter name="loginurl" value="http://studio5f.online/en/" />&ndash;&gt;-->
+    <!--&lt;!&ndash;<parameter name="logouturl" value="http://registrator.herokuapp.com/logout" />&ndash;&gt;-->
+    <!--&lt;!&ndash;<parameter name="browserName" value="chrome" />&ndash;&gt;-->
 
-    <!-- 3 ERROR 5 WARNING 7 INFO 9 DEBUG -->
-    <test verbose="9" name="Test1">
-        <parameter name="number" value="2" />
-        <classes>
-            <!-- <class name="com.softserve.edu.AppTest" /> -->
-            <!-- 			<class name="com.softserve.edu.opencart.tests.StartTest"> -->
-            <!-- 				<methods> -->
-            <!-- 					<include name="checkCurrency" /> -->
-            <!-- 					<include name="checkProductCurrency" /> -->
-            <!-- 				</methods> -->
-            <!-- 			</class> -->
-            <!-- 			<class name="com.softserve.edu.opencart.tests.LoginTest" /> -->
-            <!-- 			<class name="com.softserve.edu.AppTestReport" /> -->
-            <class name="AddressesEntriesTest" />
-        </classes>
-    </test> <!-- Test -->
+    <!--&lt;!&ndash; 3 ERROR 5 WARNING 7 INFO 9 DEBUG &ndash;&gt;-->
+    <!--<test verbose="9" name="Test1">-->
+        <!--<parameter name="number" value="2" />-->
+        <!--<classes>-->
+            <!--&lt;!&ndash; <class name="com.softserve.edu.AppTest" /> &ndash;&gt;-->
+            <!--&lt;!&ndash; 			<class name="com.softserve.edu.opencart.tests.StartTest"> &ndash;&gt;-->
+            <!--&lt;!&ndash; 				<methods> &ndash;&gt;-->
+            <!--&lt;!&ndash; 					<include name="checkCurrency" /> &ndash;&gt;-->
+            <!--&lt;!&ndash; 					<include name="checkProductCurrency" /> &ndash;&gt;-->
+            <!--&lt;!&ndash; 				</methods> &ndash;&gt;-->
+            <!--&lt;!&ndash; 			</class> &ndash;&gt;-->
+            <!--&lt;!&ndash; 			<class name="com.softserve.edu.opencart.tests.LoginTest" /> &ndash;&gt;-->
+            <!--&lt;!&ndash; 			<class name="com.softserve.edu.AppTestReport" /> &ndash;&gt;-->
+            <!--<class name="AddressesEntriesTest" />-->
+        <!--</classes>-->
+    <!--</test> &lt;!&ndash; Test &ndash;&gt;-->
 
-</suite> <!-- Suite -->
+<!--</suite> &lt;!&ndash; Suite &ndash;&gt;-->

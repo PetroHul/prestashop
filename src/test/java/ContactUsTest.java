@@ -10,21 +10,23 @@ public class ContactUsTest extends TestRunner {
 
     @Test
     public void contactUs() {
+
         //Arrange
         HomePage homePage = loadApplication();
-        ContactUsPage contactUsPage = new ContactUsPage(driver);
-        //ContactUsMessagePage resultPage;
-        ContactUsMessagePage actual = new ContactUsMessagePage(driver);
+        final String expected = "Your message has been successfully sent to our team.";
+        final String actual;
 
-        //Actual
+        //Act
         homePage.clickContactUsButton();
+        ContactUsPage contactUsPage = new ContactUsPage(driver);
         contactUsPage.setSubjecte(Subject.CustomerServise);
         contactUsPage.setEmail("sdh@gm.com");
         contactUsPage.setMessage("I want to say thank you!");
         contactUsPage.clickSaveButton();
-//        actual.getMessageText();
-        Assert.assertTrue(actual.getMessageText().equals("Your message has been successfully sent to our team."));
+        ContactUsMessagePage alertPage = new ContactUsMessagePage(driver);
+        actual = alertPage.getMessageText();
 
-
+        //Assert
+        Assert.assertEquals(actual, expected);
     }
 }
