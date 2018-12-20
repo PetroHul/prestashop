@@ -2,7 +2,7 @@
 <suite name="Suite1" verbose="6" >
     <test name="Nopackage" >
         <classes>
-            <class name="AddressesEntriesTest"/>
+            <class name="SearchingByProductNameTest"/>
         </classes>
     </test>
 
