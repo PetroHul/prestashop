@@ -2,8 +2,8 @@
 <suite name="Suite1" verbose="6" >
     <test name="Nopackage" >
         <classes>
-            <class name="LoginPageTest"/>
             <class name="DB.CartTest"/>
+            <class name="API.FirstApiTest"/>
             <class name="LoginPageTest"/>
         </classes>
     </test>
