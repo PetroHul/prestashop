@@ -26,12 +26,13 @@ public abstract class TestRunner {
     public void setUp() {
 //        String property = System.getProperty("user.dir") + "/driver/chromedriver";
         //String property = System.getProperty("user.dir") + "/usr/bin/chromedriver";
-        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-        options.addArguments("--no-proxy-server");
-        options.addArguments("--ignore-certificate-errors");
-        driver = new ChromeDriver(options);
+        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--headless");
+//        options.addArguments("--no-proxy-server");
+//        options.addArguments("--ignore-certificate-errors");
+//        driver = new ChromeDriver(options);
+        driver = new ChromeDriver();
 //        driver = new FirefoxDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
