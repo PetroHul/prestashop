@@ -31,6 +31,7 @@ public abstract class TestRunner {
         options.addArguments("--headless");
         options.addArguments("--no-proxy-server");
         options.addArguments("--ignore-certificate-errors");
+        options.addArguments("--no-sandxob");
         driver = new ChromeDriver(options);
 //        driver = new ChromeDriver();
 //        driver = new FirefoxDriver();
