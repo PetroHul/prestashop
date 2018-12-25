@@ -142,7 +142,7 @@ public abstract class AHeadComponent {
 
     public void clickCurrencyByPartialName(String optionName) {
         clickCurrency();
-        createDropdownOptions(By.cssSelector("a[href*='SubmitCurrency']"));
+        createDropdownOptions(By.xpath("//ul[@aria-labelledby='currency-selector-label']/li"));
         clickDropdownOptionByPartialName(optionName);
         clickLogo();
     }
