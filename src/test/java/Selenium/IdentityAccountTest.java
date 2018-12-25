@@ -1,7 +1,5 @@
 package Selenium;
 
-import data.RandomString;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.HomePage;
