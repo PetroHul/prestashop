@@ -80,6 +80,7 @@
                         <suiteXmlFiles>
                             <suiteXmlFile>testsuite.xml</suiteXmlFile>
                         </suiteXmlFiles>
+
                     </configuration>
                 </plugin>
             </plugins>

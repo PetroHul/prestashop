@@ -17,13 +17,8 @@ public class CartApiTest {
     String id = "";
 
     @BeforeTest
-    public void setUp() {
+    public void setUp() throws IOException {
         RestAssured.baseURI = "http://ZBWJI8GLDFZSRD4QNP76A9D6RKDXN6GT@studio5f.online/api";
-
-    }
-
-    @Test(priority = 1)
-    public void addToCart() throws IOException {
 
         Response rs =
                 given()
@@ -36,7 +31,6 @@ public class CartApiTest {
         FileReaderWriter.saveInFile("sources/cartID.txt", id);
 
         System.out.println("save id = " + id);
-
     }
 
     @Test(priority = 2)
