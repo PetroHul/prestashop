@@ -25,7 +25,7 @@ import static org.testng.Assert.assertTrue;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.namespace.NamespaceContext;
 import java.io.*;
-public class FirstApiTest {
+public class ChangeLastNameApiTest {
     String lastname = "";
     String lastname1 = "";
 

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Suite1" verbose="6" >
     <test name="Nopackage" >
@@ -10,13 +10,3 @@
 
 
 </suite>
-=======
-    <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-    <suite name="Suite1" verbose="6">
-        <test name="sss">
-            <classes>
-                <class name="API.CartApiTest"/>
-            </classes>
-        </test>
-    </suite>
->>>>>>> 361af363629a6e3806e8bd6b6d6664f3687856f4
