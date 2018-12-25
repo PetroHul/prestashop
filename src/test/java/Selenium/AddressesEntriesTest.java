@@ -29,6 +29,7 @@ public class AddressesEntriesTest extends TestRunner {
         actualAddress = addressesPage.getLastAddressText();
         //assert
         assertEquals(actualAddress, expectedAddress);
+        homePage.clickSignOutButtom();
     }
 
     @Test
@@ -46,6 +47,7 @@ public class AddressesEntriesTest extends TestRunner {
         actualAddress = addressesPage.getLastAddressText();
         //assert
         assertEquals(actualAddress, expectedAddress);
+        homePage.clickSignOutButtom();
     }
 
     @Test
@@ -59,11 +61,12 @@ public class AddressesEntriesTest extends TestRunner {
         actualAlert = addressesPage.clickDeleteLast();
         //assert
         assertEquals(actualAlert, expectedAlert);
-    }
-
-    @AfterMethod
-    public void signOut() {
-        HomePage homePage = loadApplication();
         homePage.clickSignOutButtom();
     }
+
+//    @AfterMethod
+//    public void signOut() {
+//        HomePage homePage = loadApplication();
+//        homePage.clickSignOutButtom();
+//    }
 }
