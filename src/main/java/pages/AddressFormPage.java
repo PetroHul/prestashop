@@ -41,6 +41,10 @@ public class AddressFormPage extends AHeadComponent {
         PageFactory.initElements(driver, this);
     }
 
+    public WebElement getSaveButton() {
+        return saveButton;
+    }
+
     public void fillAll(Address data) {
         fill(alias, data.getAlias());
         fill(firstName, data.getFirstName());
@@ -61,40 +65,8 @@ public class AddressFormPage extends AHeadComponent {
         field.sendKeys(value);
     }
 
-    public void fillAlias(String alias) {
-        fill(this.alias, alias);
-    }
-
-    public void fillFirstName(String firstName) {
-        fill(this.firstName, firstName);
-    }
-
-    public void fillLastName(String lastName) {
-        fill(this.lastName, lastName);
-    }
-
-    public void fillCompany(String company) {
-        fill(this.company, company);
-    }
-
-    public void fillVatNumber(String vatNumber) {
-        fill(this.vatNumber, vatNumber);
-    }
-
-    public void fillAddress1(String address1) {
-        fill(this.address1, address1);
-    }
-
-    public void fillAddress2(String address2) {
-        fill(this.address2, address2);
-    }
-
     public void fillPostCode(String postCode) {
         fill(this.postCode, postCode);
-    }
-
-    public void fillCity(String city) {
-        fill(this.city, city);
     }
 
     public void selectCountry(Country country) {
@@ -103,14 +75,12 @@ public class AddressFormPage extends AHeadComponent {
                 .click();
     }
 
-    public void fillPhone(String phone) {
-        fill(this.phone, phone);
-    }
-
     public AddressesPage clickSaveButton() {
         saveButton.click();
         return new AddressesPage(driver);
-//        TODO create exception for incorrect entries
     }
 
+    public String getAlertDangerText() {
+        return driver.findElement(By.cssSelector("article.alert.alert-danger")).getText();
+    }
 }

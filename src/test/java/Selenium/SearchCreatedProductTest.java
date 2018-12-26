@@ -1,3 +1,5 @@
+package Selenium;
+
 import data.Product;
 import data.Search;
 import org.testng.Assert;

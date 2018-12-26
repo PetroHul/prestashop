@@ -1,6 +1,8 @@
+package Selenium;
+
 import data.Address;
 import data.UserRepository;
-import org.testng.annotations.AfterMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.AddressFormPage;
 import pages.AddressesPage;
@@ -15,9 +17,9 @@ public class AddressesEntriesTest extends TestRunner {
     public void addAddressTest() {
         //arrenge
         Address userAddress = Address.VASIA_PUPKIN;
-        String actualAddress;
+        final String actualAddress;
         final String expectedAddress = userAddress.getAddressBodyText();
-        HomePage homePage = loadApplication(UserRepository.get().removingAddressUser());
+        HomePage homePage = loadApplication(UserRepository.get().addressTestUser());
         AddressesPage addressesPage = homePage.clickFooterAddressesButton();
         //act
 //        String your_addresses = (addressesPage.getHeadingText());
@@ -27,15 +29,16 @@ public class AddressesEntriesTest extends TestRunner {
         actualAddress = addressesPage.getLastAddressText();
         //assert
         assertEquals(actualAddress, expectedAddress);
+        addressesPage.clickSignOutButtom();
     }
 
     @Test
     public void updateAddressTest() {
         //arrenge
         Address userAddress = Address.EVA_PUPKINA;
-        String actualAddress;
+        final String actualAddress;
         final String expectedAddress = userAddress.getAddressBodyText();
-        HomePage homePage = loadApplication(UserRepository.get().updatingAddressUser());
+        HomePage homePage = loadApplication(UserRepository.get().addressTestUser());
         AddressesPage addressesPage = homePage.clickFooterAddressesButton();
         //act
         AddressFormPage addressFormPage = addressesPage.clickUpdateLast();
@@ -44,6 +47,29 @@ public class AddressesEntriesTest extends TestRunner {
         actualAddress = addressesPage.getLastAddressText();
         //assert
         assertEquals(actualAddress, expectedAddress);
+        addressesPage.clickSignOutButtom();
+    }
+
+    @DataProvider
+    public Object[] invalidCodes() {
+        return new Object[]{"1", "qwerty", "4444", "666666", "1-234"};
+    }
+
+    @Test(dataProvider = "invalidCodes")
+    public void updateInvalidCodeTest(String code) {
+        //arrenge
+        final String actualAlert;
+        final String expectedAlert = "Please fix the error below.";
+        HomePage homePage = loadApplication(UserRepository.get().addressTestUser());
+        AddressesPage addressesPage = homePage.clickFooterAddressesButton();
+        //act
+        AddressFormPage addressFormPage = addressesPage.clickUpdateLast();
+        addressFormPage.fillPostCode(code);
+        addressFormPage.getSaveButton().click();
+        actualAlert = addressFormPage.getAlertDangerText();
+        //assert
+        assertEquals(actualAlert, expectedAlert);
+        addressFormPage.clickSignOutButtom();
     }
 
     @Test
@@ -51,17 +77,12 @@ public class AddressesEntriesTest extends TestRunner {
         //arrenge
         final String actualAlert;
         final String expectedAlert = "Address successfully deleted!";
-        HomePage homePage = loadApplication(UserRepository.get().removingAddressUser());
+        HomePage homePage = loadApplication(UserRepository.get().addressTestUser());
         AddressesPage addressesPage = homePage.clickFooterAddressesButton();
         //act
         actualAlert = addressesPage.clickDeleteLast();
         //assert
         assertEquals(actualAlert, expectedAlert);
-    }
-
-    @AfterMethod
-    public void signOut() {
-        HomePage homePage = loadApplication();
-        homePage.clickSignOutButtom();
+        addressesPage.clickSignOutButtom();
     }
 }

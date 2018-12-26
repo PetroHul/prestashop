@@ -1,3 +1,5 @@
+package Selenium;
+
 import data.Subject;
 import org.testng.Assert;
 import org.testng.annotations.Test;

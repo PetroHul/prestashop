@@ -55,7 +55,7 @@ public class UserRepository {
     }
 
 
-    public IUser addingAddressUser() {
+    public IUser addressTestUser() {
         return User.get()
                 .setSocialTitle(SocialTitle.MR)
                 .setFirstName("Vasia")

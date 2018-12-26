@@ -21,12 +21,15 @@ public abstract class TestRunner {
     protected WebDriver driver;
 
     @BeforeClass
-    public void setUp() {
+    public WebDriver setUp() {
         String property = System.getProperty("user.dir") + "/driver/chromedriver";
         System.setProperty("webdriver.chrome.driver", property);
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        if (driver == null){
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        }
+        return driver;
     }
 
     @BeforeMethod
@@ -95,7 +98,10 @@ public abstract class TestRunner {
 
     @AfterClass(alwaysRun = true)
     public void tearDown() {
-        driver.quit();
+        if(driver != null) {
+            driver.quit();
+            driver = null;
+        }
     }
 
 }

@@ -1,3 +1,5 @@
+package Selenium;
+
 import data.IUser;
 import data.UserRepository;
 import org.testng.Assert;
