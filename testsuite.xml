@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite1" verbose="6" >
+    <test name="Nopackage" >
+        <packages>
+            <package name="Selenium"/>
+        </packages>
+        <!--<classes>-->
+            <!--<class name="Selenium.AddressesEntriesTest"/>-->
+        <!--</classes>-->
+    </test>
+</suite>

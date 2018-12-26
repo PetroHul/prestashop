@@ -24,6 +24,15 @@ public class MyAccountPage extends AHeadComponent {
         PageFactory.initElements(driver, this);
     }
 
+    //add Petro
+    public WebElement getInformationButton(){
+        return informationButton;
+    }
+    public void clickInformation(){
+        getInformationButton().click();;
+    }
+
+    //add Petro
     public String getHeading() {
         return heading.getText().trim().toUpperCase();
     }

@@ -5,8 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class IdentityAccountPage {
+public class IdentityAccountPage extends AHeadComponent{
 
     //Page Factory
     @FindBy(css = "input[name='id_gender'][value='1']")
@@ -33,7 +34,7 @@ public class IdentityAccountPage {
     @FindBy(css = "input.form-control[name='birthday']")
     private WebElement birthday;
 
-    @FindBy(css = "input[name='optin']")
+    @FindBy(css = "input[namIdentityAccountPagee='optin']")
     private WebElement optionCheackBox;
 
     @FindBy(css = "input[name='newsletter']")
@@ -42,7 +43,10 @@ public class IdentityAccountPage {
     @FindBy(css = "button[data-link-action='save-customer']")
     private WebElement buttonSave;
 
-    // PageObject Atomic Operation
+    public IdentityAccountPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+    }
 
     //Social title
     public WebElement getSocialTitleMr() {
@@ -167,7 +171,6 @@ public class IdentityAccountPage {
         getBirthday().sendKeys(value);
     }
 
-
     //First CheackBox Receive offers from out partners
     public WebElement getOptionCheackBox() {
         return optionCheackBox;
@@ -191,37 +194,12 @@ public class IdentityAccountPage {
     public void clickButtonSave() {
         getButtonSave().click();
     }
+    public void clickButtonSaveAndStatus() {
+        getButtonSave().click();
+    }
 
-
-    // Business Logic
-    public void fillLoginForm(String firsname, String lastname, String email,
-                              String pass, String newpass, String birthdate) {
-        clickSocialTitleMr();
-
-        clearFirstName();
-        clickFirstName();
-        typeFirstName(firsname);
-
-        clearLastName();
-        clickLastName();
-        typeLastName(lastname);
-
-        clearEmail();
-        clickEmail();
-        typeEmail(email);
-
-        clearPassword();
-        clickPassword();
-        typePassword(pass);
-
-        clearNewPassword();
-        clickNewPassword();
-        typeNewPassword(newpass);
-
-        clearBirthday();
-        clickBirthday();
-        typeBirthday(birthdate);
-
-        clickButtonSave();
+    //Success massages
+    public String getAlertSuccessText() {
+        return driver.findElement(By.cssSelector("article.alert.alert-success")).getText();
     }
 }

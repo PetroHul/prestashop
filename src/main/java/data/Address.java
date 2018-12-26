@@ -3,13 +3,13 @@ package data;
 public enum Address {
     USER ("alias", "firstName", "lastName", "company",
             "vatNumber", "address1", "address2", "00000",
-            "city", "country", "000000000"),
+            "city", Country.UKRAINE, "000000000"),
     EVA_PUPKINA ("Work", "Eva", "Pupkina", "Perspective",
             "12354678", "First street 1", "First street 2",
-            "11111", "Pretty city", "Ukraine","+380998887766"),
+            "11111", "Pretty city", Country.UKRAINE,"+380998887766"),
     VASIA_PUPKIN ("Office", "Vasia", "Pupkin", "Perspective",
             "12354678", "Long street 1", "Long street 2",
-            "22222", "Pretty city", "Ukraine","+380998887766");
+            "22222", "Pretty city", Country.ITALY,"+380998887766");
 
     String alias;
     String firstName;
@@ -20,12 +20,12 @@ public enum Address {
     String address2;
     String postCode;
     String city;
-    String country;
+    Country country;
     String phone;
 
     Address(String alias, String firstName, String lastName, String company,
             String vatNumber, String address1, String address2, String postCode,
-            String city, String country, String phone) {
+            String city, Country country, String phone) {
         this.alias = alias;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -75,7 +75,7 @@ public enum Address {
         return city;
     }
 
-    public String getCountry() {
+    public Country getCountry() {
         return country;
     }
 
@@ -85,6 +85,6 @@ public enum Address {
 
     public String getAddressBodyText() {
         return String.format("%s\n%s %s\n%s\n%s\n%s\n%s\n%s %s\n%s\n%s",
-                alias, firstName, lastName, company, vatNumber, address1, address2, postCode, city, country, phone);
+                alias, firstName, lastName, company, vatNumber, address1, address2, postCode, city, country.getNameEn(), phone);
     }
 }

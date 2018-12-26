@@ -6,30 +6,30 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import pages.HomePage;
+import pages.LoginAdminPage;
 import pages.LoginPage;
+import pages.ProductsAdminPage;
 
 import java.util.concurrent.TimeUnit;
 
 public abstract class TestRunner {
 
     protected WebDriver driver;
-    private Object IUser;
 
     @BeforeClass
-    public void setUp() {
+    public WebDriver setUp() {
         String property = System.getProperty("user.dir") + "/driver/chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", property);
-
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    }
-
-    @AfterClass(alwaysRun = true)
-    public void tearDown() {
-        driver.quit();
+        if (driver == null){
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        }
+            return driver;
     }
 
     @BeforeMethod
@@ -50,11 +50,27 @@ public abstract class TestRunner {
         return new HomePage(driver);
     }
 
+    public LoginAdminPage loadAdminPage() {
+        return new LoginAdminPage(driver);
+    }
+
+    protected ProductsAdminPage signInAsAdmin() {
+
+        driver.get("http://studio5f.online/admin166mehs6u/index.php?controller=AdminLogin&token=f90774d4cf1bef623f2802e0de734b2d&logout");
+
+        final String email = "set@set.ua";
+        final String password = "12345678";
+
+        LoginAdminPage loginAdminPage = loadAdminPage();
+        loginAdminPage.fillLoginForm(email, password);
+
+        return new ProductsAdminPage(driver);
+
+    }
+
     protected void delayExplicitExecution(WebElement webElement) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-
         wait.until(ExpectedConditions.elementToBeClickable(webElement));
-
     }
 
     protected void delayExecution(long miliseconds) {
@@ -76,7 +92,16 @@ public abstract class TestRunner {
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickLoginButton();
-        loginPage.fillLoginForm(email, password);
+        loginPage.signIn(email, password);
 
     }
+
+    @AfterClass(alwaysRun = true)
+    public void tearDown() {
+        if(driver != null) {
+            driver.quit();
+            driver = null;
+        }
+    }
+
 }

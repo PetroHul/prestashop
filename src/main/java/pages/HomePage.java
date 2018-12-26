@@ -1,13 +1,9 @@
 package pages;
 
+import data.Currencies;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-
-import java.util.List;
 
 public class HomePage extends AHeadComponent{
-
 
     private ProductListComponent productsListComponent;
 
@@ -24,6 +20,11 @@ public class HomePage extends AHeadComponent{
         return productsListComponent;
     }
 
+    // Business Logic
+    public HomePage chooseCurrency(Currencies currency) {
+        clickCurrencyByPartialName(currency.toString());
+        return new HomePage(driver);
+}
 
 
 }

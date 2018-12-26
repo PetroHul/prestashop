@@ -1,27 +1,29 @@
 package pages;
 
-import data.IUser;
-import org.openqa.selenium.*;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage extends AHeadComponent{
-    @FindBy(css = "input.form-control[name='email']")
-    private WebElement emailField;
+public class LoginAdminPage {
 
-    @FindBy(css = "input.form-control[name='password']")
-    private WebElement passwordField;
+    protected WebDriver driver;
 
-    @FindBy(css = "#submit-login")
-    private WebElement loginButton;
 
-    @FindBy(css = "a[href*='login?create_account']")
-    private WebElement noAccountButton;
-
-    public LoginPage(WebDriver driver){
-        super(driver);
+    public LoginAdminPage(WebDriver driver) {
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
+    @FindBy(css = "#email")
+    private WebElement emailField;
+    @FindBy(css = "#passwd")
+    private WebElement passwordField;
+    @FindBy(css = "#submit_login")
+    private WebElement loginButton;
+
+
+    // PageObject Atomic Operation
 
     // emailField
     public WebElement getEmailField() {
@@ -59,15 +61,8 @@ public class LoginPage extends AHeadComponent{
         getLoginButton().click();
     }
 
-    //noAccountButton
-    public WebElement getNoAccountButton(){return noAccountButton;}
-    public CreateAccountPage clickNoAccountButton(){
-        getNoAccountButton().click();
-        return new CreateAccountPage(driver);
-    }
-
     // Business Logic
-    public void signIn(String email, String password) {
+    public void fillLoginForm(String email, String password) {
         clickEmailField();
         clearEmailField();
         emailField.sendKeys(email);
@@ -77,19 +72,5 @@ public class LoginPage extends AHeadComponent{
         clickLoginButton();
     }
 
-    public MyAccountPage logInAcount(IUser user) {
-        clickEmailField();
-        clearEmailField();
-        emailField.sendKeys(user.getEmail());
-        clickPasswordField();
-        clearPasswordField();
-        passwordField.sendKeys(user.getPassword());
-        clickLoginButton();
-        return new MyAccountPage(driver);
-    }
 
 }
-
-
-
-

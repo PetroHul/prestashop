@@ -1,18 +1,11 @@
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+package tools;
+
 import pages.OrderPage;
 import pages.ShoppingCartPage;
-import tools.CartFunctionalRunner;
 
-public class OrderTest extends CartFunctionalRunner {
+public class OrderRunner extends CartFunctionalRunner {
 
-    @BeforeMethod
-    public void runApp() {
-        addProductTOCart();
-    }
-
-    @Test
-    public void findButton() {
+    protected void makeOrder() {
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
         shoppingCartPage.clickOrderButton();
 
@@ -34,9 +27,5 @@ public class OrderTest extends CartFunctionalRunner {
 
         delayExplicitExecution(orderPage.getOrderButton());
         orderPage.clickOrderButton();
-
-
     }
-
-
 }
