@@ -7,6 +7,8 @@ import io.restassured.response.ResponseBody;
 import java.io.*;
 
 import static io.restassured.RestAssured.get;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
 
 public class APItools {
@@ -21,7 +23,24 @@ public class APItools {
         return response;
     }
 
-    public static String createUserXML(IUser user) {
+    public static String createUser(IUser user) throws IOException {
+        String id =
+                given()
+                        .contentType("text/xml")
+                        .body(APItools.createUserXML(user)).
+                        when().
+                        post("customers").
+                        then().
+                        statusCode(201)
+                        .body("prestashop.customer.firstname", equalTo(user.getFirstName()))
+                        .body("prestashop.customer.lastname", equalTo(user.getLastName()))
+                        .body("prestashop.customer.email", equalTo(user.getEmail()))
+                        .extract().response().xmlPath().getString("prestashop.customer.id")
+                ;
+        return id;
+    }
+
+    private static String createUserXML(IUser user) {
         return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "<prestashop xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n" +
                 "    <customer>\n" +

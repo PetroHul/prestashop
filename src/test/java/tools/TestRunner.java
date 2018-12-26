@@ -29,7 +29,7 @@ public abstract class TestRunner {
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         }
-            return driver;
+        return driver;
     }
 
     @BeforeMethod
