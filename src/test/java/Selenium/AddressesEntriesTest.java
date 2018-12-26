@@ -1,4 +1,4 @@
-package Selenium;
+package Selenium.AddressesEntriesTest;
 
 import data.Address;
 import data.UserRepository;
