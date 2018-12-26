@@ -1,3 +1,5 @@
+package Selenium;
+
 import data.Search;
 import io.restassured.RestAssured;
 import org.openqa.selenium.WebElement;

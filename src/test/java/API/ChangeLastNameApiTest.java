@@ -1,31 +1,16 @@
 package API;
-import static io.restassured.RestAssured.*;
-import static io.restassured.config.XmlConfig.xmlConfig;
-import static io.restassured.matcher.RestAssuredMatchers.*;
-import static org.hamcrest.Matchers.*;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-import data.RandomString;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-import io.restassured.path.xml.XmlPath;
-import io.restassured.response.Response;
-import okhttp3.MediaType;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.internal.OkHttpClient;
-import org.testng.annotations.*;
-import tools.APItools;
-import tools.FileReaderWriter;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotEquals;
-import static org.testng.Assert.assertTrue;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.namespace.NamespaceContext;
-import java.io.*;
-public class FirstApiTest {
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import tools.FileReaderWriter;
+
+import java.io.IOException;
+
+import static io.restassured.RestAssured.given;
+import static org.testng.Assert.assertNotEquals;
+public class ChangeLastNameApiTest {
     String lastname = "";
     String lastname1 = "";
 

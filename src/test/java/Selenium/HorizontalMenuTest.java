@@ -1,3 +1,5 @@
+package Selenium;
+
 import data.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
