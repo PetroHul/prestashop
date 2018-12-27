@@ -1,4 +1,4 @@
-package Selenium;
+package GUI;
 
 import org.testng.annotations.Test;
 import pages.HomePage;

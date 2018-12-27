@@ -4,7 +4,7 @@
         <packages>
             <package name="API"/>
             <package name="DB"/>
-            <package name="Selenium"/>
+            <package name="GUI"/>
         </packages>
     </test>
 </suite>
