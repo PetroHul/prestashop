@@ -50,12 +50,7 @@ public class AddressesEntriesTest extends TestRunner {
         addressesPage.clickSignOutButtom();
     }
 
-    @DataProvider
-    public Object[] invalidCodes() {
-        return new Object[]{"1", "qwerty", "4444", "666666", "1-234"};
-    }
-
-    @Test(dataProvider = "invalidCodes")
+    @Test
     public void updateInvalidCodeTest(String code) {
         //arrenge
         final String actualAlert;
