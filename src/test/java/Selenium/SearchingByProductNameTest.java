@@ -46,34 +46,6 @@ public class SearchingByProductNameTest extends TestRunner{
 
     }
 
-    @Test
-    public void SortByProductNameZATest(){
-        //precondition
-        SearchResultPage searchResultPage = new SearchResultPage(driver);
-        delayExecution(1000);
-        List<String> sortProducts_name = new ArrayList<String>();
-        sortProducts_name.add("Pack Mug + Framed Poster");
-        sortProducts_name.add("Mug Today Is A Good Day");
-        sortProducts_name.add("Mug The Best Is Yet To Come");
-        sortProducts_name.add("Mug The Adventure Begins");
-        sortProducts_name.add("Customizable Mug");
-        Search search = Search.MUG;
-        //steps
-
-        searchResultPage.fillAll(search);
-        searchResultPage = searchResultPage.clickSearchProductButton();
-        delayExecution(1000);
-
-        searchResultPage.clickSortByButton();
-        delayExecution(1000);
-
-        searchResultPage.clickSortNameZAButton();
-        delayExecution(3000);
-
-
-        Assert.assertEquals(searchResultPage.getProductListComponent().getProductsNameList(),sortProducts_name);
-
-    }
 
     @Test
     public void getErrorMassegeinInvalidSearchingTest(){
@@ -92,15 +64,5 @@ public class SearchingByProductNameTest extends TestRunner{
 
 
     }
-
-
-//    @Test
-//    public void getProductFromAPI() {
-//        get("http://Z8FVNB1KKDMU382ZPILGHIZ7J6ZWBV3H@studio5f.online/api/products?display=[name]&filter[id]=[3]&language=1")
-//                .then()
-//                .statusCode(200).assertThat()
-//                .body("prestashop.products.product.name.language", equalTo("The best is yet to come' Framed poster"));
-//
-//    }
 
 }
