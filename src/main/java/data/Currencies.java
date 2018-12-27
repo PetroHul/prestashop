@@ -1,7 +1,7 @@
 package data;
 
 public enum Currencies {
-    EURO("EUR"),
+    EUR("EUR"),
     UAH("UAH"),
     USD("USD");
 

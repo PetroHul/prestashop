@@ -25,18 +25,18 @@ public class APItools {
 
     public static String createUser(IUser user) throws IOException {
         String id =
-                given()
-                        .contentType("text/xml")
-                        .body(APItools.createUserXML(user)).
-                        when().
-                        post("customers").
-                        then().
-                        statusCode(201)
-                        .body("prestashop.customer.firstname", equalTo(user.getFirstName()))
-                        .body("prestashop.customer.lastname", equalTo(user.getLastName()))
-                        .body("prestashop.customer.email", equalTo(user.getEmail()))
-                        .extract().response().xmlPath().getString("prestashop.customer.id")
-                ;
+            given()
+                .contentType("text/xml")
+                .body(APItools.createUserXML(user)).
+            when().
+                post("customers").
+                then().
+                statusCode(201)
+                .body("prestashop.customer.firstname", equalTo(user.getFirstName()))
+                .body("prestashop.customer.lastname", equalTo(user.getLastName()))
+                .body("prestashop.customer.email", equalTo(user.getEmail()))
+                .extract().response().xmlPath().getString("prestashop.customer.id")
+            ;
         return id;
     }
 

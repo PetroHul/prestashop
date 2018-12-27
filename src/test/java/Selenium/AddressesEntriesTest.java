@@ -22,7 +22,6 @@ public class AddressesEntriesTest extends TestRunner {
         HomePage homePage = loadApplication(UserRepository.get().addressTestUser());
         AddressesPage addressesPage = homePage.clickFooterAddressesButton();
         //act
-//        String your_addresses = (addressesPage.getHeadingText());
         AddressFormPage addressFormPage = addressesPage.clickCreate();
         addressFormPage.fillAll(userAddress);
         addressesPage = addressFormPage.clickSaveButton();

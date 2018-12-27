@@ -2,6 +2,8 @@
 <suite name="Suite1" verbose="6" >
     <test name="Nopackage" >
         <packages>
+            <package name="API"/>
+            <package name="DB"/>
             <package name="Selenium"/>
         </packages>
     </test>
