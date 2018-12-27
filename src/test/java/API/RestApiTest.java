@@ -22,7 +22,7 @@ public class RestApiTest {
         Response response = request.post("http://studio5f.online/en/login?create_account=1");
 
         int statusCode = response.getStatusCode();
-        Assert.assertEquals(statusCode, 201);
+        Assert.assertEquals(statusCode, 200);
 
     }
 
