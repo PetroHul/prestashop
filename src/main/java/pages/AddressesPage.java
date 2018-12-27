@@ -46,7 +46,6 @@ public class AddressesPage extends AHeadComponent {
 
     public String getAlertSuccessText() {
         return driver.findElement(By.cssSelector("article.alert.alert-success")).getText();
-        //TODO throws Exception
     }
 
     public String getLastAddressText() {

@@ -4,7 +4,7 @@ public enum Currencies {
     EURO("EUR"),
     UAH("UAH"),
     USD("USD");
-    //
+
     private String name;
 
     private Currencies(String name) {

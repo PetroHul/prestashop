@@ -19,7 +19,6 @@ public class SearchCreatedProductTest extends TestRunner {
         ProductsAdminPage productsAdminPage = signInAsAdmin();
         CreateNewProductPageInAdmin createNewProduct = new CreateNewProductPageInAdmin(driver);
 
-
         createNewProduct.clickCreateNewProduct();
 
         createNewProduct.fillAll(product);
@@ -31,13 +30,13 @@ public class SearchCreatedProductTest extends TestRunner {
         createNewProduct.clickLogOutButton();
 
     }
+
     @Test
-    public void TestSearchingByProductName(){
+    public void TestSearchingByProductName() {
         //precondition
         driver.get("http://studio5f.online/en/");
         SearchResultPage searchResultPage = new SearchResultPage(driver);
         delayExecution(1000);
-
 
         Search search = Search.CUPS1;
         final String expectedSearch = search.toString().toLowerCase();
@@ -49,23 +48,17 @@ public class SearchCreatedProductTest extends TestRunner {
         delayExecution(1000);
 
         Assert.assertEquals(searchResultPage.getProductNameText(), expectedSearch);
-
-
     }
 
     @AfterMethod
-    public void deleteProduct(){
+    public void deleteProduct() {
         ProductsAdminPage productsAdminPage = signInAsAdmin();
         CreateNewProductPageInAdmin createNewProduct = new CreateNewProductPageInAdmin(driver);
 
         createNewProduct.clickDropdownDeleteButton();
         createNewProduct.clickDeleteProductButton();
         createNewProduct.clickAgreeDeleteProductButton();
-        createNewProduct.clickIconForLogOut();
-        createNewProduct.clickLogOutButton();
-
+//        createNewProduct.clickIconForLogOut();
+//        createNewProduct.clickLogOutButton();
     }
-
-
-
 }

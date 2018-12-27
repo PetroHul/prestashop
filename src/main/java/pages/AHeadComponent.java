@@ -69,7 +69,7 @@ public abstract class AHeadComponent {
             initListOptions(searchLocator);
         }
 
-        private void initListOptions(By searchLocator) {
+        private void initListOptions(By searchLocator){
             listOptions = driver.findElements(searchLocator);
         }
 
@@ -100,6 +100,7 @@ public abstract class AHeadComponent {
             getDropdownOptionByPartialName(optionName).click();
         }
     }
+
 
     // PageObject Atomic Operation
 
@@ -132,7 +133,7 @@ public abstract class AHeadComponent {
 
     public void clickCurrencyByPartialName(String optionName) {
         clickCurrency();
-        createDropdownOptions(By.cssSelector("a[href*='SubmitCurrency']"));
+        createDropdownOptions(By.xpath("//ul[@aria-labelledby='currency-selector-label']/li"));
         clickDropdownOptionByPartialName(optionName);
         clickLogo();
     }
@@ -260,10 +261,6 @@ public abstract class AHeadComponent {
     private void createDropdownOptions(By searchLocator) {
         dropdownOptions = new DropdownOptions(searchLocator);
     }
-
-//	private void createDropdownOptions(By searchLocator, By lastLocator) {
-//             dropdownOptions = new DropdownOptions(searchLocator, lastLocator);
-//    }
 
     private boolean findDropdownOptionByPartialName(String optionName) {
         boolean isFound = false;
