@@ -4,8 +4,5 @@
         <packages>
             <package name="Selenium"/>
         </packages>
-        <!--<classes>-->
-            <!--<class name="Selenium.AddressesEntriesTest"/>-->
-        <!--</classes>-->
     </test>
 </suite>

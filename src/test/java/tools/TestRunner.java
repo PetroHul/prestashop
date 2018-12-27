@@ -22,7 +22,7 @@ public abstract class TestRunner {
 
     @BeforeClass
     public WebDriver setUp() {
-        String property = System.getProperty("user.dir") + "/driver/chromedriver.exe";
+        String property = System.getProperty("user.dir") + "/driver/chromedriver";
         System.setProperty("webdriver.chrome.driver", property);
         if (driver == null){
             driver = new ChromeDriver();

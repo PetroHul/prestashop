@@ -17,7 +17,7 @@ public class CurrencyFunctionalTest extends TestRunner {
     @DataProvider//(parallel = true)
     public Object[][] currencyData() {
         // Read from ...
-        return new Object[][]{{Currencies.EUR, "EUR €"}, {Currencies.USD, "USD $"}, {Currencies.UAH, "UAH ₴"}};
+        return new Object[][]{{Currencies.EURO, "EUR €"}, {Currencies.USD, "USD $"}, {Currencies.UAH, "UAH ₴"}};
     }
 
     @Test(dataProvider = "currencyData")
