@@ -1,4 +1,4 @@
-package Selenium;
+package GUI;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;

@@ -1,11 +1,8 @@
-package Selenium;
+package GUI;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.support.FindBy;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.LoginAdminPage;
 import pages.ProductsAdminPage;
 
 import tools.TestRunner;

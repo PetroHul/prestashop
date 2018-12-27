@@ -1,4 +1,4 @@
-package Selenium;
+package GUI;
 
 import data.Category;
 import org.openqa.selenium.By;

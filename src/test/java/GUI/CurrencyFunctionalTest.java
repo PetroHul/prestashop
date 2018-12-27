@@ -1,6 +1,5 @@
-package Selenium;
+package GUI;
 
-import data.Category;
 import data.Currencies;
 import org.testng.Assert;
 

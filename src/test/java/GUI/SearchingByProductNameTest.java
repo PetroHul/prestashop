@@ -1,15 +1,10 @@
-package Selenium;
+package GUI;
 
 import data.Search;
-import io.restassured.RestAssured;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.ProductPage;
 import pages.SearchEmptyResultPage;
 import pages.SearchResultPage;
-import pages.ShoppingCartPage;
 import tools.TestRunner;
 
 import java.util.ArrayList;
@@ -17,7 +12,6 @@ import java.util.List;
 
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.post;
-import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.xml.HasXPath.hasXPath;
 
 public class SearchingByProductNameTest extends TestRunner{

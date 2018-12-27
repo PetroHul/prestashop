@@ -1,4 +1,4 @@
-package Selenium;
+package GUI;
 
 import data.IUser;
 import data.UserRepository;
