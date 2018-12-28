@@ -27,7 +27,7 @@ public abstract class TestRunner {
         if (driver == null){
             driver = new ChromeDriver();
             driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
         }
         return driver;
     }
